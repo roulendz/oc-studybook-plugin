@@ -1,0 +1,8 @@
+import:
+    title: 'logingrupa.toolbox::lang.button.import_from_csv'
+    list: $/logingrupa/studybook/models/reservation/columns.yaml
+#    form: $/logingrupa/studybook/models/reservation/fields.yaml
+#    form:
+#        fields:
+    modelClass: Logingrupa\Studybook\Models\Reservation
+    redirect: logingrupa/studybook/reservations

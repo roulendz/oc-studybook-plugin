@@ -1,0 +1,35 @@
+# Record name
+name: 'logingrupa.studybook::lang.course.name'
+
+# Model Form Field configuration
+form: $/logingrupa/studybook/models/course/fields.yaml
+
+# Model Class name
+modelClass: Logingrupa\Studybook\Models\Course
+
+# Default redirect location
+defaultRedirect: logingrupa/studybook/courses
+
+# Create page
+create:
+    title: 'backend::lang.form.create_title'
+    redirect: logingrupa/studybook/courses/update/:id
+    redirectClose: logingrupa/studybook/courses
+    flashSave: 'lovata.toolbox::lang.message.create_success'
+
+# Update page
+update:
+    title: 'backend::lang.form.update_title'
+    redirect: logingrupa/studybook/courses
+    redirectClose: logingrupa/studybook/courses
+    flashSave: 'lovata.toolbox::lang.message.update_success'
+    flashDelete: 'lovata.toolbox::lang.message.delete_success'
+
+# Export page
+export:
+    title: 'backend::lang.form.update_title'
+    redirect: logingrupa/studybook/emails/export
+    redirectClose: logingrupa/studybook/courses
+
+# Preview page
+preview: {  }

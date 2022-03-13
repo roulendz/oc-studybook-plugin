@@ -1,0 +1,33 @@
+plugin:
+    name: 'logingrupa.studybook::lang.plugin.name'
+    description: 'logingrupa.studybook::lang.plugin.description'
+    author: Logingrupa
+    icon: icon-smile-o
+    homepage: ''
+navigation:
+    studybook-menu-main:
+        label: 'logingrupa.studybook::lang.menu.main'
+        url: logingrupa/studybook/courses
+        permissions:
+            - 'studybook-menu-*'
+        icon: icon-paw
+        sideMenu:
+            studybook-menu-courses:
+                label: 'logingrupa.studybook::lang.menu.courses'
+                url: logingrupa/studybook/courses
+                permissions:
+                    - studybook-menu-courses
+                icon: icon-paw
+            studybook-menu-reservations:
+                label: 'logingrupa.studybook::lang.menu.reservations'
+                url: logingrupa/studybook/reservations
+                permissions:
+                    - studybook-menu-reservations
+                icon: icon-paw
+permissions:
+    studybook-menu-courses:
+        label: 'logingrupa.studybook::lang.permission.course'
+        tab: 'logingrupa.studybook::lang.tab.permissions'
+    studybook-menu-reservations:
+        label: 'logingrupa.studybook::lang.permission.reservation'
+        tab: 'logingrupa.studybook::lang.tab.permissions'

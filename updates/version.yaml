@@ -1,0 +1,11 @@
+1.0.0:
+    - 'Init plugin'
+1.0.1:
+    - 'Create course table.'
+    - create_table_courses.php
+1.0.2:
+    - 'Create reservation table.'
+    - create_table_reservations.php
+1.0.3:
+    - 'Seed test Data.'
+    - seed_test_data.php

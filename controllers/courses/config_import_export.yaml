@@ -1,0 +1,9 @@
+export:
+    title: 'logingrupa.toolbox::lang.button.export_in_csv'
+    list: $/logingrupa/studybook/models/course/columns.yaml
+#    form: $/logingrupa/studybook/models/course/fields.yaml
+#    form:
+#        fields:
+    fileName: export.csv
+    modelClass: Logingrupa\Studybook\Models\Course
+    redirect: logingrupa/studybook/courses

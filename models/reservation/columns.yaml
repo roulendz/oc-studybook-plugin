@@ -1,0 +1,95 @@
+columns:
+    active:
+        label: 'lovata.toolbox::lang.field.active'
+        type: switch
+        searchable: false
+        sortable: false
+        invisible: true
+    start_at:
+        label: 'logingrupa.studybook::lang.field.start_at'
+        type: datetime
+        sortable: true
+        useTimezone: true
+    name:
+        label: 'logingrupa.studybook::lang.field.course_name'
+        type: text
+        searchable: true
+        sortable: true
+    full_name:
+        label: 'logingrupa.studybook::lang.field.full_name'
+        sortable: false
+        useTimezone: true
+    mobile:
+        lable: 'logingrupa.studybook::lang.field.mobile'
+        type: text
+        serchable: false
+        sortable: false
+    email:
+        lable: 'logingrupa.studybook::lang.field.email'
+        type: text
+        serchable: false
+        sortable: false
+    health:
+        label: 'logingrupa.studybook::lang.field.health'
+        type: switch
+        searchable: false
+        sortable: true
+    attendance:
+        lable: 'logingrupa.studybook::lang.field.attendance'
+        type: text
+        serchable: false
+        sortable: false
+    model_status:
+        lable: 'logingrupa.studybook::lang.field.model_status'
+        type: switch
+        serchable: false
+        sortable: false
+    slug:
+        lable: 'logingrupa.studybook::lang.field.slug'
+        type: text
+        serchable: false
+        sortable: false
+    price:
+        lable: 'logingrupa.studybook::lang.field.price'
+        type: text
+        serchable: false
+        sortable: false
+    old_price:
+        lable: 'logingrupa.studybook::lang.field.old_price'
+        type: text
+        serchable: false
+        sortable: false
+    code:
+        label: 'lovata.toolbox::lang.field.code'
+        type: text
+        searchable: false
+        sortable: false
+        invisible: true
+    external_id:
+        label: 'lovata.toolbox::lang.field.external_id'
+        type: text
+        searchable: false
+        sortable: false
+        invisible: true
+    id:
+        label: 'lovata.toolbox::lang.field.id'
+        type: number
+        searchable: false
+        sortable: false
+        width: 40px
+        invisible: true
+    created_at:
+        label: 'lovata.toolbox::lang.field.created_at'
+        type: timetense
+        sortable: true
+        invisible: true
+    updated_at:
+        label: 'lovata.toolbox::lang.field.updated_at'
+        type: timetense
+        sortable: true
+        invisible: true
+    view_count:
+        label: 'lovata.toolbox::lang.field.view_count'
+        type: number
+        searchable: false
+        sortable: true

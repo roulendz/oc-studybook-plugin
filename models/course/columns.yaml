@@ -1,0 +1,76 @@
+columns:
+    name:
+        label: 'lovata.toolbox::lang.field.name'
+        type: text
+        searchable: true
+        sortable: true
+    active:
+        label: 'lovata.toolbox::lang.field.active'
+        type: switch
+        searchable: false
+        sortable: true
+    code:
+        label: 'lovata.toolbox::lang.field.code'
+        type: text
+        searchable: false
+        sortable: false
+        invisible: true
+    external_id:
+        label: 'lovata.toolbox::lang.field.external_id'
+        type: text
+        searchable: false
+        sortable: false
+        invisible: true
+
+    id:
+        label: 'lovata.toolbox::lang.field.id'
+        type: number
+        searchable: false
+        sortable: false
+        width: 100px
+        invisible: true
+    created_at:
+        label: 'lovata.toolbox::lang.field.created_at'
+        type: timetense
+        sortable: true
+        invisible: true
+    updated_at:
+        label: 'lovata.toolbox::lang.field.updated_at'
+        type: timetense
+        sortable: true
+        invisible: true
+    price:
+        lable: 'logingrupa.studybook::lang.field.price'
+        type: text
+        sortable: false
+        serchable: false
+    old_price:
+        lable: 'logingrupa.studybook::lang.field.old_price'
+        type: text
+        sortable: false
+        serchable: false
+    available_seats:
+        lable: 'logingrupa.studybook::lang.field.available_seats'
+        type: text
+        sortable: false
+        serchable: false
+    student_count:
+        lable: 'logingrupa.studybook::lang.field.student_count'
+        type: text
+        sortable: false
+        serchable: false
+    settings:
+        lable: 'logingrupa.studybook::lang.field.settings'
+        type: text
+        sortable: false
+        serchable: false
+    duration_days:
+        lable: 'logingrupa.studybook::lang.field.duration_days'
+        type: text
+        sortable: false
+        serchable: false
+    view_count:
+        label: 'lovata.toolbox::lang.field.view_count'
+        type: number
+        searchable: false
+        sortable: true

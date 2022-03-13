@@ -1,0 +1,35 @@
+# Record name
+name: 'logingrupa.studybook::lang.reservation.name'
+
+# Model Form Field configuration
+form: $/logingrupa/studybook/models/reservation/fields.yaml
+
+# Model Class name
+modelClass: Logingrupa\Studybook\Models\Reservation
+
+# Default redirect location
+defaultRedirect: logingrupa/studybook/reservations
+
+# Create page
+create:
+    title: 'backend::lang.form.create_title'
+    redirect: logingrupa/studybook/reservations/update/:id
+    redirectClose: logingrupa/studybook/reservations
+    flashSave: 'lovata.toolbox::lang.message.create_success'
+
+# Update page
+update:
+    title: 'backend::lang.form.update_title'
+    redirect: logingrupa/studybook/reservations
+    redirectClose: logingrupa/studybook/reservations
+    flashSave: 'lovata.toolbox::lang.message.update_success'
+    flashDelete: 'lovata.toolbox::lang.message.delete_success'
+
+# Import page
+import:
+    title: 'backend::lang.form.update_title'
+    redirect: logingrupa/studybook/reservations/import
+    redirectClose: logingrupa/studybook/emails
+
+# Preview page
+preview: {  }

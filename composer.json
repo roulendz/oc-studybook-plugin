@@ -1,0 +1,8 @@
+{
+    "name": "logingrupa/studybook-plugin",
+    "type": "october-plugin",
+    "description": "Beauty course booking plugin for October CMS",
+    "require": {
+        "composer/installers": "~1.0"
+    }
+}
