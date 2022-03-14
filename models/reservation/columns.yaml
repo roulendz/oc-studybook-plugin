@@ -34,11 +34,13 @@ columns:
         type: switch
         searchable: false
         sortable: true
+        invisible: true
     attendance:
         lable: 'logingrupa.studybook::lang.field.attendance'
         type: text
         serchable: false
         sortable: false
+        invisible: true
     model_status:
         lable: 'logingrupa.studybook::lang.field.model_status'
         type: switch
@@ -49,6 +51,7 @@ columns:
         type: text
         serchable: false
         sortable: false
+        invisible: true
     price:
         lable: 'logingrupa.studybook::lang.field.price'
         type: text
@@ -93,3 +96,4 @@ columns:
         type: number
         searchable: false
         sortable: true
+        invisible: true
