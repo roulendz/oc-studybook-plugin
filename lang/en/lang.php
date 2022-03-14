@@ -59,11 +59,11 @@
         'reservation' => 'Manage reservation',
     ],
     'course' => [
-        'name' => 'course',
+        'name' => 'Course',
         'list_title' => 'Course list',
     ],
     'reservation' => [
-        'name' => 'reservation',
+        'name' => 'Reservation',
         'list_title' => 'Reservation list',
     ],
 ];
