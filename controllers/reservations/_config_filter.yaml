@@ -1,15 +1,28 @@
 scopes:
-    active:
-        label: 'lovata.toolbox::lang.field.active'
+    course:
+        label: 'logingrupa.studybook::lang.course.name'
+        modelClass: Logingrupa\Studybook\Models\Course
+        conditions: course_id in (:filtered)
+        nameFrom: name
+    attendance:
+        label: 'logingrupa.studybook::lang.field.attendance'
         type: switch
         conditions:
-            - active <> true
-            - active = true
-    created_at:
-        label: 'lovata.toolbox::lang.field.created_at'
-        type: daterange
-        conditions: created_at >= ':after' AND created_at <= ':before'
-    updated_at:
-        label: 'lovata.toolbox::lang.field.updated_at'
-        type: daterange
-        conditions: updated_at >= ':after' AND updated_at <= ':before'
+            - attendance = 0
+            - attendance = 1
+    student_health:
+        label: 'logingrupa.studybook::lang.field.health'
+        type: switch
+        conditions:
+            - health = 0
+            - health = 1
+#    start_at:
+#        label: 'logingrupa.studybook::lang.field.start_at'
+#        type: date
+#        conditions: start_at >= ':after' AND start_at <= ':before'
+    start_at:
+        label: 'logingrupa.studybook::lang.field.start_at'
+        modelClass: Logingrupa\Studybook\Models\Reservation
+        type: group
+        conditions: start_at in (:filtered)
+        options: listReservationDates
