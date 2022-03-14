@@ -1,6 +1,7 @@
 <?php namespace Logingrupa\Studybook\Models;
 
 use Backend\Models\ImportModel;
+use Illuminate\Support\Carbon;
 use October\Rain\Database\Traits\Sluggable;
 use October\Rain\Database\Traits\Validation;
 use Kharanenka\Scope\ActiveField;
@@ -131,6 +132,14 @@ class Reservation extends ImportModel
     public $attachMany = [
         'images' => 'System\Models\File'
     ];
+
+    public function listReservationDates(): array
+    {
+        return $this->where('start_at', '>=', Carbon::yesterday())
+                    ->groupBy('start_at')
+                    ->pluck('start_at', 'start_at')
+                    ->toArray();
+    }
 
     /**
      * Parse CSV file
