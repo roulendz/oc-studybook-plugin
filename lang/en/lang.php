@@ -20,7 +20,7 @@
         'course_id' => 'Course ID',
         'active' => 'Active',
         'start_at' => 'Start AT',
-        'full_name' => 'Studnet Name',
+        'full_name' => 'Student Name',
         'student_id' => 'Student ID',
         'attendance' => 'Attendance',
         'health' => 'Health',
@@ -28,11 +28,15 @@
         'email' => 'E-mail',
         'model_status' => 'Model Status',
         'slug' => 'URL',
+        'datetime'=> 'Course reservation date',
+        'date_available_seats' => 'Available seats',
+        'date_reserved_seats' => 'Reserved seats',
     ],
     'menu' => [
         'main' => 'Studybook',
         'courses' => 'Course list',
         'reservations' => 'Reservation list',
+        'availabledates' => 'AvailableDate list',
     ],
     'tab' => [
         'permissions' => 'Studybook',
@@ -57,6 +61,7 @@
     'permission' => [
         'course' => 'Manage course',
         'reservation' => 'Manage reservation',
+        'availabledate' => 'Manage availabledate',
     ],
     'course' => [
         'name' => 'Course',
@@ -65,5 +70,9 @@
     'reservation' => [
         'name' => 'Reservation',
         'list_title' => 'Reservation list',
+    ],
+    'availabledate' => [
+        'name' => 'availabledate',
+        'list_title' => 'AvailableDate list',
     ],
 ];

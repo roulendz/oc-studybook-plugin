@@ -9,3 +9,7 @@
 1.0.3:
     - 'Seed test Data.'
     - seed_test_data.php
+1.0.4:
+    - 'Create AvailableDates and relationship table.'
+    - create_table_availabledates.php
+    - create_table_course_dates.php

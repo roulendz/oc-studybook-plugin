@@ -1,0 +1,40 @@
+columns:
+    datetime:
+        label: 'logingrupa.studybook::lang.field.datetime'
+        type: datetime
+        searchable: true
+        sortable: true
+    courses:
+
+    available_seats:
+        label: 'logingrupa.studybook::lang.field.date_available_seats'
+        type: number
+        searchable: false
+        sortable: true
+    reserved_seats:
+        label: 'logingrupa.studybook::lang.field.date_reserved_seats'
+        type: number
+        searchable: false
+        sortable: true
+    active:
+        label: 'lovata.toolbox::lang.field.active'
+        type: switch
+        searchable: false
+        sortable: true
+    id:
+        label: 'lovata.toolbox::lang.field.id'
+        type: number
+        searchable: false
+        sortable: true
+        width: 100px
+        invisible: true
+    created_at:
+        label: 'lovata.toolbox::lang.field.created_at'
+        type: timetense
+        sortable: true
+        invisible: true
+    updated_at:
+        label: 'lovata.toolbox::lang.field.updated_at'
+        type: timetense
+        sortable: true
+        invisible: true

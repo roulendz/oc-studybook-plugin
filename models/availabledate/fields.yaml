@@ -1,0 +1,22 @@
+fields:
+    active:
+        label: 'lovata.toolbox::lang.field.active'
+        span: left
+        default: 1
+        type: switch
+    datetime:
+        label: 'logingrupa.studybook::lang.field.datetime'
+        span: left
+        type: datepicker
+        mode: datetime
+        size: huge
+    courses:
+        label: Hobbies
+        tab: Activities
+        type: checkboxlist
+        span: full
+        quickselect: true
+        options: listCourses
+tabs:
+    fields:
+

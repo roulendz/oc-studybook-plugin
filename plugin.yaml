@@ -24,10 +24,19 @@ navigation:
                 permissions:
                     - studybook-menu-reservations
                 icon: icon-paw
+            studybook-menu-availabledates:
+                label: 'logingrupa.studybook::lang.menu.availabledates'
+                url: logingrupa/studybook/availabledates
+                permissions:
+                    - studybook-menu-availabledates
+                icon: icon-paw
 permissions:
     studybook-menu-courses:
         label: 'logingrupa.studybook::lang.permission.course'
         tab: 'logingrupa.studybook::lang.tab.permissions'
     studybook-menu-reservations:
         label: 'logingrupa.studybook::lang.permission.reservation'
+        tab: 'logingrupa.studybook::lang.tab.permissions'
+    studybook-menu-availabledates:
+        label: 'logingrupa.studybook::lang.permission.availabledate'
         tab: 'logingrupa.studybook::lang.tab.permissions'

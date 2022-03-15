@@ -122,7 +122,14 @@ class Course extends ExportModel
     /** @var array */
     public $belongsTo = [];
     /** @var array */
-    public $belongsToMany = [];
+    public $belongsToMany = [
+        'availabledates' => [
+            'Logingrupa\Studybook\Models\AvailableDate',
+            'table' => 'logingrupa_studybook_course_dates',
+            'key'      => 'course_id',
+            'otherKey' => 'date_id',
+        ],
+    ];
     /** @var array */
     public $morphTo = [];
     /** @var array */

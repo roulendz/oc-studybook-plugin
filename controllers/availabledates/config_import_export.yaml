@@ -1,0 +1,8 @@
+import:
+    title: 'logingrupa.toolbox::lang.button.import_from_csv'
+    list: $/logingrupa/studybook/models/availabledate/columns.yaml
+#    form: $/logingrupa/studybook/models/availabledate/fields.yaml
+#    form:
+#        fields:
+    modelClass: Logingrupa\Studybook\Models\AvailableDate
+    redirect: logingrupa/studybook/availabledates
