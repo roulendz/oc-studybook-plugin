@@ -2,6 +2,7 @@
 
 use BackendMenu;
 use Backend\Classes\Controller;
+use Illuminate\Support\Carbon;
 
 /**
  * Class AvailableDates
@@ -29,5 +30,15 @@ class AvailableDates extends Controller
     {
         parent::__construct();
         BackendMenu::setContext('Logingrupa.Studybook', 'studybook-menu-main', 'studybook-menu-availabledates');
+    }
+
+    /**
+     * AvailableDates dynamic row css classes when date is older than today.
+     */
+    public function listInjectRowClass($record, $definition = null)
+    {
+        if ($record->datetime <= Carbon::today()) {
+            return 'strike new';
+        }
     }
 }
