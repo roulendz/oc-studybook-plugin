@@ -9,10 +9,14 @@
         'old_price' => 'Old price',
         'old_price_placeholder' => 'Enter old price in cents 28.40 EUR = 2840',
         'available_seats' => 'Default number of seats/students in course',
+        'available_date_available_seats' => 'How many students can reserve spot for this date',
+        'available_date_available_seats_description' => 'After reservations reaches this number, this date will be hidden form frontend and future reservations will be disabled',
+        'reserved_seats' => 'How many students already have reserved this date',
+        'reserved_seats_description' => 'This number is calculated statically - it is not dynamic',
         'available_seats_placeholder' => 'Please enter default number of allowed seats/students in this course',
         'duration_days' => 'Default course duration',
-        'duration_days_placeholder' => 'Please enter default course durration in days',
-        'additional_settings' => 'Aditional settings',
+        'duration_days_placeholder' => 'Please enter default course duration in days',
+        'additional_settings' => 'Additional settings',
         'lesson_count' => 'Lesson count',
         'practical_lesson_count' => 'Practical lesson count',
         'status' => 'Status',
@@ -28,7 +32,10 @@
         'email' => 'E-mail',
         'model_status' => 'Model Status',
         'slug' => 'URL',
-        'datetime'=> 'Course reservation date',
+        'datetime'=> 'Selected date will be available in frontend for reservation',
+        'datetime_simple'=> 'Date available for reservation',
+        'course_list' => 'Choose courses',
+        'course_list_description' => 'Selected date will be available only for selected courses',
         'date_available_seats' => 'Available seats',
         'date_reserved_seats' => 'Reserved seats',
     ],
@@ -41,9 +48,16 @@
     'tab' => [
         'permissions' => 'Studybook',
     ],
-    'comment' => [],
-    'message' => [],
-    'button' => [],
+    'comment' => [
+    ],
+    'message' => [
+    ],
+    'button' => [
+        'add' => 'Add new',
+        'create' => 'Create new',
+        'link' => 'Link existing',
+        'unlink' => 'Unlink selected',
+    ],
     'component' => [
         'course_page_name' => 'Course Page',
         'course_page_description' => 'Get course page data',
@@ -66,6 +80,8 @@
     'course' => [
         'name' => 'Course',
         'list_title' => 'Course list',
+        'commentAbove' => 'Manage single Course all available dates for reservation in frontend',
+        'tab' => 'Available dates',
     ],
     'reservation' => [
         'name' => 'Reservation',
@@ -74,5 +90,9 @@
     'availabledate' => [
         'name' => 'availabledate',
         'list_title' => 'AvailableDate list',
+        'titleCreateForm' => 'Create New Date for current Course and make it available for reservations in Frontend',
+        'titleLinkForm' => 'Link selected date from list to current Course',
+        'confirmUnlink' => 'Unlink selected date from current Course?',
+        'flashUnlink' => 'Selected date Unlinked from current Course and is not available for booking in Frontend!',
     ],
 ];
