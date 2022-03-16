@@ -1,11 +1,13 @@
 columns:
     datetime:
-        label: 'logingrupa.studybook::lang.field.datetime'
+        label: 'logingrupa.studybook::lang.field.datetime_simple'
         type: datetime
         searchable: true
         sortable: true
     courses:
-
+        label: Courses
+        type: partial
+        path: ~/plugins/logingrupa/studybook/models/availabledate/_courses_column.htm
     available_seats:
         label: 'logingrupa.studybook::lang.field.date_available_seats'
         type: number
@@ -14,11 +16,6 @@ columns:
     reserved_seats:
         label: 'logingrupa.studybook::lang.field.date_reserved_seats'
         type: number
-        searchable: false
-        sortable: true
-    active:
-        label: 'lovata.toolbox::lang.field.active'
-        type: switch
         searchable: false
         sortable: true
     id:

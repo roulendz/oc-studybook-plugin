@@ -1,7 +1,7 @@
 <?php namespace Logingrupa\Studybook\Models;
 
 use Backend\Models\ImportModel;
-use Kharanenka\Scope\ActiveField;
+use Illuminate\Support\Carbon;
 use Logingrupa\Studybook\Controllers\Courses;
 use Lovata\Toolbox\Traits\Helpers\TraitCached;
 
@@ -19,40 +19,43 @@ use Lovata\Toolbox\Traits\Helpers\TraitCached;
  */
 class AvailableDate extends ImportModel
 {
-    use ActiveField;
     use TraitCached;
 
     /** @var string */
     public $table = 'logingrupa_studybook_availabledates';
     /** @var array */
     public $implement = [
-        '@RainLab.Translate.Behaviors.TranslatableModel',
     ];
     /** @var array */
-    public $translatable = [
-            ];
+    public $translatable = [];
     /** @var array */
     public $attributeNames = [];
     /** @var array */
-    public $rules = [];
+    public $rules = [
+        'datetime' => 'unique:logingrupa_studybook_availabledates,datetime'
+    ];
+
+    public $customMessages = [
+        'datetime.unique' => 'Selected date and time already exists in available dates list, please select it from list',
+    ];
     /** @var array */
     public $slugs = [];
     /** @var array */
     public $jsonable = [];
     /** @var array */
     public $fillable = [
-        'active',
+        'datetime'
     ];
     /** @var array */
     public $cached = [
         'id',
-        'active',
+        'datetime',
     ];
     /** @var string */
     public $timestamps = false;
     /** @var array */
     public $dates = [
-        'datetime',
+//        'datetime',
     ];
     /** @var array */
     public $casts = [];
@@ -89,11 +92,24 @@ class AvailableDate extends ImportModel
         ];
     /** @var array */
     public $attachMany = [];
+
+    /**
+     * Create List Courses
+     * @return array
+     */
     public function listCourses(): array
     {
         return Course::all()->pluck('name', 'id')
             ->toArray();
     }
+
+    public function listAavailableDates(): array
+    {
+        return $this->where('datetime', '>=', Carbon::yesterday())
+            ->pluck('datetime', 'datetime')
+            ->toArray();
+    }
+
     /**
      * Parse CSV file
      * @param array $arResults
