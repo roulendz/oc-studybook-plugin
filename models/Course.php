@@ -153,7 +153,7 @@ class Course extends ExportModel
      * @param null|string $sSessionKey
      * @return array
      */
-    public function exportData($arColumns, $sSessionKey = null)
+    public function exportData($arColumns, $sSessionKey = null): array
     {
         if (empty($arColumns)) {
             return [];

@@ -1,0 +1,48 @@
+# ===================================
+#  List Behavior Config
+# ===================================
+
+# Model List Column configuration
+list: ~/plugins/logingrupa/studybook/models/availabledate/columns.yaml
+
+# Model Class name
+modelClass: Logingrupa\Studybook\Models\AvailableDate
+
+# List Title
+title:
+
+# Link URL for each record
+# recordUrl: logingrupa/studybook/availabledates/preview/:id
+#recordOnClick: "$.popup({ handler: 'onUpdateForm', extraData: { comment_mode: 1, record_id: ':id' } })"
+
+# Message to display if the list is empty
+noRecordsMessage: backend::lang.list.no_records
+
+# Records to display per page
+recordsPerPage: 20
+
+# Displays the list column set up button
+showSetup: false
+
+# Displays the sorting link on each column
+showSorting: true
+
+# Default sorting column
+defaultSort:
+    column: datetime
+    direction: desc
+
+# Display checkboxes next to each record
+# showCheckboxes: true
+
+# Toolbar widget configuration
+toolbar:
+    # Partial for toolbar buttons
+    buttons: list_availabledates_toolbar
+
+    # Search widget configuration
+    search:
+        prompt: backend::lang.list.search_prompt
+
+# Displays the list filter
+filter: config_availabledates_filter.yaml

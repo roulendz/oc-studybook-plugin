@@ -1,0 +1,17 @@
+# ===================================
+# Filter Scope Definitions
+# ===================================
+
+scopes:
+
+    datetime:
+        label: 'logingrupa.studybook::lang.field.start_at'
+        modelClass: Logingrupa\Studybook\Models\AvailableDate
+        type: group
+        conditions: datetime in (:filtered)
+        options: listAavailableDates
+
+#    content:
+#        label: Content
+#        type: text
+#        conditions: content = :value

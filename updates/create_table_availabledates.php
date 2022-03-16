@@ -26,9 +26,9 @@ class CreateTableAvailableDates extends Migration
             $obTable->engine = 'InnoDB';
             $obTable->increments('id')->unsigned();
             $obTable->boolean('active')->default(0);
-            $obTable->dateTime('datetime');
+            $obTable->dateTime('datetime')->unique();
             $obTable->integer('available_seats')->default(0);
-            $obTable->integer('reserved_seats')->default(0);
+            $obTable->integer('reserved_seats')->default(0)->nullable();
         });
     }
 

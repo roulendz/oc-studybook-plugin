@@ -21,6 +21,10 @@ fields:
         type: text
 tabs:
     fields:
+        availabledates@update:
+            commentAbove: 'logingrupa.studybook::lang.course.commentAbove'
+            type: partial
+            tab: 'logingrupa.studybook::lang.course.tab'
         price:
             label: 'logingrupa.studybook::lang.field.price'
             span: left

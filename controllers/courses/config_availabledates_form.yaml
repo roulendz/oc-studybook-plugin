@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Available Dates
+
+# Model Form Field configuration
+form: ~/plugins/logingrupa/studybook/models/availabledates/fields_simple.yaml
+
+# Model Class name
+modelClass: Logingrupa\Studybook\Models\AvailableDate
+
+# Default redirect location
+defaultRedirect: logingrupa/studybook/courses
+
+# Create page
+create:
+    title: Create Comments
+    redirect: logingrupa/studybook/courses/update/:id
+    redirectClose: logingrupa/studybook/courses
+
+# Update page
+update:
+    title: Edit Comments
+    redirect: logingrupa/studybook/courses
+    redirectClose: logingrupa/studybook/courses
+
+# Preview page
+preview:
+    title: Preview Available Dates
