@@ -1,0 +1,37 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    datetime:
+        label: 'logingrupa.studybook::lang.field.datetime'
+        span: left
+        type: datepicker
+        mode: datetime
+        size: huge
+        required: true
+    available_seats:
+        label: 'logingrupa.studybook::lang.field.available_date_available_seats'
+        span: left
+        type: number
+        step: 1  # defaults to 'any'
+        min: 1   # defaults to not present
+        max: 100 # defaults to not present
+        default: 10
+        required: true
+        comment: 'logingrupa.studybook::lang.field.available_date_available_seats_description'
+    reserved_seats:
+        label: 'logingrupa.studybook::lang.field.reserved_seats'
+        span: left
+        type: number
+        readOnly: true
+        step: 1  # defaults to 'any'
+        min: 1   # defaults to not present
+        max: 100 # defaults to not present
+        default: 0
+        comment: 'logingrupa.studybook::lang.field.reserved_seats_description'
+tabs:
+
+    fields:
+
+
