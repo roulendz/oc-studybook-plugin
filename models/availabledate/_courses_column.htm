@@ -1,0 +1,8 @@
+<?php foreach ($record->courses as $course) { ?>
+    <a href="<?= Backend::url('logingrupa/studybook/courses/update/') .'/'. $course->id ?>"
+       type="button"
+       class="btn btn-primary btn-xs">
+            <?= $course->name ?>
+    </a>
+<?php
+} ?>
