@@ -1,22 +1,40 @@
 fields:
-    active:
-        label: 'lovata.toolbox::lang.field.active'
-        span: left
-        default: 1
-        type: switch
     datetime:
         label: 'logingrupa.studybook::lang.field.datetime'
         span: left
         type: datepicker
         mode: datetime
         size: huge
+        required: true
+        comment: 'logingrupa.studybook::lang.field.course_list_description'
     courses:
-        label: Hobbies
+        label: 'logingrupa.studybook::lang.field.course_list'
         tab: Activities
         type: checkboxlist
-        span: full
+        span: right
         quickselect: true
         options: listCourses
+        required: true
+    available_seats:
+        label: 'logingrupa.studybook::lang.field.available_date_available_seats'
+        span: left
+        type: number
+        step: 1  # defaults to 'any'
+        min: 1   # defaults to not present
+        max: 100 # defaults to not present
+        default: 4
+        required: true
+        comment: 'logingrupa.studybook::lang.field.available_date_available_seats_description'
+    reserved_seats:
+        label: 'logingrupa.studybook::lang.field.reserved_seats'
+        span: left
+        type: number
+        readOnly: true
+        step: 1  # defaults to 'any'
+        min: 1   # defaults to not present
+        max: 100 # defaults to not present
+        default: 0
+        comment: 'logingrupa.studybook::lang.field.reserved_seats_description'
 tabs:
     fields:
 
