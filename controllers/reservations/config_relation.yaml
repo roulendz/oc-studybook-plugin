@@ -1,0 +1,10 @@
+# ===================================
+#  Relation Behavior Config
+# ===================================
+
+student:
+    label: Student
+    form: ~/plugins/logingrupa/studybook/models/reservation/student_fields_simple.yaml
+    list: ~/plugins/rainlab/user/models/user/columns.yaml
+
+#    /Users/roulendz/Sites/manikirs/

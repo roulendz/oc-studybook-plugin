@@ -10,6 +10,7 @@ use Kharanenka\Scope\SlugField;
 use Kharanenka\Scope\CodeField;
 use Kharanenka\Scope\ExternalIDField;
 use Lovata\Toolbox\Traits\Helpers\TraitCached;
+use RainLab\User\Models\User;
 
 /**
  * Class Reservation
@@ -63,8 +64,8 @@ class Reservation extends ImportModel
     ];
     /** @var array */
     public $rules = [
-        'name' => 'required',
-        'slug' => 'required|unique:logingrupa_studybook_reservations',
+//        'name' => 'required',
+        'slug' => 'unique:logingrupa_studybook_reservations',
     ];
     /** @var array */
     public $slugs = [
@@ -113,7 +114,10 @@ class Reservation extends ImportModel
     /** @var array */
     public $hasMany = [];
     /** @var array */
-    public $belongsTo = [];
+    public $belongsTo = [
+        'student' => User::class,
+        'course' => Course::class,
+    ];
     /** @var array */
     public $belongsToMany = [];
     /** @var array */
@@ -132,6 +136,40 @@ class Reservation extends ImportModel
     public $attachMany = [
         'images' => 'System\Models\File'
     ];
+
+    /**
+     * Scope a query to only include future dates.
+     */
+    public function scopeExcludeExpiredDates($query)
+    {
+        return $query->where('start_at', '>=', Carbon::yesterday());
+    }
+
+    // Before saving concatenate fields in cssClass field
+    public function beforeSave()
+    {
+        // dd(post()['Collection']);
+        if (empty(post())) {
+            return;
+        }
+        $this->slug = uniqid(true);
+        $this->name = $this->course->name;
+        $this->full_name = $this->student->name . " " . $this->student->surname;
+        $this->email = $this->student->email;
+
+    }
+
+    public function afterSave()
+    {
+//        dd($this->student);
+        if (empty(post())) {
+            return;
+        }
+//        DID NOT WORK
+//        $this->full_name = $this->student->name . " " . $this->student->surname;
+//        $this->email = $this->student->email;
+//        $this->phone = $this->student->phone;
+    }
 
     public function listReservationDates(): array
     {

@@ -4,35 +4,72 @@ fields:
         span: full
         default: 0
         type: switch
-    name:
-        label: 'lovata.toolbox::lang.field.name'
-        span: auto
-        required: 1
-        type: text
+    course_id:
+        label: 'logingrupa.studybook::lang.field.reservation_select_course'
+        type: dropdown
+        span: left
+        quickselect: true
+        options: \Logingrupa\Studybook\Classes\Helper\Reservation\FormHelper::staticGetActiveCoursesListOptions
+        required: true
         placeholder: 'lovata.toolbox::lang.field.name'
-    slug:
-        label: 'lovata.toolbox::lang.field.slug'
-        span: auto
-        required: 1
-        placeholder: 'lovata.toolbox::lang.field.slug'
-        preset:
-            field: name
-            type: slug
-        type: text
+    start_at:
+        label: 'logingrupa.studybook::lang.field.reservation_start_at'
+        span: right
+        type: dropdown
+        options: \Logingrupa\Studybook\Classes\Helper\Reservation\FormHelper::staticGetAvailableDatesListOptions
+        dependsOn: course_id
+
 tabs:
     fields:
-        code:
-            label: 'lovata.toolbox::lang.field.code'
-            span: left
-            type: text
-            placeholder: 'lovata.toolbox::lang.field.code'
-            tab: 'lovata.toolbox::lang.tab.settings'
-        external_id:
-            label: 'lovata.toolbox::lang.field.external_id'
-            span: left
-            type: text
-            placeholder: 'lovata.toolbox::lang.field.external_id'
-            tab: 'lovata.toolbox::lang.tab.settings'
+        # Relation Controller
+        student:
+            type: partial
+            tab: 'logingrupa.studybook::lang.reservation.tab'
+        # Student tab
+#        student[name]:
+#            span: auto
+#            label: 'logingrupa.studybook::lang.field.student_name'
+#            comment: Proxy text field for Person model.
+#            tab: 'logingrupa.studybook::lang.reservation.tab'
+#            readOnly: false
+#        student[surname]:
+#            span: auto
+#            label: 'logingrupa.studybook::lang.field.student_surname'
+#            comment: Proxy text field for Person model.
+#            tab: 'logingrupa.studybook::lang.reservation.tab'
+#            readOnly: false
+#        student[email]:
+#            span: auto
+#            label: 'logingrupa.studybook::lang.field.student_email'
+#            comment: Proxy text field for Person model.
+#            tab: 'logingrupa.studybook::lang.reservation.tab'
+#            readOnly: false
+#        _student[phone]:
+#            span: auto
+#            label: 'logingrupa.studybook::lang.field.student_phone'
+#            comment: Proxy text field for Person model.
+#            tab: 'logingrupa.studybook::lang.reservation.tab'
+#            readOnly: false
+#        student[password]@create:
+#            span: auto
+#            label: 'logingrupa.studybook::lang.field.password'
+#            comment: Proxy text field for Person model.
+#            preset:
+#                field: phone
+#                type: exact
+#            tab: 'logingrupa.studybook::lang.reservation.tab'
+#            readOnly: false
+#            hidden: false
+#        student[password_confirmation]@create:
+#            span: auto
+#            label: 'logingrupa.studybook::lang.field.password_confirm'
+#            comment: Proxy text field for Person model.
+#            preset:
+#                field: phone
+#                type: exact
+#            tab: 'logingrupa.studybook::lang.reservation.tab'
+#            readOnly: true
+#            hidden: false
         preview_text:
             label: 'lovata.toolbox::lang.field.preview_text'
             size: large
@@ -72,4 +109,55 @@ tabs:
             span: left
             required: 0
             mode: file
-            tab: 'lovata.toolbox::lang.tab.files'
+            tab: 'lovata.toolbox::lang.tab.images'
+        name@update:
+            span: left
+            label: 'logingrupa.studybook::lang.reservation.name'
+            comment: Proxy text field for Person model.
+            type: dropdown
+            tab: 'lovata.toolbox::lang.tab.settings'
+            readOnly: false
+            hidden: false
+            options: \Logingrupa\Studybook\Classes\Helper\Reservation\FormHelper::staticGetSelectedCoursesName
+            dependsOn: course_id
+        phone:
+            span: auto
+            label: 'logingrupa.studybook::lang.field.student_phone'
+            comment: Proxy text field for Person model.
+            tab: 'lovata.toolbox::lang.tab.settings'
+            readOnly: false
+            preset:
+                field: _student[phone]
+                type: exact
+        full_name:
+            span: left
+            label: 'logingrupa.studybook::lang.field.full_name'
+            comment: Proxy text field for Person model.
+            preset:
+                field: student[name]
+                type: exact
+            tab: 'lovata.toolbox::lang.tab.settings'
+            readOnly: true
+            hidden: false
+        email:
+            span: auto
+            label: 'logingrupa.studybook::lang.field.email'
+            comment: Proxy text field for Person model.
+            preset:
+                field: student[email]
+                type: exact
+            tab: 'lovata.toolbox::lang.tab.settings'
+            readOnly: true
+            hidden: false
+        code:
+            label: 'lovata.toolbox::lang.field.code'
+            span: left
+            type: text
+            placeholder: 'lovata.toolbox::lang.field.code'
+            tab: 'lovata.toolbox::lang.tab.settings'
+        external_id:
+            label: 'lovata.toolbox::lang.field.external_id'
+            span: left
+            type: text
+            placeholder: 'lovata.toolbox::lang.field.external_id'
+            tab: 'lovata.toolbox::lang.tab.settings'
