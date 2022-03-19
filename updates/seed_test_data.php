@@ -1,5 +1,6 @@
 <?php namespace Logingrupa\Studybook\Updates;
 
+use Logingrupa\Studybook\Models\AvailableDate;
 use Logingrupa\Studybook\Models\Course;
 use Logingrupa\Studybook\Models\Reservation;
 use October\Rain\Database\Updates\Seeder;
@@ -16,10 +17,14 @@ class SeedTestData extends Seeder
         DB::table('users')->delete();
         DB::table('logingrupa_studybook_courses')->delete();
         DB::table('logingrupa_studybook_reservations')->delete();
+        DB::table('logingrupa_studybook_availabledates')->delete();
+        DB::table('logingrupa_studybook_course_dates')->delete();
         $name = ['Baiba Zariņa', 'Zane Zeltiņa', 'Ieva Razgalae', 'Vera Liole', 'Roberts Zeltiņš', 'Normunds Zeltiņš', 'Toms Muižnieks', 'Zigurds Mežš', 'Lauma Rudze', 'Aiga Zara', 'Artis Ābols', 'Gunārs Bumbiers', 'Raitis Raiders', 'Gunita Preile', 'Laila Briede'];
         foreach ($name as $key => $value) {
+            $pieces = explode(" ", $value);
             User::create([
-                'name' => $value,
+                'name' => $pieces[0],
+                'surname' => $pieces[1],
                 'email' => str_slug($value, '.').'@gmail.com',
                 'is_activated' => 1,
                 'password' => '123123123',
@@ -27,9 +32,33 @@ class SeedTestData extends Seeder
             ]);
         }//END
 
+        $datetime = array(
+            Carbon::create(null, null, 01, 10, 00, 00),
+            Carbon::create(null, null, 05, 10, 00, 00),
+            Carbon::create(null, null, 10, 10, 00, 00),
+            Carbon::create(null, null, 15, 10, 00, 00),
+            Carbon::create(null, null, 20, 10, 00, 00),
+            Carbon::create(null, null, 25, 10, 00, 00),
+            Carbon::create(null, null, 02, 10, 00, 00),
+            Carbon::create(null, null, 06, 11, 00, 00),
+            Carbon::create(null, null, 11, 12, 00, 00),
+            Carbon::create(null, null, 16, 13, 00, 00),
+            Carbon::create(null, null, 21, 14, 00, 00),
+            Carbon::create(null, null, 26, 15, 00, 00),
+        );
+        foreach ($datetime as $key => $value) {
+            AvailableDate::create([
+                'active' => '1',
+                'datetime' => $value,
+                'available_seats' => $key+2*2,
+                'reserved_seats' => '0',
+            ]);
+        }//END
+
         $name = ['Gēla nagu modelēšanas kursi', 'Apvienotā manikīra un gēla programma', 'Jaunās paaudzes aparāta manikīrs'];
         foreach ($name as $key => $value) {
-            Course::create([
+            $availableDate = AvailableDate::inRandomOrder()->first();
+            $course =  Course::create([
                 'active' => 1,
                 'name' => $value,
                 'slug' => uniqid(str_slug($value, '-'),false),
@@ -45,11 +74,13 @@ class SeedTestData extends Seeder
                 'student_count' => rand(1, 7),
                 'settings' => ['practical_lesson_count'=>10, 'lesson_count'=>20],
             ]);
+            $course->availabledates()->attach($availableDate->id);
         }//END
 
         $name = ['Pedikīra tehnoloģijas', 'Vaksācijas kursi', 'Zīda skropstu pieaudzēšanas kursi'];
         foreach ($name as $key => $value) {
-            Course::create([
+            $availableDate = AvailableDate::inRandomOrder()->first();
+            $course =  Course::create([
                 'active' => 1,
                 'name' => $value,
                 'slug' => uniqid(str_slug($value, '-'),false),
@@ -65,22 +96,30 @@ class SeedTestData extends Seeder
                 'student_count' => rand(1, 7),
                 'settings' => ['practical_lesson_count'=>10, 'lesson_count'=>20],
             ]);
+            $course->availabledates()->attach($availableDate->id);
+        }//END
+
+        $availableDates = AvailableDate::all();
+        foreach ($availableDates as $availableDate) {
+            $course = Course::inRandomOrder()->first();
+            $availableDate->courses()->syncWithoutDetaching($course->id);
         }//END
 
         $students = User::all();
         foreach ($students as $student) {
             $course = Course::inRandomOrder()->first();
+            $availableDate = AvailableDate::inRandomOrder()->first();
             Reservation::create([
                 'status' => 'ongoing',
                 'name' => $course->name,
                 'course_id' => $course->id,
                 'active' => 1,
-                'start_at' => Carbon::now()->format('Y-m-d H:i:s'),
-                'full_name' => $student->name,
+                'start_at' => $course->availabledates->random()->datetime,
+                'full_name' => $student->name . " " . $student->surname,
                 'student_id' => $student->id,
                 'attendance' => rand(0, 1),
                 'health' => rand(0, 1),
-                'mobile' => '+32727831183',
+                'phone' => '+32727831183',
                 'email' => $student->email,
                 'model_status' => 1,
                 'slug' => uniqid(str_slug($course->name, '-'),true),
@@ -90,24 +129,24 @@ class SeedTestData extends Seeder
                 'external_id' => $course->price*123999+1,
                 'preview_text' => $course->preview_text,
                 'description' => $course->description,
-                'view_count' => rand(0, 100),
             ]);
         }//END
 
         $students = User::all();
         foreach ($students as $student) {
+            $availableDate = AvailableDate::inRandomOrder()->first();
             $course = Course::inRandomOrder()->first();
             Reservation::create([
                 'status' => 'ongoing',
                 'name' => $course->name,
                 'course_id' => $course->id,
                 'active' => 1,
-                'start_at' => Carbon::now()->add(2, 'day')->format('Y-m-d H:i:s'),
-                'full_name' => $student->name,
+                'start_at' => $course->availabledates->random()->datetime,
+                'full_name' => $student->name . " " . $student->surname,
                 'student_id' => $student->id,
                 'attendance' => rand(0, 1),
                 'health' => rand(0, 1),
-                'mobile' => '+32727831183',
+                'phone' => '+32727831183',
                 'email' => $student->email,
                 'model_status' => 1,
                 'slug' => uniqid(str_slug($course->name, '-'),true),
@@ -117,34 +156,33 @@ class SeedTestData extends Seeder
                 'external_id' => $course->price*123999+1,
                 'preview_text' => $course->preview_text,
                 'description' => $course->description,
-                'view_count' => rand(0, 100),
             ]);
         }//END
 
         $students = User::all();
         foreach ($students as $student) {
+            $availableDate = AvailableDate::inRandomOrder()->first();
             $course = Course::inRandomOrder()->first();
             Reservation::create([
                 'status' => 'ongoing',
                 'name' => $course->name,
                 'course_id' => $course->id,
                 'active' => 1,
-                'start_at' => Carbon::now()->add(10, 'day')->format('Y-m-d H:i:s'),
-                'full_name' => $student->name,
+                'start_at' => $course->availabledates->random()->datetime,
+                'full_name' => $student->name . " " . $student->surname,
                 'student_id' => $student->id,
                 'attendance' => rand(0, 1),
                 'health' => rand(0, 1),
-                'mobile' => '+32727831183',
+                'phone' => '+32727831183',
                 'email' => $student->email,
                 'model_status' => 1,
-                'slug' => uniqid(str_slug($course->name, '-'),true),
+                'slug' => uniqid(true),
                 'price' => $course->price,
                 'old_price' => $course->old_price,
                 'code' => $course->price*999+1,
                 'external_id' => $course->price*123999+1,
                 'preview_text' => $course->preview_text,
                 'description' => $course->description,
-                'view_count' => rand(0, 100),
             ]);
         }//END
 
