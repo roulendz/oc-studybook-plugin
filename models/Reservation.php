@@ -27,7 +27,6 @@ use RainLab\User\Models\User;
  * @property string $external_id
  * @property string $preview_text
  * @property string $description
- * @property int $view_count
  * @property \October\Rain\Argon\Argon $created_at
  * @property \October\Rain\Argon\Argon $updated_at
  * @property \System\Models\File $file
@@ -91,7 +90,6 @@ class Reservation extends ImportModel
         'slug',
         'code',
         'external_id',
-        'view_count',
         'preview_text',
         'description',
         'preview_image',

@@ -22,7 +22,7 @@ class Courses extends Controller
     public $importExportConfig = 'config_import_export.yaml';
     /** @var string */
     public $formConfig = 'config_form.yaml';
-
+    /** @var string */
     public $relationConfig = 'config_relation.yaml';
 
     /**
