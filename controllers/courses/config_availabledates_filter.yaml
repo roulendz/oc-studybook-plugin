@@ -3,15 +3,21 @@
 # ===================================
 
 scopes:
-
+    excludeExpiredDates:
+        label: 'logingrupa.studybook::lang.availabledate.excludeExpiredDates'
+        scope: excludeExpiredDates
+        modelClass: Logingrupa\Studybook\Models\AvailableDate
+        nameFrom: datetime
+        type: checkbox
+        default: 1
     datetime:
         label: 'logingrupa.studybook::lang.field.start_at'
         modelClass: Logingrupa\Studybook\Models\AvailableDate
         type: group
         conditions: datetime in (:filtered)
         options: listAavailableDates
-
 #    content:
 #        label: Content
 #        type: text
 #        conditions: content = :value
+

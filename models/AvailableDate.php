@@ -132,4 +132,11 @@ class AvailableDate extends ImportModel
             }
         }
     }
+    /**
+     * Scope a query to only include future dates.
+     */
+    public function scopeExcludeExpiredDates($query)
+    {
+        return $query->where('datetime', '>=', Carbon::yesterday());
+    }
 }

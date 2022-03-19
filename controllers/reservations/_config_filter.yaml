@@ -1,4 +1,17 @@
 scopes:
+    excludeExpiredDates:
+        label: 'logingrupa.studybook::lang.availabledate.excludeExpiredDates'
+        scope: excludeExpiredDates
+        modelClass: Logingrupa\Studybook\Models\AvailableDate
+        nameFrom: datetime
+        type: checkbox
+        default: 1
+    start_at:
+        label: 'logingrupa.studybook::lang.field.start_at'
+        modelClass: Logingrupa\Studybook\Models\Reservation
+        type: group
+        conditions: start_at in (:filtered)
+        options: listReservationDates
     course:
         label: 'logingrupa.studybook::lang.course.name'
         modelClass: Logingrupa\Studybook\Models\Course
@@ -20,9 +33,3 @@ scopes:
 #        label: 'logingrupa.studybook::lang.field.start_at'
 #        type: date
 #        conditions: start_at >= ':after' AND start_at <= ':before'
-    start_at:
-        label: 'logingrupa.studybook::lang.field.start_at'
-        modelClass: Logingrupa\Studybook\Models\Reservation
-        type: group
-        conditions: start_at in (:filtered)
-        options: listReservationDates
