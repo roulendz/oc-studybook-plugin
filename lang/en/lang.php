@@ -24,7 +24,7 @@
         'course_id' => 'Course ID',
         'active' => 'Active',
         'start_at' => 'Start AT',
-        'full_name' => 'Student Name',
+        'full_name' => 'Student Full Name',
         'student_id' => 'Student ID',
         'attendance' => 'Attendance',
         'health' => 'Health',
@@ -38,6 +38,8 @@
         'course_list_description' => 'Selected date will be available only for selected courses',
         'date_available_seats' => 'Available seats',
         'date_reserved_seats' => 'Reserved seats',
+        'reservation_start_at' => 'Reservation date',
+        'reservation_select_course' => 'Select course from list',
     ],
     'menu' => [
         'main' => 'Studybook',
@@ -86,6 +88,7 @@
     'reservation' => [
         'name' => 'Reservation',
         'list_title' => 'Reservation list',
+        'tab' => 'Student'
     ],
     'availabledate' => [
         'name' => 'availabledate',
@@ -94,5 +97,6 @@
         'titleLinkForm' => 'Link selected date from list to current Course',
         'confirmUnlink' => 'Unlink selected date from current Course?',
         'flashUnlink' => 'Selected date Unlinked from current Course and is not available for booking in Frontend!',
+        'excludeExpiredDates' => 'Exclude old dates',
     ],
 ];
