@@ -36,7 +36,7 @@ class CreateTableReservations extends Migration
             $obTable->foreign('student_id')->references('id')->on('users');
             $obTable->boolean('attendance')->nullable()->default(0);
             $obTable->boolean('health')->nullable()->default(0);
-            $obTable->string('mobile')->nullable()->index();
+            $obTable->string('phone')->nullable()->index();
             $obTable->string('email')->nullable()->index();
             $obTable->string('model_status')->nullable()->index();
             $obTable->string('slug')->unique()->index();
@@ -46,7 +46,6 @@ class CreateTableReservations extends Migration
             $obTable->string('external_id')->nullable();
             $obTable->text('preview_text')->nullable();
             $obTable->text('description')->nullable();
-            $obTable->integer('view_count')->nullable()->default(0);
             $obTable->timestamps();
         });
     }
