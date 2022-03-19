@@ -15,6 +15,7 @@ class AvailableDates extends Controller
         'Backend.Behaviors.ListController',
         'Backend.Behaviors.ImportExportController',
         'Backend.Behaviors.FormController',
+        'Backend.Behaviors.RelationController'
     ];
     /** @var string */
     public $listConfig = 'config_list.yaml';
@@ -22,6 +23,8 @@ class AvailableDates extends Controller
     public $importExportConfig = 'config_import_export.yaml';
     /** @var string */
     public $formConfig = 'config_form.yaml';
+    /** @var string */
+    public $relationConfig = 'config_relation.yaml';
 
     /**
      * AvailableDates constructor.

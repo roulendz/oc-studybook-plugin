@@ -1,0 +1,11 @@
+reservations:
+    label: logingrupa.studybook::lang.reservations.list_lable
+    list: ~/plugins/logingrupa/studybook/models/reservation/columns.yaml
+    form: ~/plugins/logingrupa/studybook/models/reservation/fields.yaml
+    readOnly: true
+    view:
+        list: $/logingrupa/studybook/models/reservation/columns.yaml
+        toolbarButtons: link|unlink
+    manage:
+        form: $/logingrupa/studybook/models/reservation/fields.yaml
+        recordsPerPage: 10

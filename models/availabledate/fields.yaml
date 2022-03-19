@@ -37,4 +37,8 @@ fields:
         comment: 'logingrupa.studybook::lang.field.reserved_seats_description'
 tabs:
     fields:
+        reservations@update:
+            commentAbove: 'logingrupa.studybook::lang.reservations.commentAbove'
+            type: partial
+            tab: 'logingrupa.studybook::lang.reservations.tab'
 

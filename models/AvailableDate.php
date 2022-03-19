@@ -34,7 +34,7 @@ class AvailableDate extends ImportModel
     public $rules = [
         'datetime' => 'unique:logingrupa_studybook_availabledates,datetime'
     ];
-
+    /** @var array */
     public $customMessages = [
         'datetime.unique' => 'Selected date and time already exists in available dates list, please select it from list',
     ];
@@ -67,7 +67,12 @@ class AvailableDate extends ImportModel
     public $hasOne = [];
     /** @var array */
     public $hasMany = [
-
+        'reservations' => [
+            'Logingrupa\Studybook\Models\Reservation',
+            'key'      => 'start_at',
+            'otherKey' => 'datetime',
+            'order' => 'start_at desc',
+        ],
     ];
     /** @var array */
     public $belongsTo = [];
