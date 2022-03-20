@@ -2,7 +2,7 @@ fields:
     active:
         label: 'lovata.toolbox::lang.field.active'
         span: full
-        default: 0
+        default: 1
         type: switch
     course_id:
         label: 'logingrupa.studybook::lang.field.reservation_select_course'
@@ -18,13 +18,126 @@ fields:
         type: dropdown
         options: \Logingrupa\Studybook\Classes\Helper\Reservation\FormHelper::staticGetAvailableDatesListOptions
         dependsOn: course_id
+    attendance:
+        label: 'logingrupa.studybook::lang.field.attendance'
+        span: row
+        spanClass: col-xs-2
+        type: switch
+        options:
+            - No
+            - Yes
+        placeholder: 'logingrupa.studybook::lang.field.attendance'
+    model_status:
+        label: 'logingrupa.studybook::lang.field.model_status'
+        span: row
+        spanClass: col-xs-2
+        type: switch
+        options:
+            - No
+            - Yes
+    health:
+        label: 'logingrupa.studybook::lang.field.health'
+        span: row
+        spanClass: col-xs-2
+        type: switch
+        options:
+            - No
+            - Yes
+        placeholder: 'logingrupa.studybook::lang.field.health'
+    price:
+        label: 'logingrupa.studybook::lang.field.price'
+        span: row
+        spanClass: col-xs-3
+        type: text
+        placeholder: 'logingrupa.studybook::lang.field.price'
+    old_price:
+        label: 'logingrupa.studybook::lang.field.old_price'
+        span: row
+        spanClass: col-xs-3
+        type: text
+        placeholder: 'logingrupa.studybook::lang.field.old_price'
 
 tabs:
     fields:
         # Relation Controller
+        _information_sent:
+            span: row
+            spanClass: col-xs-3
+            type: switch
+            options:
+                - No
+                - Yes
+            label: 'logingrupa.studybook::lang.field.information'
+            tab: 'logingrupa.studybook::lang.reservation.tab'
+        _payment:
+            span: row
+            spanClass: col-xs-3
+            type: switch
+            options:
+                - No
+                - Yes
+            label: 'logingrupa.studybook::lang.field.payment'
+            tab: 'logingrupa.studybook::lang.reservation.tab'
         student:
             type: partial
             tab: 'logingrupa.studybook::lang.reservation.tab'
+        name@update:
+            span: row
+            spanClass: col-xs-4
+            label: 'logingrupa.studybook::lang.reservation.name'
+            comment: Proxy text field for Person model.
+            type: dropdown
+            tab: 'lovata.toolbox::lang.tab.settings'
+            readOnly: false
+            hidden: false
+            options: \Logingrupa\Studybook\Classes\Helper\Reservation\FormHelper::staticGetSelectedCoursesName
+            dependsOn: course_id
+        phone:
+            span: row
+            spanClass: col-xs-4
+            label: 'logingrupa.studybook::lang.field.student_phone'
+            comment: Proxy text field for Person model.
+            tab: 'lovata.toolbox::lang.tab.settings'
+            readOnly: false
+            preset:
+                field: _student[phone]
+                type: exact
+        full_name:
+            span: row
+            spanClass: col-xs-4
+            label: 'logingrupa.studybook::lang.field.full_name'
+            comment: Proxy text field for Person model.
+            preset:
+                field: student[name]
+                type: exact
+            tab: 'lovata.toolbox::lang.tab.settings'
+            readOnly: true
+            hidden: false
+        email:
+            span: row
+            spanClass: col-xs-4
+            label: 'logingrupa.studybook::lang.field.email'
+            comment: Proxy text field for Person model.
+            preset:
+                field: student[email]
+                type: exact
+            tab: 'lovata.toolbox::lang.tab.settings'
+            readOnly: true
+            hidden: false
+        code:
+            label: 'lovata.toolbox::lang.field.code'
+            span: row
+            spanClass: col-xs-2
+            type: text
+            placeholder: 'lovata.toolbox::lang.field.code'
+            tab: 'lovata.toolbox::lang.tab.settings'
+        external_id:
+            label: 'lovata.toolbox::lang.field.external_id'
+            span: row
+            spanClass: col-xs-2
+            type: text
+            placeholder: 'lovata.toolbox::lang.field.external_id'
+            tab: 'lovata.toolbox::lang.tab.settings'
         # Student tab
 #        student[name]:
 #            span: auto
@@ -73,14 +186,14 @@ tabs:
         preview_text:
             label: 'lovata.toolbox::lang.field.preview_text'
             size: large
-            span: full
+            span: right
             type: textarea
             placeholder: 'lovata.toolbox::lang.field.preview_text'
             tab: 'lovata.toolbox::lang.tab.description'
         description:
             label: 'lovata.toolbox::lang.field.description'
             size: giant
-            span: full
+            span: left
             type: richeditor
             tab: 'lovata.toolbox::lang.tab.description'
         preview_image:
@@ -90,9 +203,9 @@ tabs:
                 thumbOptions:
                     mode: crop
                     extension: auto
-                span: left
+                span: auto
                 type: fileupload
-                tab: 'lovata.toolbox::lang.tab.images'
+                tab: 'lovata.toolbox::lang.tab.description'
         images:
             label: 'lovata.toolbox::lang.field.images'
             mode: image
@@ -100,64 +213,13 @@ tabs:
             thumbOptions:
                 mode: crop
                 extension: auto
-            span: left
+            span: auto
             type: fileupload
-            tab: 'lovata.toolbox::lang.tab.images'
+            tab: 'lovata.toolbox::lang.tab.description'
         file:
             label: 'lovata.toolbox::lang.field.file'
             type: fileupload
-            span: left
+            span: auto
             required: 0
             mode: file
-            tab: 'lovata.toolbox::lang.tab.images'
-        name@update:
-            span: left
-            label: 'logingrupa.studybook::lang.reservation.name'
-            comment: Proxy text field for Person model.
-            type: dropdown
-            tab: 'lovata.toolbox::lang.tab.settings'
-            readOnly: false
-            hidden: false
-            options: \Logingrupa\Studybook\Classes\Helper\Reservation\FormHelper::staticGetSelectedCoursesName
-            dependsOn: course_id
-        phone:
-            span: auto
-            label: 'logingrupa.studybook::lang.field.student_phone'
-            comment: Proxy text field for Person model.
-            tab: 'lovata.toolbox::lang.tab.settings'
-            readOnly: false
-            preset:
-                field: _student[phone]
-                type: exact
-        full_name:
-            span: left
-            label: 'logingrupa.studybook::lang.field.full_name'
-            comment: Proxy text field for Person model.
-            preset:
-                field: student[name]
-                type: exact
-            tab: 'lovata.toolbox::lang.tab.settings'
-            readOnly: true
-            hidden: false
-        email:
-            span: auto
-            label: 'logingrupa.studybook::lang.field.email'
-            comment: Proxy text field for Person model.
-            preset:
-                field: student[email]
-                type: exact
-            tab: 'lovata.toolbox::lang.tab.settings'
-            readOnly: true
-            hidden: false
-        code:
-            label: 'lovata.toolbox::lang.field.code'
-            span: left
-            type: text
-            placeholder: 'lovata.toolbox::lang.field.code'
-            tab: 'lovata.toolbox::lang.tab.settings'
-        external_id:
-            label: 'lovata.toolbox::lang.field.external_id'
-            span: left
-            type: text
-            placeholder: 'lovata.toolbox::lang.field.external_id'
-            tab: 'lovata.toolbox::lang.tab.settings'
+            tab: 'lovata.toolbox::lang.tab.description'

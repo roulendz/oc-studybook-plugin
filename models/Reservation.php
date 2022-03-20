@@ -154,6 +154,8 @@ class Reservation extends ImportModel
         $this->name = $this->course->name;
         $this->full_name = $this->student->name . " " . $this->student->surname;
         $this->email = $this->student->email;
+        $this->price = $this->price * 100;
+        $this->old_price = $this->old_price * 100;
 
     }
 
@@ -175,6 +177,17 @@ class Reservation extends ImportModel
                     ->groupBy('start_at')
                     ->pluck('start_at', 'start_at')
                     ->toArray();
+    }
+
+    /**
+     * Format price with 2 decimals before making form
+     */
+    public function filterFields($fields, $context = null){
+        if (is_null($this->price) || is_null($this->old_price)) {
+            return;
+        }
+            $fields->price->value = $fields->price->value / 100;
+            $fields->old_price->value = $fields->old_price->value / 100;
     }
 
     /**

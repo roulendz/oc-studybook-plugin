@@ -44,4 +44,14 @@ class AvailableDates extends Controller
             return 'strike new';
         }
     }
+
+//    public function listFilterExtendScopes($filter)
+//    {
+//        $filter->addScopes(['includeExpiredDates']);
+//    }
+
+//    public function listExtendQuery($query)
+//    {
+//        $query->excludeExpiredDates();
+//    }
 }
