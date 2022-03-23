@@ -30,6 +30,12 @@ navigation:
                 permissions:
                     - studybook-menu-availabledates
                 icon: icon-paw
+            studybook-menu-categories:
+                label: 'logingrupa.studybook::lang.menu.categories'
+                url: logingrupa/studybook/categories
+                permissions:
+                    - studybook-menu-categories
+                icon: icon-paw
 permissions:
     studybook-menu-courses:
         label: 'logingrupa.studybook::lang.permission.course'
@@ -39,4 +45,7 @@ permissions:
         tab: 'logingrupa.studybook::lang.tab.permissions'
     studybook-menu-availabledates:
         label: 'logingrupa.studybook::lang.permission.availabledate'
+        tab: 'logingrupa.studybook::lang.tab.permissions'
+    studybook-menu-categories:
+        label: 'logingrupa.studybook::lang.permission.category'
         tab: 'logingrupa.studybook::lang.tab.permissions'

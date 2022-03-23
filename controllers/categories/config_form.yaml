@@ -1,0 +1,29 @@
+# Record name
+name: 'logingrupa.studybook::lang.category.name'
+
+# Model Form Field configuration
+form: $/logingrupa/studybook/models/category/fields.yaml
+
+# Model Class name
+modelClass: Logingrupa\Studybook\Models\Category
+
+# Default redirect location
+defaultRedirect: logingrupa/studybook/categories
+
+# Create page
+create:
+    title: 'backend::lang.form.create_title'
+    redirect: logingrupa/studybook/categories/update/:id
+    redirectClose: logingrupa/studybook/categories
+    flashSave: 'lovata.toolbox::lang.message.create_success'
+
+# Update page
+update:
+    title: 'backend::lang.form.update_title'
+    redirect: logingrupa/studybook/categories
+    redirectClose: logingrupa/studybook/categories
+    flashSave: 'lovata.toolbox::lang.message.update_success'
+    flashDelete: 'lovata.toolbox::lang.message.delete_success'
+
+# Preview page
+preview: {  }

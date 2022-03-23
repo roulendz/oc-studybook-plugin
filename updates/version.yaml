@@ -13,3 +13,6 @@
 1.0.4:
     - 'Seed test Data.'
     - seed_test_data.php
+1.0.5:
+    - 'Create categories table'
+    - create_table_categories.php
