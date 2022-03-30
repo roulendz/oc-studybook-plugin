@@ -29,7 +29,8 @@ showSorting: true
 # defaultSort:
 #     column: created_at
 #     direction: desc
-
+howSetup: true
+showTree: 1
 # Display checkboxes next to each record
 showCheckboxes: true
 
