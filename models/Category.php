@@ -112,7 +112,9 @@ class Category extends Model
     /** @var array */
     public $hasOne = [];
     /** @var array */
-    public $hasMany = [];
+    public $hasMany = [
+        'course' => Course::class
+    ];
     /** @var array */
     public $belongsTo = [];
     /** @var array */
