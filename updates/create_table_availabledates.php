@@ -29,6 +29,10 @@ class CreateTableAvailableDates extends Migration
             $obTable->dateTime('datetime')->unique();
             $obTable->integer('available_seats')->default(0);
             $obTable->integer('reserved_seats')->default(0)->nullable();
+
+            $obTable->index('datetime');
+            $obTable->index('available_seats');
+            $obTable->index('reserved_seats');
         });
     }
 
