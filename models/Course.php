@@ -8,6 +8,7 @@ use Kharanenka\Scope\NameField;
 use Kharanenka\Scope\SlugField;
 use Kharanenka\Scope\CodeField;
 use Kharanenka\Scope\ExternalIDField;
+use Kharanenka\Scope\CategoryBelongsTo;
 use Lovata\Toolbox\Traits\Helpers\TraitCached;
 
 /**
@@ -42,6 +43,7 @@ class Course extends ExportModel
     use CodeField;
     use ExternalIDField;
     use TraitCached;
+    use CategoryBelongsTo;
 
     /** @var string */
     public $table = 'logingrupa_studybook_courses';
@@ -118,7 +120,15 @@ class Course extends ExportModel
     /** @var array */
     public $hasOne = [];
     /** @var array */
-    public $hasMany = [];
+    public $hasMany = [
+        'categories' => [
+            'Logingrupa\Studybook\Models\Category',
+            'table' => 'logingrupa_studybook_course_categories',
+            'key'      => 'category_id',
+            'otherKey' => 'course_id',
+            'order' => 'created_at desc',
+        ],
+    ];
     /** @var array */
     public $belongsTo = [];
     /** @var array */
@@ -147,6 +157,38 @@ class Course extends ExportModel
         'images' => 'System\Models\File'
     ];
 
+    // Before saving concatenate fields in cssClass field
+    public function beforeSave()
+    {
+        // dd(post()['Collection']);
+        if (empty(post())) {
+            return;
+        }
+        $this->price = $this->price * 100;
+        $this->old_price = $this->old_price * 100;
+    }
+
+    /**
+     * Get element by categories
+     * @param Product $obQuery
+     * @param string  $sData
+     * @return $this
+     */
+    public function scopeGetByCategories($obQuery, $sData)
+    {
+        if (!empty($sData)) {
+            foreach ($sData as $category) {
+                $obQuery->orWhere('category_id', $category)->orWhereHas('additional_category', function ($obQuery) use ($category) {
+                    $obQuery->where('category_id', $category);
+                });
+            }
+        }
+
+        return $obQuery;
+    }
+
+
+
     /**
      * Parse CSV file
      * @param array $arColumns
@@ -165,5 +207,16 @@ class Course extends ExportModel
         });
 
         return $obCourseList->toArray();
+    }
+
+    /**
+     * Format price with 2 decimals before making form
+     */
+    public function filterFields($fields, $context = null){
+        if (is_null($this->price) || is_null($this->old_price)) {
+            return;
+        }
+        $fields->price->value = $fields->price->value / 100;
+        $fields->old_price->value = $fields->old_price->value / 100;
     }
 }
