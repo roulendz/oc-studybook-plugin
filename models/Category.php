@@ -118,7 +118,14 @@ class Category extends Model
     /** @var array */
     public $belongsTo = [];
     /** @var array */
-    public $belongsToMany = [];
+    public $belongsToMany = [
+        'course_link' => [
+            Course::class,
+            'table' => 'logingrupa_studybook_additional_categories',
+            'key'      => 'category_id',
+            'otherKey' => 'course_id',
+        ],
+    ];
     /** @var array */
     public $morphTo = [];
     /** @var array */
