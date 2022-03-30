@@ -26,7 +26,7 @@ class CreateTableCategories extends Migration
             $obTable->engine = 'InnoDB';
             $obTable->increments('id')->unsigned();
             $obTable->boolean('active')->default(0);
-            $obTable->string('name')->index();
+            $obTable->string('name');
             $obTable->string('slug')->unique()->index();
             $obTable->text('preview_text')->nullable();
             $obTable->text('description')->nullable();
@@ -36,6 +36,8 @@ class CreateTableCategories extends Migration
             $obTable->integer('nest_right')->nullable()->unsigned();
             $obTable->integer('nest_depth')->nullable()->unsigned();
             $obTable->timestamps();
+
+            $obTable->index('name');
         });
     }
 
