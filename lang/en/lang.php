@@ -5,9 +5,9 @@
     ],
     'field' => [
         'price' => 'Price',
-        'price_placeholder' => 'Enter price in cents 24.40 EUR = 2440',
+        'price_placeholder' => '322.00',
         'old_price' => 'Old price',
-        'old_price_placeholder' => 'Enter old price in cents 28.40 EUR = 2840',
+        'old_price_placeholder' => '422.00',
         'available_seats' => 'Default number of seats/students in course',
         'available_date_available_seats' => 'How many students can reserve spot for this date',
         'available_date_available_seats_description' => 'After reservations reaches this number, this date will be hidden form frontend and future reservations will be disabled',
@@ -37,6 +37,7 @@
         'date_reserved_seats' => 'Reserved seats',
         'reservation_start_at' => 'Reservation date',
         'reservation_select_course' => 'Select course from list',
+        'additional_category' => 'Additional course category',
         'attendance' => 'WIll  attend?',
         'model_status' => 'Should school find client?',
         'health' => 'Green Certificate',
@@ -47,7 +48,7 @@
         'main' => 'Studybook',
         'courses' => 'Course list',
         'reservations' => 'Reservation list',
-        'availabledates' => 'AvailableDate list',
+        'availabledates' => 'Available dates list',
         'categories' => 'Category list',
     ],
     'tab' => [
