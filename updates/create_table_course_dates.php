@@ -26,7 +26,7 @@ class CreateTableCourseDates extends Migration
             $obTable->engine = 'InnoDB';
             $obTable->integer('date_id')->unsigned();
             $obTable->integer('course_id')->unsigned();
-            $obTable->primary(['date_id', 'course_id']);
+            $obTable->primary(['date_id', 'course_id'], 'course_dates');
         });
     }
 
