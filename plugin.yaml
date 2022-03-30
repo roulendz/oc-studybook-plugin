@@ -10,32 +10,32 @@ navigation:
         url: logingrupa/studybook/courses
         permissions:
             - 'studybook-menu-*'
-        icon: icon-paw
+        icon: icon-book
         sideMenu:
-            studybook-menu-courses:
-                label: 'logingrupa.studybook::lang.menu.courses'
-                url: logingrupa/studybook/courses
-                permissions:
-                    - studybook-menu-courses
-                icon: icon-paw
-            studybook-menu-reservations:
-                label: 'logingrupa.studybook::lang.menu.reservations'
-                url: logingrupa/studybook/reservations
-                permissions:
-                    - studybook-menu-reservations
-                icon: icon-paw
-            studybook-menu-availabledates:
-                label: 'logingrupa.studybook::lang.menu.availabledates'
-                url: logingrupa/studybook/availabledates
-                permissions:
-                    - studybook-menu-availabledates
-                icon: icon-paw
             studybook-menu-categories:
                 label: 'logingrupa.studybook::lang.menu.categories'
                 url: logingrupa/studybook/categories
                 permissions:
                     - studybook-menu-categories
-                icon: icon-paw
+                icon: icon-sitemap
+            studybook-menu-courses:
+                label: 'logingrupa.studybook::lang.menu.courses'
+                url: logingrupa/studybook/courses
+                permissions:
+                    - studybook-menu-courses
+                icon: icon-list-ul
+            studybook-menu-reservations:
+                label: 'logingrupa.studybook::lang.menu.reservations'
+                url: logingrupa/studybook/reservations
+                permissions:
+                    - studybook-menu-reservations
+                icon: icon-list
+            studybook-menu-availabledates:
+                label: 'logingrupa.studybook::lang.menu.availabledates'
+                url: logingrupa/studybook/availabledates
+                permissions:
+                    - studybook-menu-availabledates
+                icon: icon-calendar
 permissions:
     studybook-menu-courses:
         label: 'logingrupa.studybook::lang.permission.course'
