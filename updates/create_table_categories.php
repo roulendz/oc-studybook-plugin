@@ -30,8 +30,8 @@ class CreateTableCategories extends Migration
             $obTable->string('slug')->unique()->index();
             $obTable->text('preview_text')->nullable();
             $obTable->text('description')->nullable();
-            $obTable->integer('view_count')->nullable()->default(0);
             $obTable->integer('parent_id')->nullable()->unsigned();
+            $obTable->integer('view_count')->nullable()->default(0);
             $obTable->integer('nest_left')->nullable()->unsigned();
             $obTable->integer('nest_right')->nullable()->unsigned();
             $obTable->integer('nest_depth')->nullable()->unsigned();
