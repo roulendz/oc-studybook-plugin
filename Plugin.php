@@ -66,7 +66,7 @@ class Plugin extends PluginBase
         }
         return $value;
     }
-    A
+
     /**
      * Currency Old Price Column Type
      */
