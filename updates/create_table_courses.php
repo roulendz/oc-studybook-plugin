@@ -26,7 +26,9 @@ class CreateTableCourses extends Migration
             $obTable->engine = 'InnoDB';
             $obTable->increments('id')->unsigned();
             $obTable->boolean('active')->default(0);
-            $obTable->string('name')->index();
+            $obTable->string('name');
+            $obTable->integer('category_id')->nullable()->unsigned();
+            $obTable->foreign('category_id')->references('id')->on('logingrupa_studybook_categories');
             $obTable->string('slug')->unique()->index();
             $obTable->string('code')->nullable()->index();
             $obTable->string('external_id')->nullable()->index();
@@ -40,6 +42,11 @@ class CreateTableCourses extends Migration
             $obTable->integer('student_count')->nullable();
             $obTable->json('settings')->nullable();
             $obTable->timestamps();
+
+            $obTable->index('name');
+            $obTable->index('category_id');
+            $obTable->index('price');
+            $obTable->index('old_price');
         });
     }
 
