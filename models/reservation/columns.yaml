@@ -19,9 +19,9 @@ columns:
         label: 'logingrupa.studybook::lang.field.full_name'
         sortable: false
         useTimezone: true
-    mobile:
+    phone:
         lable: 'logingrupa.studybook::lang.field.mobile'
-        type: text
+        type: phone_number
         serchable: false
         sortable: false
     email:
