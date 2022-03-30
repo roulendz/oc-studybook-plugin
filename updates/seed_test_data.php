@@ -1,6 +1,7 @@
 <?php namespace Logingrupa\Studybook\Updates;
 
 use Logingrupa\Studybook\Models\AvailableDate;
+use Logingrupa\Studybook\Models\Category;
 use Logingrupa\Studybook\Models\Course;
 use Logingrupa\Studybook\Models\Reservation;
 use October\Rain\Database\Updates\Seeder;
@@ -19,6 +20,8 @@ class SeedTestData extends Seeder
         DB::table('logingrupa_studybook_reservations')->delete();
         DB::table('logingrupa_studybook_availabledates')->delete();
         DB::table('logingrupa_studybook_course_dates')->delete();
+        DB::table('logingrupa_studybook_additional_categories')->delete();
+        DB::table('logingrupa_studybook_categories')->delete();
         $name = ['Baiba Zariņa', 'Zane Zeltiņa', 'Ieva Razgalae', 'Vera Liole', 'Roberts Zeltiņš', 'Normunds Zeltiņš', 'Toms Muižnieks', 'Zigurds Mežš', 'Lauma Rudze', 'Aiga Zara', 'Artis Ābols', 'Gunārs Bumbiers', 'Raitis Raiders', 'Gunita Preile', 'Laila Briede'];
         foreach ($name as $key => $value) {
             $pieces = explode(" ", $value);
@@ -29,6 +32,29 @@ class SeedTestData extends Seeder
                 'is_activated' => 1,
                 'password' => '123123123',
                 'password_confirmation' => '123123123',
+            ]);
+        }//END
+
+        $categories = [
+            'Apmācības klātiene' => ['parent_id' => null],
+            'Manikīra kursi bez priekšzināšanām' => ['parent_id' => 1],
+            'Manikīra kursu programmas ar priekšzināšanām' => ['parent_id' => 1],
+            'Vaksācijas kursi' => ['parent_id' => 1],
+            'Skropstu pieaudzēšana kursi' => ['parent_id' => 1],
+            'Nagu Dizaina kursi un apmācības' => ['parent_id' => 1],
+            'Manikīra meistaru kvalifikācijas celšanas kursi' => ['parent_id' => 1],
+            'Online manikīra kursi' => ['parent_id' => null],
+            'Nagu kopšanas speciālists' => ['parent_id' => 8],
+            'Kvalifikācijas celšanas kursi' => ['parent_id' => 8],
+            'Gēla nagu dizaina kursi' => ['parent_id' => 8],
+        ];
+        foreach ($categories as $key => $category) {
+            Category::create([
+                'active' => '1',
+                'name' => $key,
+                'slug' => uniqid(str_slug($key, '-'),false),
+                'description' => $key,
+                'parent_id' => $category['parent_id'],
             ]);
         }//END
 
