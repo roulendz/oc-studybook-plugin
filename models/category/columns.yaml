@@ -4,29 +4,51 @@ columns:
         type: text
         searchable: true
         sortable: true
+        width: 400px
+    view_count:
+        label: 'lovata.toolbox::lang.field.view_count'
+        type: text
+        searchable: false
+        sortable: true
+        invisible: false
+        width: 1px
     active:
         label: 'lovata.toolbox::lang.field.active'
         type: switch
         searchable: false
         sortable: true
-    view_count:
-        label: 'lovata.toolbox::lang.field.view_count'
-        type: number
+    code:
+        label: 'lovata.toolbox::lang.field.code'
+        type: text
         searchable: false
-        sortable: true
+        sortable: false
+        invisible: true
     id:
         label: 'lovata.toolbox::lang.field.id'
-        type: number
+        type: text
         searchable: true
         sortable: true
         width: 100px
+    slug:
+        label: 'lovata.toolbox::lang.field.slug'
+        type: text
+        searchable: true
+        sortable: true
+    external_id:
+        label: 'lovata.toolbox::lang.field.external_id'
+        type: text
+        searchable: false
+        sortable: false
+        invisible: true
     created_at:
         label: 'lovata.toolbox::lang.field.created_at'
         type: timetense
-        sortable: true
+        searchable: false
+        sortable: false
         invisible: true
     updated_at:
         label: 'lovata.toolbox::lang.field.updated_at'
         type: timetense
-        sortable: true
+        searchable: false
+        sortable: false
         invisible: true

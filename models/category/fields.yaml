@@ -21,6 +21,13 @@ fields:
         type: text
 tabs:
     fields:
+        parent:
+            label: 'lovata.toolbox::lang.field.category_parent'
+            span: left
+            type: relation
+            nameFrom: name
+            emptyOption: 'lovata.toolbox::lang.field.empty'
+            tab: 'lovata.toolbox::lang.tab.settings'
         preview_text:
             label: 'lovata.toolbox::lang.field.preview_text'
             size: large
