@@ -54,12 +54,12 @@ columns:
         invisible: true
     price:
         lable: 'logingrupa.studybook::lang.field.price'
-        type: text
+        type: price
         serchable: false
         sortable: false
     old_price:
         lable: 'logingrupa.studybook::lang.field.old_price'
-        type: text
+        type: old_price
         serchable: false
         sortable: false
     code:
