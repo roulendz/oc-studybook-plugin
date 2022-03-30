@@ -74,3 +74,4 @@ columns:
         type: number
         searchable: false
         sortable: true
+        width: 10px

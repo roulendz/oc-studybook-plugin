@@ -6,13 +6,15 @@ fields:
         type: switch
     name:
         label: 'lovata.toolbox::lang.field.name'
-        span: auto
+        span: row
+        spanClass: col-xs-6 col-md-6
         required: 1
         type: text
         placeholder: 'lovata.toolbox::lang.field.name'
     slug:
         label: 'lovata.toolbox::lang.field.slug'
-        span: auto
+        span: row
+        spanClass: col-xs-6 col-md-6
         required: 1
         placeholder: 'lovata.toolbox::lang.field.slug'
         preset:
@@ -25,6 +27,19 @@ tabs:
             commentAbove: 'logingrupa.studybook::lang.course.commentAbove'
             type: partial
             tab: 'logingrupa.studybook::lang.course.tab'
+        category:
+            label: 'lovata.toolbox::lang.field.category'
+            nameFrom: name
+            descriptionFrom: description
+            span: left
+            type: relation
+            tab: 'lovata.toolbox::lang.tab.settings'
+        additional_category:
+            label: 'logingrupa.studybook::lang.field.additional_category'
+            type: relation
+            span: right
+            nameFrom: name
+            tab: 'lovata.toolbox::lang.tab.settings'
         price:
             label: 'logingrupa.studybook::lang.field.price'
             span: left
@@ -33,7 +48,7 @@ tabs:
             tab: 'lovata.toolbox::lang.tab.settings'
         old_price:
             label: 'logingrupa.studybook::lang.field.old_price'
-            span: right
+            span: left
             type: number
             placeholder: 'logingrupa.studybook::lang.field.old_price_placeholder'
             tab: 'lovata.toolbox::lang.tab.settings'
