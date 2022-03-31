@@ -197,6 +197,7 @@ class Reservation extends ImportModel
             $fields->price->value = $price /100;
             $fields->old_price->value = $old_price /100;
         } else {
+//          @TODO: when updating Reservations course price all the time divides by 100
             $fields->price->value = $fields->price->value / 100;
             $fields->old_price->value = $fields->old_price->value / 100;
         }
