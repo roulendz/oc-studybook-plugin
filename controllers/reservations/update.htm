@@ -5,6 +5,12 @@
                 <?= e(trans('logingrupa.studybook::lang.reservation.list_title')) ?>
             </a>
         </li>
+        <?php
+                if(!empty($formModel) && !empty($formModel->student)) {
+        $obStudent = $formModel->student;
+        ?>
+        <li><a href="<?= Backend::url('rainlab/user/users/update/'.$obStudent->id) ?>"><?= $obStudent->name . " " . $obStudent->surname  ?></a></li>
+        <?php } ?>
         <li><?= e($this->pageTitle) ?></li>
     </ul>
 <?php Block::endPut() ?>
