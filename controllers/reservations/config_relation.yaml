@@ -7,4 +7,23 @@ student:
     form: ~/plugins/logingrupa/studybook/models/reservation/student_fields_simple.yaml
     list: ~/plugins/rainlab/user/models/user/columns.yaml
 
-#    /Users/roulendz/Sites/manikirs/
+    view:
+        #        filter: config_availabledates_filter.yaml
+        showSearch: false
+        toolbarButtons: link|create|unlink
+        showCheckboxes: true
+    #    customMessages:
+    #        buttonCreate: 'logingrupa.studybook::lang.button.add'
+    #        buttonLink: 'logingrupa.studybook::lang.button.link'
+    #        buttonUnlink: 'logingrupa.studybook::lang.button.unlink'
+    #        titleAddForm: tests
+    #        titleCreateForm: 'logingrupa.studybook::lang.availabledate.titleCreateForm'
+    #        titleLinkForm: 'logingrupa.studybook::lang.availabledate.titleLinkForm'
+    #        confirmUnlink: 'logingrupa.studybook::lang.availabledate.confirmUnlink'
+    #        flashUnlink: 'logingrupa.studybook::lang.availabledate.flashUnlink'
+    manage:
+        context: relation
+        recordsPerPage: 10
+        showSearch: true
+        showCheckboxes: true
+        toolbarButtons: create|unlink|link
