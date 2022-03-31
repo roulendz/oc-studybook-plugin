@@ -49,12 +49,14 @@ fields:
         span: row
         spanClass: col-xs-3
         type: text
+        dependsOn: course_id
         placeholder: 'logingrupa.studybook::lang.field.price'
     old_price:
         label: 'logingrupa.studybook::lang.field.old_price'
         span: row
         spanClass: col-xs-3
         type: text
+        dependsOn: course_id
         placeholder: 'logingrupa.studybook::lang.field.old_price'
 
 tabs:
@@ -138,51 +140,6 @@ tabs:
             type: text
             placeholder: 'lovata.toolbox::lang.field.external_id'
             tab: 'lovata.toolbox::lang.tab.settings'
-        # Student tab
-#        student[name]:
-#            span: auto
-#            label: 'logingrupa.studybook::lang.field.student_name'
-#            comment: Proxy text field for Person model.
-#            tab: 'logingrupa.studybook::lang.reservation.tab'
-#            readOnly: false
-#        student[surname]:
-#            span: auto
-#            label: 'logingrupa.studybook::lang.field.student_surname'
-#            comment: Proxy text field for Person model.
-#            tab: 'logingrupa.studybook::lang.reservation.tab'
-#            readOnly: false
-#        student[email]:
-#            span: auto
-#            label: 'logingrupa.studybook::lang.field.student_email'
-#            comment: Proxy text field for Person model.
-#            tab: 'logingrupa.studybook::lang.reservation.tab'
-#            readOnly: false
-#        _student[phone]:
-#            span: auto
-#            label: 'logingrupa.studybook::lang.field.student_phone'
-#            comment: Proxy text field for Person model.
-#            tab: 'logingrupa.studybook::lang.reservation.tab'
-#            readOnly: false
-#        student[password]@create:
-#            span: auto
-#            label: 'logingrupa.studybook::lang.field.password'
-#            comment: Proxy text field for Person model.
-#            preset:
-#                field: phone
-#                type: exact
-#            tab: 'logingrupa.studybook::lang.reservation.tab'
-#            readOnly: false
-#            hidden: false
-#        student[password_confirmation]@create:
-#            span: auto
-#            label: 'logingrupa.studybook::lang.field.password_confirm'
-#            comment: Proxy text field for Person model.
-#            preset:
-#                field: phone
-#                type: exact
-#            tab: 'logingrupa.studybook::lang.reservation.tab'
-#            readOnly: true
-#            hidden: false
         preview_text:
             label: 'lovata.toolbox::lang.field.preview_text'
             size: large

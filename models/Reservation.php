@@ -182,12 +182,24 @@ class Reservation extends ImportModel
     /**
      * Format price with 2 decimals before making form
      */
-    public function filterFields($fields, $context = null){
+    public function filterFields($fields, $context){
         if (is_null($this->price) || is_null($this->old_price)) {
             return;
         }
+        if (empty($this->course_id))
+            return;
+        if ($context === 'create' || $context === 'relation') {
+            $course = (new \Logingrupa\Studybook\Models\Course)->find($this->course_id);
+            $price = $course->price;
+            $old_price = $course->old_price;
+            // do something to get the name value based on the code
+
+            $fields->price->value = $price /100;
+            $fields->old_price->value = $old_price /100;
+        } else {
             $fields->price->value = $fields->price->value / 100;
             $fields->old_price->value = $fields->old_price->value / 100;
+        }
     }
 
     /**
