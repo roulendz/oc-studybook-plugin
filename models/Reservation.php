@@ -152,6 +152,7 @@ class Reservation extends ImportModel
         }
         $this->slug = uniqid(true);
         $this->name = $this->course->name;
+        //          @TODO: Cannot unlink Student, throws error, insert check if field is available
         $this->full_name = $this->student->name . " " . $this->student->surname;
         $this->email = $this->student->email;
         $this->price = $this->price * 100;
