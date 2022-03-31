@@ -17,5 +17,8 @@ v1.0.4:
     - 'Create Reservations table.'
     - create_table_reservations.php
 v1.0.5:
+    - 'Create transaction table.'
+    - create_table_transactions.php
+v1.0.6:
     - 'Seed test Data.'
     - seed_test_data.php

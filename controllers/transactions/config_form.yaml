@@ -1,0 +1,29 @@
+# Record name
+name: 'logingrupa.studybook::lang.transaction.name'
+
+# Model Form Field configuration
+form: $/logingrupa/studybook/models/transaction/fields.yaml
+
+# Model Class name
+modelClass: Logingrupa\Studybook\Models\Transaction
+
+# Default redirect location
+defaultRedirect: logingrupa/studybook/transactions
+
+# Create page
+create:
+    title: 'backend::lang.form.create_title'
+    redirect: logingrupa/studybook/transactions/update/:id
+    redirectClose: logingrupa/studybook/transactions
+    flashSave: 'lovata.toolbox::lang.message.create_success'
+
+# Update page
+update:
+    title: 'backend::lang.form.update_title'
+    redirect: logingrupa/studybook/transactions
+    redirectClose: logingrupa/studybook/transactions
+    flashSave: 'lovata.toolbox::lang.message.update_success'
+    flashDelete: 'lovata.toolbox::lang.message.delete_success'
+
+# Preview page
+preview: {  }

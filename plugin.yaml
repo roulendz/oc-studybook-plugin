@@ -36,6 +36,12 @@ navigation:
                 permissions:
                     - studybook-menu-availabledates
                 icon: icon-calendar
+            studybook-menu-transactions:
+                label: 'logingrupa.studybook::lang.menu.transactions'
+                url: logingrupa/studybook/transactions
+                permissions:
+                    - studybook-menu-transactions
+                icon: icon-paw
 permissions:
     studybook-menu-courses:
         label: 'logingrupa.studybook::lang.permission.course'
@@ -48,4 +54,7 @@ permissions:
         tab: 'logingrupa.studybook::lang.tab.permissions'
     studybook-menu-categories:
         label: 'logingrupa.studybook::lang.permission.category'
+        tab: 'logingrupa.studybook::lang.tab.permissions'
+    studybook-menu-transactions:
+        label: 'logingrupa.studybook::lang.permission.transaction'
         tab: 'logingrupa.studybook::lang.tab.permissions'

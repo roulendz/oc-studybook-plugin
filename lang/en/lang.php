@@ -50,6 +50,7 @@
         'reservations' => 'Reservation list',
         'availabledates' => 'Available dates list',
         'categories' => 'Category list',
+        'transactions' => 'Transaction list',
     ],
     'tab' => [
         'permissions' => 'Studybook',
@@ -82,12 +83,19 @@
         'category_data_description' => 'Get category by ID',
         'category_list_name' => 'Category List',
         'category_list_description' => 'Get category list',
+        'transaction_page_name' => 'Transaction Page',
+        'transaction_page_description' => 'Get transaction page data',
+        'transaction_data_name' => 'Transaction Data',
+        'transaction_data_description' => 'Get transaction by ID',
+        'transaction_list_name' => 'Transaction List',
+        'transaction_list_description' => 'Get transaction list',
     ],
     'permission' => [
         'course' => 'Manage course',
         'reservation' => 'Manage reservation',
         'availabledate' => 'Manage availabledate',
         'category' => 'Manage category',
+        'transaction' => 'Manage transaction',
     ],
     'course' => [
         'name' => 'Course',
@@ -112,5 +120,9 @@
     'category' => [
         'name' => 'category',
         'list_title' => 'Category list',
+    ],
+    'transaction' => [
+        'name' => 'transaction',
+        'list_title' => 'Transaction list',
     ],
 ];

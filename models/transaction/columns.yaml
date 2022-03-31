@@ -1,0 +1,63 @@
+columns:
+    id:
+        label: 'lovata.toolbox::lang.field.id'
+        type: number
+        searchable: true
+        sortable: true
+        width: 100px
+    reservation_id:
+        label: 'lovata.toolbox::lang.field.name'
+        type: text
+        searchable: true
+        sortable: true
+    student_id:
+        label: 'lovata.toolbox::lang.field.code'
+        type: text
+        searchable: true
+        sortable: true
+    created_at:
+        label: 'lovata.toolbox::lang.field.created_at'
+        type: timetense
+        sortable: true
+        invisible: true
+    updated_at:
+        label: 'lovata.toolbox::lang.field.updated_at'
+        type: timetense
+        sortable: true
+        invisible: true
+    type:
+        lable: type
+        type: text
+        sort: false
+        invisible: false
+    slug:
+        lable: slug
+        type: text
+        sort: false
+        invisible: false
+    credit:
+        lable: credit
+        type: text
+        sort: false
+        invisible: false
+    debit:
+        lable: debit
+        type: text
+        sort: false
+        invisible: false
+    note:
+        lable: note
+        type: text
+        sort: false
+        invisible: false
+    transaction_at:
+        lable: transaction_at
+        type: text
+        sort: false
+        invisible: false
+    parent_id:
+        lable: parent_id
+        type: text
+        sort: false
+        invisible: false
+
