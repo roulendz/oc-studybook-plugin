@@ -53,6 +53,7 @@
     ],
     'tab' => [
         'permissions' => 'Studybook',
+        'reservations' => 'Student reservations',
     ],
     'comment' => [],
     'message' => [],

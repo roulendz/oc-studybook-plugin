@@ -1,11 +1,17 @@
 <?php namespace Logingrupa\Studybook;
 
+use Backend\Facades\Backend;
 use Event;
+use Logingrupa\Studybook\Classes\Event\ExtendBackendMenuHandler;
 use System\Classes\PluginBase;
 
 //Event
+use Logingrupa\Studybook\Classes\Event\User\UserModelHandler;
 use Logingrupa\Studybook\Classes\Event\Course\CourseModelHandler;
+use Logingrupa\Studybook\Classes\Event\User\ExtendUserMenuHandler;
+use Logingrupa\Studybook\Classes\Event\User\ExtendUserFieldsHandler;
 use Logingrupa\Studybook\Classes\Event\Category\CategoryModelHandler;
+use Logingrupa\Studybook\Classes\Event\User\ExtendUserControllerHandler;
 use Logingrupa\Studybook\Classes\Event\Reservation\ReservationModelHandler;
 use Logingrupa\Studybook\Classes\Event\AvailableDate\AvailableDateModelHandler;
 
@@ -80,6 +86,14 @@ class Plugin extends PluginBase
      */
     protected function addEventListener()
     {
+        //User events
+        Event::subscribe(UserModelHandler::class);
+        Event::subscribe(ExtendUserFieldsHandler::class);
+        Event::subscribe(ExtendUserControllerHandler::class);
+        Event::subscribe(ExtendUserMenuHandler::class);
+
+        Event::subscribe(ExtendBackendMenuHandler::class);
+
         Event::subscribe(CourseModelHandler::class);
         Event::subscribe(ReservationModelHandler::class);
         Event::subscribe(CategoryModelHandler::class);
