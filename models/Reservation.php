@@ -152,7 +152,7 @@ class Reservation extends ImportModel
         }
         $this->slug = uniqid(true);
         $this->name = $this->course->name;
-        //          @TODO: Cannot unlink Student, throws error, insert check if field is available
+//      @TODO: Cannot unlink Student, throws error, insert check if field is available
         $this->full_name = $this->student->name . " " . $this->student->surname;
         $this->email = $this->student->email;
         $this->price = $this->price * 100;
@@ -193,7 +193,6 @@ class Reservation extends ImportModel
             $course = (new \Logingrupa\Studybook\Models\Course)->find($this->course_id);
             $price = $course->price;
             $old_price = $course->old_price;
-            // do something to get the name value based on the code
 
             $fields->price->value = $price /100;
             $fields->old_price->value = $old_price /100;

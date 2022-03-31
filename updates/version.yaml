@@ -1,21 +1,21 @@
-1.0.0:
+v1.0.0:
     - 'Init plugin'
-1.0.1:
+v1.0.1:
     - 'Create categories table and relationship table.'
     - create_table_categories.php
     - 'Create table - course_categories'
     - create_table_course_categories.php
-1.0.2:
+v1.0.2:
     - 'Create courses table.'
     - create_table_courses.php
-1.0.3:
+v1.0.3:
     - 'Create AvailableDates and relationship table.'
     - create_table_availabledates.php
     - 'Create table - course_dates'
     - create_table_course_dates.php
-1.0.4:
+v1.0.4:
     - 'Create Reservations table.'
     - create_table_reservations.php
-1.0.5:
+v1.0.5:
     - 'Seed test Data.'
     - seed_test_data.php
