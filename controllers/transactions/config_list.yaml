@@ -19,6 +19,9 @@ recordsPerPage: 20
 # Display page numbers with pagination, disable to improve performance
 showPageNumbers: true
 
+howSetup: true
+showTree: 1
+
 # Displays the list column set up button
 showSetup: true
 

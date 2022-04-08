@@ -8,6 +8,7 @@ use Kharanenka\Scope\SlugField;
 use Kharanenka\Scope\CodeField;
 use October\Rain\Database\Traits\NestedTree;
 use Lovata\Toolbox\Traits\Helpers\TraitCached;
+use RainLab\User\Models\User;
 
 /**
  * Class Transaction
@@ -40,7 +41,6 @@ class Transaction extends Model
 {
     use Sluggable;
     use Validation;
-    use NameField;
     use SlugField;
     use CodeField;
     use NestedTree;
@@ -54,12 +54,10 @@ class Transaction extends Model
     public $translatable = [];
     /** @var array */
     public $attributeNames = [
-        'name' => 'lovata.toolbox::lang.field.name',
         'slug' => 'lovata.toolbox::lang.field.slug',
     ];
     /** @var array */
     public $rules = [
-        'name' => 'required',
         'slug' => 'required|unique:logingrupa_studybook_transactions',
     ];
     /** @var array */
@@ -70,24 +68,34 @@ class Transaction extends Model
     public $jsonable = [];
     /** @var array */
     public $fillable = [
-        'name',
+        'parent_id',
+        'type',
+        'reservation_id',
         'slug',
-        'code',
-        'description',
+        'student_id',
+        'credit',
+        'debit',
+        'note',
+        'transaction_at',
     ];
     /** @var array */
     public $cached = [
         'id',
         'parent_id',
-        'name',
+        'type',
+        'reservation_id',
         'slug',
-        'code',
-        'description',
+        'student_id',
+        'credit',
+        'debit',
+        'note',
+        'transaction_at',
     ];
     /** @var array */
     public $dates = [
         'created_at',
         'updated_at',
+//        'transaction_at',
     ];
     /** @var array */
     public $casts = [];
@@ -100,7 +108,10 @@ class Transaction extends Model
     /** @var array */
     public $hasMany = [];
     /** @var array */
-    public $belongsTo = [];
+    public $belongsTo = [
+        'reservation' => Reservation::class,
+        'student' => User::class,
+    ];
     /** @var array */
     public $belongsToMany = [];
     /** @var array */
@@ -114,6 +125,16 @@ class Transaction extends Model
     /** @var array */
     public $attachMany = [];
 
+    // Before saving make changes
+    public function beforeSave()
+    {
+        if (empty(post())) {
+            return;
+        }
+        $this->slug = uniqid(false);
+        $datetime = explode(' ', $this->transaction_at, 2);
+        isset($datetime[0]) ? $this->transaction_at = $datetime[0] : $this->transaction_at = null;
+    }
     /**
      * Get by parent ID
      * @param Transaction $obQuery

@@ -32,7 +32,7 @@ class CreateTableTransactions extends Migration
             $obTable->integer('credit')->nullable();
             $obTable->integer('debit')->nullable();
             $obTable->text('note')->nullable();
-            $obTable->datetime('transaction_at')->nullable();
+            $obTable->string('transaction_at')->nullable();
             $obTable->integer('parent_id')->nullable()->unsigned();
             $obTable->integer('nest_left')->nullable()->unsigned();
             $obTable->integer('nest_right')->nullable()->unsigned();

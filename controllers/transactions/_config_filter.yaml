@@ -1,9 +1,18 @@
 scopes:
-    created_at:
-        label: 'lovata.toolbox::lang.field.created_at'
-        type: daterange
-        conditions: created_at >= ':after' AND created_at <= ':before'
-    updated_at:
-        label: 'lovata.toolbox::lang.field.updated_at'
-        type: daterange
-        conditions: updated_at >= ':after' AND updated_at <= ':before'
+#    student:
+#        label: Student
+#        modelClass: Rainlab\User\Models\User
+#        conditions: student_id in (:filtered)
+#        nameFrom: name
+#    transaction_at:
+#        label: 'lovata.toolbox::lang.field.created_at'
+#        type: date
+#        conditions: transaction_at >= ':filtered'
+#    created_at:
+#        label: 'lovata.toolbox::lang.field.created_at'
+#        type: daterange
+#        conditions: created_at >= ':after' AND created_at <= ':before'
+#    updated_at:
+#        label: 'lovata.toolbox::lang.field.updated_at'
+#        type: daterange
+#        conditions: updated_at >= ':after' AND updated_at <= ':before'
