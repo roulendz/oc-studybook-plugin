@@ -3,6 +3,7 @@
 use Model;
 use October\Rain\Database\Traits\Sluggable;
 use October\Rain\Database\Traits\Validation;
+use Kharanenka\Scope\ActiveField;
 use Kharanenka\Scope\NameField;
 use Kharanenka\Scope\SlugField;
 use Kharanenka\Scope\CodeField;
@@ -41,8 +42,9 @@ class Transaction extends Model
 {
     use Sluggable;
     use Validation;
-    use SlugField;
-    use CodeField;
+    use ActiveField;
+//    use SlugField;
+//    use CodeField;
     use NestedTree;
     use TraitCached;
 
@@ -68,6 +70,7 @@ class Transaction extends Model
     public $jsonable = [];
     /** @var array */
     public $fillable = [
+        'active',
         'parent_id',
         'type',
         'reservation_id',
@@ -81,6 +84,7 @@ class Transaction extends Model
     /** @var array */
     public $cached = [
         'id',
+        'active',
         'parent_id',
         'type',
         'reservation_id',
