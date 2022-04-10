@@ -1,0 +1,75 @@
+columns:
+    active:
+        label: 'logingrupa.studybook::lang.field.payment'
+        type: switch
+        searchable: false
+        sortable: false
+        invisible: false
+    id:
+        label: 'lovata.toolbox::lang.field.id'
+        type: number
+        searchable: true
+        sortable: true
+        width: 100px
+        invisible: true
+    reservation_id:
+        label: 'Reservation'
+        type: text
+        relation: reservation
+        select: name
+        searchable: true
+        sortable: true
+    type:
+        lable: type
+        type: text
+        sort: false
+        serchable: false
+        invisible: false
+    slug:
+        lable: slug
+        type: text
+        sort: false
+        serchable: false
+        invisible: true
+    credit:
+        lable: credit
+        type: price
+        sort: false
+        serchable: false
+        invisible: false
+    debit:
+        lable: debit
+        type: price
+        sort: false
+        serchable: false
+        invisible: false
+    balance:
+        lable: balance
+        type: debit_credit_balance
+        sort: true
+        serchable: false
+        invisible: false
+        width: 100px
+    note:
+        lable: note
+        type: text
+        sort: false
+        invisible: false
+        serchable: true
+    transaction_at:
+        lable: transaction_at
+        type: text
+        sort: true
+        serchable: true
+        invisible: false
+    created_at:
+        label: 'lovata.toolbox::lang.field.created_at'
+        type: timetense
+        sortable: true
+        invisible: true
+    updated_at:
+        label: 'lovata.toolbox::lang.field.updated_at'
+        type: timetense
+        sortable: true
+        invisible: true
+
