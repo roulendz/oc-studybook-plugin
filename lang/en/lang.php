@@ -54,6 +54,7 @@
     ],
     'tab' => [
         'permissions' => 'Studybook',
+        'payments' => 'Payments',
         'reservations' => 'Student reservations',
     ],
     'comment' => [],
@@ -63,6 +64,9 @@
         'create' => 'Create new',
         'link' => 'Link existing',
         'unlink' => 'Unlink selected',
+        'delete' => 'Delete selected',
+        'transaction_add' => 'Add new payment',
+        'transaction_delete' => 'Delete permanently selected payment',
     ],
     'component' => [
         'course_page_name' => 'Course Page',
