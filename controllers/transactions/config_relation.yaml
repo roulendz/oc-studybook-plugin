@@ -1,0 +1,30 @@
+# ===================================
+#  Relation Behavior Config
+# ===================================
+
+children:
+    label: Payment
+    form: ~/plugins/logingrupa/studybook/models/transaction/fields_simple_for_children.yaml
+    list: ~/plugins/logingrupa/studybook/models/transaction/columns_simple_for_children.yaml
+
+    view:
+        #        filter: config_availabledates_filter.yaml
+        showSearch: false
+        toolbarButtons: create|delete
+        showCheckboxes: true
+    customMessages:
+        buttonCreate: 'logingrupa.studybook::lang.button.transaction_add'
+        buttonLink: 'logingrupa.studybook::lang.button.link'
+        buttonUnlink: 'logingrupa.studybook::lang.button.unlink'
+        buttonDelete: 'logingrupa.studybook::lang.button.transaction_delete'
+    #        titleAddForm: tests
+    #        titleCreateForm: 'logingrupa.studybook::lang.availabledate.titleCreateForm'
+    #        titleLinkForm: 'logingrupa.studybook::lang.availabledate.titleLinkForm'
+    #        confirmUnlink: 'logingrupa.studybook::lang.availabledate.confirmUnlink'
+    #        flashUnlink: 'logingrupa.studybook::lang.availabledate.flashUnlink'
+    manage:
+        context: relation
+        recordsPerPage: 10
+        showSearch: true
+        showCheckboxes: true
+        toolbarButtons: create|unlink|link

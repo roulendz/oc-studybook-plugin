@@ -16,6 +16,7 @@ class Transactions extends Controller
         'Backend.Behaviors.ListController',
         'Backend\Behaviors\ReorderController',
         'Backend.Behaviors.FormController',
+        'Backend.Behaviors.RelationController'
     ];
     /** @var string */
     public $listConfig = 'config_list.yaml';
@@ -23,6 +24,8 @@ class Transactions extends Controller
     public $reorderConfig = 'config_reorder.yaml';
     /** @var string */
     public $formConfig = 'config_form.yaml';
+    /** @var string */
+    public $relationConfig = 'config_relation.yaml';
 
     /**
      * Transactions constructor.
