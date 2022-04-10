@@ -5,6 +5,20 @@
                 <?= e(trans('logingrupa.studybook::lang.transaction.list_title')) ?>
             </a>
         </li>
+        <?php if(!empty($formModel) && !empty($formModel->student)) {
+        $obStudent = $formModel->student;
+        ?>
+        <li>
+            <a href="<?= Backend::url('rainlab/user/users/update/'.$obStudent->id) ?>"><?= $obStudent->name . " " . $obStudent->surname  ?></a>
+        </li>
+        <?php } ?>
+        <?php if(!empty($formModel) && !empty($formModel->reservation)) {
+        $obReservation = $formModel->reservation;
+        ?>
+        <li>
+            <a href="<?= Backend::url('rainlab/user/users/update/'.$obReservation->id) ?>"><?= $obReservation->start_at . " " . $obReservation->name  ?></a>
+        </li>
+        <?php } ?>
         <li><?= e($this->pageTitle) ?></li>
     </ul>
 <?php Block::endPut() ?>
