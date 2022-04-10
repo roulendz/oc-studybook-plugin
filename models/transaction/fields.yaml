@@ -1,31 +1,81 @@
 fields:
-    name:
-        label: 'lovata.toolbox::lang.field.name'
-        span: auto
+    student@update:
+        label: 'logingrupa.studybook::lang.field.full_name'
+        span: left
         required: 1
-        type: text
-        placeholder: 'lovata.toolbox::lang.field.name'
-    slug:
-        label: 'lovata.toolbox::lang.field.slug'
-        span: auto
+        type: relation
+        select: concat(name, ' ', surname)
+        readOnly: true
+    student@create:
+        label: 'logingrupa.studybook::lang.field.full_name'
+        span: left
         required: 1
-        placeholder: 'lovata.toolbox::lang.field.slug'
-        preset:
-            field: name
-            type: slug
+        type: relation
+        select: concat(name, ' ', surname)
+    slug@update:
+        label: 'lovata.toolbox::lang.field.id'
+        span: right
+        required: 1
+        placeholder: 'lovata.toolbox::lang.field.id'
         type: text
+        readOnly: true
+    reservation@update:
+        label: 'Reservation'
+        type: relation
+        span: left
+        select: concat(start_at, ' - ' ,name, ' - ', full_name, ' - €', price / 100)
+        readOnly: true
+    reservation_id@create:
+        label: 'Reservation'
+        type: dropdown
+        span: left
+        options: \Logingrupa\Studybook\Classes\Helper\Transaction\FormHelper::staticGetStudentReservationListOptions
+        dependsOn: student
+    credit@update:
+        label: credit
+        type: number
+        span: right
+        readOnly: true
+    credit@create:
+        label: credit
+        type: number
+        min: 0
+        span: right
+    transaction_at@update:
+        label: transaction_at
+        type: datepicker
+        mode: date
+        span: auto
+    transaction_at@create:
+        label: transaction_at
+        type: datepicker
+        mode: date
+        span: auto
+    note:
+        label: 'lovata.toolbox::lang.field.description'
+        size: large
+        span: right
+        type: textarea
+        tab: 'lovata.toolbox::lang.tab.description'
+    type:
+        label: payment_type
+        type: dropdown
+        options:
+            bank: Bank transfer
+            cache: Cache
+            gift: Gift card
+            discount: Discount
+        span: left
+    status:
+        type: partial
+        path: $/logingrupa/studybook/controllers/transactions/_children_status_field.htm
+        span: left
+#        TODO:report issue when field is updated it does filterFields again on current value not value in database
+#        dependsOn: children
 tabs:
     fields:
-        code:
-            label: 'lovata.toolbox::lang.field.code'
-            span: left
-            type: text
-            placeholder: 'lovata.toolbox::lang.field.code'
-            tab: 'lovata.toolbox::lang.tab.settings'
-        description:
-            label: 'lovata.toolbox::lang.field.description'
-            size: giant
-            span: full
-            type: richeditor
-            tab: 'lovata.toolbox::lang.tab.description'
+        children:
+            type: partial
+            tab: 'logingrupa.studybook::lang.tab.payments'
+
 

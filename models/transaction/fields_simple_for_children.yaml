@@ -1,0 +1,49 @@
+fields:
+    active:
+        label: Payment
+        type: switch
+        default: true
+        options:
+            - No
+            - Yes
+        span: left
+    type:
+        label: payment_type
+        type: dropdown
+        options:
+            bank: Bank transfer
+            cache: Cache
+            gift: Gift card
+            discount: Discount
+        span: left
+    slug@update:
+        label: 'lovata.toolbox::lang.field.id'
+        span: right
+        required: 1
+        placeholder: 'lovata.toolbox::lang.field.id'
+        type: text
+        readOnly: true
+    slug@relation:
+        label: 'lovata.toolbox::lang.field.id'
+        span: right
+        required: 1
+        placeholder: 'lovata.toolbox::lang.field.id'
+        type: text
+        readOnly: true
+    debit:
+        label: debit
+        type: number
+        span: right
+    transaction_at:
+        label: transaction_at
+        type: datepicker
+        mode: date
+        span: auto
+    note:
+        label: 'lovata.toolbox::lang.field.description'
+        size: large
+        span: right
+        type: textarea
+        tab: 'lovata.toolbox::lang.tab.description'
+
+
