@@ -43,6 +43,7 @@ class Plugin extends PluginBase
             'price' => [$this, 'evalPriceListColumn'],
             'old_price' => [$this, 'evalOldPriceListColumn'],
             'phone_number' => [$this, 'evalPhoneNumberListColumn'],
+            'debit_credit_balance' => [$this, 'evalDebitCreditBalanceListColumn'],
         ];
     }
 
@@ -79,6 +80,19 @@ class Plugin extends PluginBase
     public function evalPhoneNumberListColumn($value, $column, $record)
     {
         return '<a href="tel:'. $value .'" >'. $value . '</a>';
+    }
+
+    /**
+     * Currency Old Price Column Type
+     */
+    public function evalDebitCreditBalanceListColumn($value, $column, $record)
+    {
+
+        if(!$record->children()->count() == 0) {
+        $debit = $record->children()->whereActive(true)->sum('debit') / 100;
+        $credit = $record->credit / 100;
+        return '<p class="positive" style="float:left;width:50%">+€'. $debit . '</p> <p class="negative" style="float:left;width:50%">-€'. ($credit - $debit) . '</p>';
+        }
     }
 
     /**
