@@ -19,6 +19,7 @@ columns:
         label: 'logingrupa.studybook::lang.field.full_name'
         sortable: false
         useTimezone: true
+        searchable: true
     phone:
         lable: 'logingrupa.studybook::lang.field.mobile'
         type: phone_number
