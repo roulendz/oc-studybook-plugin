@@ -77,7 +77,7 @@ class Reservation extends ImportModel
         'active',
         'name',
         'slug',
-        'code',
+        'note',
         'external_id',
         'preview_text',
         'description',
@@ -88,13 +88,9 @@ class Reservation extends ImportModel
         'active',
         'name',
         'slug',
-        'code',
-        'external_id',
-        'preview_text',
-        'description',
-        'preview_image',
-        'file',
-        'images',
+        'note',
+        'reservation_id',
+        'student_id',
     ];
     /** @var array */
     public $dates = [
@@ -150,7 +146,7 @@ class Reservation extends ImportModel
         if (empty(post())) {
             return;
         }
-        $this->slug = uniqid(true);
+        $this->slug = uniqid(false);
         $this->name = $this->course->name;
 //      @TODO: Cannot unlink Student, throws error, insert check if field is available
         $this->full_name = $this->student->name . " " . $this->student->surname;
