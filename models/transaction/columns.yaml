@@ -44,6 +44,13 @@ columns:
         sort: false
         serchable: false
         invisible: false
+    balance:
+        lable: balance
+        type: debit_credit_balance
+        sort: true
+        serchable: false
+        invisible: false
+        width: 170px
     note:
         lable: note
         type: text
