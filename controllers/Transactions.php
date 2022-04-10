@@ -46,4 +46,24 @@ class Transactions extends Controller
 
         return $obResult;
     }
+
+    /**
+     * AvailableDates dynamic row css classes when date is older than today.
+     */
+    public function listInjectRowClass($record, $definition = null)
+    {
+        if ($record->active == false) {
+            return 'negative';
+        }
+        if (is_null($record->parent_id)) {
+            return 'new';
+        }
+    }
+
+    public function listOverrideRecordUrl($record, $definition = null)
+    {
+        if (!is_null($record->parent_id)) {
+            return ['clickable' => false];
+        }
+    }
 }
