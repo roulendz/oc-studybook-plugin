@@ -25,6 +25,7 @@ class CreateTableTransactions extends Migration
         {
             $obTable->engine = 'InnoDB';
             $obTable->increments('id')->unsigned();
+            $obTable->boolean('active')->default(0);
             $obTable->string('type')->nullable();
             $obTable->integer('reservation_id')->nullable()->unsigned();
             $obTable->string('slug')->unique()->index();
