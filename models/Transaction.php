@@ -60,12 +60,10 @@ class Transaction extends Model
     ];
     /** @var array */
     public $rules = [
-        'slug' => 'required|unique:logingrupa_studybook_transactions',
+
     ];
     /** @var array */
-    public $slugs = [
-        'slug' => 'name'
-    ];
+    public $slugs = [];
     /** @var array */
     public $jsonable = [];
     /** @var array */
