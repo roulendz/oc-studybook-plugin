@@ -30,3 +30,32 @@ reservations:
         showSearch: false
         showCheckboxes: true
         toolbarButtons: create|unlink|link
+
+transactions:
+    label: logingrupa.studybook::lang.transactions.name
+    list: ~/plugins/logingrupa/studybook/models/transaction/columns.yaml
+    form: ~/plugins/logingrupa/studybook/models/transaction/fields.yaml
+    readOnly: false
+
+    view:
+        label: test
+#        filter: config_availabledates_filter.yaml
+        recordUrl: logingrupa/studybook/transactions/update/:id
+        showSearch: false
+        toolbarButtons: delete
+        showCheckboxes: false
+#    customMessages:
+#        buttonCreate: 'logingrupa.studybook::lang.button.add'
+#        buttonLink: 'logingrupa.studybook::lang.button.link'
+#        buttonUnlink: 'logingrupa.studybook::lang.button.unlink'
+#        titleAddForm: tests
+#        titleCreateForm: 'logingrupa.studybook::lang.availabledate.titleCreateForm'
+#        titleLinkForm: 'logingrupa.studybook::lang.availabledate.titleLinkForm'
+#        confirmUnlink: 'logingrupa.studybook::lang.availabledate.confirmUnlink'
+#        flashUnlink: 'logingrupa.studybook::lang.availabledate.flashUnlink'
+    manage:
+        context: relation
+        recordsPerPage: 10
+        showSearch: false
+        showCheckboxes: true
+        toolbarButtons: create|unlink|link

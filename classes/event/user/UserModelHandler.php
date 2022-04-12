@@ -1,5 +1,6 @@
 <?php namespace Logingrupa\Studybook\Classes\Event\User;
 
+use Logingrupa\Studybook\Models\Transaction;
 use RainLab\User\Models\User;
 use Logingrupa\Studybook\Models\Reservation;
 
@@ -27,6 +28,13 @@ class UserModelHandler
                 Reservation::class,
                 'key'      => 'student_id',
                 'order' => 'start_at desc',
+            ];
+            /** @var User $obModel */
+            $obModel->hasMany['transactions'] = [
+                Transaction::class,
+                'key'      => 'student_id',
+                'order' => 'id asc',
+                'scope' => 'onlyParents'
             ];
         });
     }

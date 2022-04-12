@@ -35,6 +35,14 @@ class ExtendUserFieldsHandler extends AbstractBackendFieldHandler
      */
     protected function addField($obWidget)
     {
+        $obWidget->addFields([
+            'phone' => [
+                'type' => 'text',
+                'label' =>  'logingrupa.studybook::lang.field.user.phone',
+                'span' => 'left',
+//                'tab' => 'rainlab.user::lang.user.account',
+            ],
+        ]);
         $obWidget->addTabFields([
             'reservations' => [
                 'type' => 'partial',
@@ -43,6 +51,17 @@ class ExtendUserFieldsHandler extends AbstractBackendFieldHandler
                 'tab' => 'logingrupa.studybook::lang.tab.reservations',
                 'attributes' => [
                     'tabindex' => 0,
+                ],
+                'defaultTab' => 'logingrupa.studybook::lang.tab.reservations',
+//                'context' => ['update'],
+            ],
+            'transactions' => [
+                'type' => 'partial',
+                'path' => '$/logingrupa/studybook/view/_transactions.htm',
+                'span' => 'full',
+                'tab' => 'logingrupa.studybook::lang.tab.transactions',
+                'attributes' => [
+                    'tabindex' => 1,
                 ],
                 'defaultTab' => 'logingrupa.studybook::lang.tab.reservations',
 //                'context' => ['update'],
