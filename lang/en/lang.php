@@ -43,6 +43,25 @@
         'health' => 'Green Certificate',
         'payment' => 'Is payment done? - NOT IMPLEMENTED YET    ',
         'information' => 'Is information sent? - NOT IMPLEMENTED YET',
+        'user' => [
+            'phone' => 'Phone number',
+            'active' => 'Account active',
+        ],
+        'reservation' => [
+        ],
+        'transaction' => [
+            'type' => 'Payment type',
+            'active' => 'Payment received',
+            'reservation_name' => 'Student reservation',
+            'slug' => 'URL ID',
+            'credit' => 'Credit',
+            'debit' => 'Debit',
+            'balance' => 'Balance paid/unpaid',
+            'note' => 'Note',
+            'transaction_at' => 'Payment received',
+            'student_full_name' => 'Student full name',
+            'payment_is_received' => 'Payment is received',
+        ],
     ],
     'menu' => [
         'main' => 'Studybook',
@@ -56,6 +75,7 @@
         'permissions' => 'Studybook',
         'payments' => 'Payments',
         'reservations' => 'Student reservations',
+        'transactions' => 'Student payment transactions',
     ],
     'comment' => [],
     'message' => [],
@@ -128,5 +148,9 @@
     'transaction' => [
         'name' => 'transaction',
         'list_title' => 'Transaction list',
+        'financial_status' => 'Financial status',
+        'total_to_pay' => 'Total to be paid',
+        'total_paid' => 'Total paid',
+        'credit_debit_calculation' => 'Total left',
     ],
 ];
