@@ -106,7 +106,9 @@ class Reservation extends ImportModel
     /** @var array */
     public $hasOne = [];
     /** @var array */
-    public $hasMany = [];
+    public $hasMany = [
+        'transactions' => Transaction::class,
+    ];
     /** @var array */
     public $belongsTo = [
         'student' => User::class,
