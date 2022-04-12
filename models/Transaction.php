@@ -174,4 +174,13 @@ class Transaction extends Model
     {
         return $obQuery->where('parent_id', $sData);
     }
+
+    /**
+     * Get only elements
+     * @param \Illuminate\Database\Eloquent\Builder|\October\Rain\Database\Builder $obQuery
+     * @return \Illuminate\Database\Eloquent\Builder|\October\Rain\Database\Builder;
+     */
+    public function scopeOnlyParents($obQuery) {
+        return $obQuery->where('parent_id', null);
+    }
 }
