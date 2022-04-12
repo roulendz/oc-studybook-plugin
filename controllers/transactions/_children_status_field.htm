@@ -1,10 +1,10 @@
 <div class="callout fade in callout-info no-icon" <?= $debit = $model->children()->where('active', true)->sum('debit') / 100 ?>  <?= $credit = $model->credit / 100 ?>>
     <div class="header">
-         <h3>Status</h3>
+         <h3><?= e(trans('logingrupa.studybook::lang.transaction.financial_status')) ?></h3>
         <ul>
-            <li>Summa apmaksai: €<?= $credit ?></li>
-            <li>Apmaksātā summa: €<?= $debit ?></li>
-            <li><b>Parāds: €<?= $credit - $debit ?></b></li>
+            <li><?= e(trans('logingrupa.studybook::lang.transaction.total_to_pay')) ?>: €<?= $credit ?></li>
+            <li><?= e(trans('logingrupa.studybook::lang.transaction.total_paid')) ?>: €<?= $debit ?></li>
+            <li><b><?= e(trans('logingrupa.studybook::lang.transaction.credit_debit_calculation')) ?>: €<?= $credit - $debit ?></b></li>
         </ul>
     </div>
 </div>
