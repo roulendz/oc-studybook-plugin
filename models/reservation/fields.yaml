@@ -60,6 +60,13 @@ fields:
         placeholder: 'logingrupa.studybook::lang.field.old_price'
 
 tabs:
+    stretch: true
+    defaultTab: 'lovata.toolbox::lang.tab.settings'
+    cssClass: text-blue
+    lazy:
+        - 'lovata.toolbox::lang.tab.settings'
+        - 'logingrupa.studybook::lang.reservation.tab'
+        - 'lovata.toolbox::lang.tab.description'
     fields:
         # Relation Controller
         _information_sent:
@@ -83,11 +90,14 @@ tabs:
         student:
             type: partial
             tab: 'logingrupa.studybook::lang.reservation.tab'
+        transaction:
+            type: partial
+            path: '$/logingrupa/studybook/view/_transactions.htm'
+            tab: 'logingrupa.studybook::lang.tab.transactions'
         name@update:
             span: row
             spanClass: col-xs-4
             label: 'logingrupa.studybook::lang.reservation.name'
-            comment: Proxy text field for Person model.
             type: dropdown
             tab: 'lovata.toolbox::lang.tab.settings'
             readOnly: false
@@ -98,7 +108,6 @@ tabs:
             span: row
             spanClass: col-xs-4
             label: 'logingrupa.studybook::lang.field.student_phone'
-            comment: Proxy text field for Person model.
             tab: 'lovata.toolbox::lang.tab.settings'
             readOnly: false
             preset:
@@ -108,7 +117,6 @@ tabs:
             span: row
             spanClass: col-xs-4
             label: 'logingrupa.studybook::lang.field.full_name'
-            comment: Proxy text field for Person model.
             preset:
                 field: student[name]
                 type: exact
@@ -119,7 +127,6 @@ tabs:
             span: row
             spanClass: col-xs-4
             label: 'logingrupa.studybook::lang.field.email'
-            comment: Proxy text field for Person model.
             preset:
                 field: student[email]
                 type: exact
