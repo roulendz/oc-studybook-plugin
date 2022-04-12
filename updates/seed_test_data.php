@@ -1,5 +1,7 @@
 <?php namespace Logingrupa\Studybook\Updates;
 
+use Faker\Factory;
+use Faker\Provider\lv_LV\PhoneNumber;
 use Logingrupa\Studybook\Models\AvailableDate;
 use Logingrupa\Studybook\Models\Category;
 use Logingrupa\Studybook\Models\Course;
@@ -25,16 +27,19 @@ class SeedTestData extends Seeder
         DB::table('logingrupa_studybook_categories')->delete();
         DB::table('logingrupa_studybook_transactions')->delete();
         $name = ['Baiba Zariņa', 'Zane Zeltiņa', 'Ieva Razgalae', 'Vera Liole', 'Roberts Zeltiņš', 'Normunds Zeltiņš', 'Toms Muižnieks', 'Zigurds Mežš', 'Lauma Rudze', 'Aiga Zara', 'Artis Ābols', 'Gunārs Bumbiers', 'Raitis Raiders', 'Gunita Preile', 'Laila Briede'];
+        $faker = Factory::create('lv_LV');
+        $faker->addProvider(new PhoneNumber($faker));
         foreach ($name as $key => $value) {
             $pieces = explode(" ", $value);
-            User::create([
+            User::create(array(
                 'name' => $pieces[0],
                 'surname' => $pieces[1],
                 'email' => str_slug($value, '.').'@gmail.com',
                 'is_activated' => 1,
+                'phone' => $faker->e164PhoneNumber,
                 'password' => '123123123',
                 'password_confirmation' => '123123123',
-            ]);
+            ));
         }//END
 
         $categories = [
@@ -148,7 +153,7 @@ class SeedTestData extends Seeder
                 'student_id' => $student->id,
                 'attendance' => rand(0, 1),
                 'health' => rand(0, 1),
-                'phone' => '+32727831183',
+                'phone' => $student->phone,
                 'email' => $student->email,
                 'model_status' => 1,
                 'slug' => uniqid(str_slug($course->name, '-'),true),
@@ -223,7 +228,7 @@ class SeedTestData extends Seeder
                 'student_id' => $student->id,
                 'attendance' => rand(0, 1),
                 'health' => rand(0, 1),
-                'phone' => '+32727831183',
+                'phone' => $student->phone,
                 'email' => $student->email,
                 'model_status' => 1,
                 'slug' => uniqid(str_slug($course->name, '-'),true),
@@ -250,7 +255,7 @@ class SeedTestData extends Seeder
                 'student_id' => $student->id,
                 'attendance' => rand(0, 1),
                 'health' => rand(0, 1),
-                'phone' => '+32727831183',
+                'phone' => $student->phone,
                 'email' => $student->email,
                 'model_status' => 1,
                 'slug' => uniqid(true),
