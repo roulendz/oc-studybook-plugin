@@ -1,64 +1,64 @@
 fields:
     student@update:
-        label: 'logingrupa.studybook::lang.field.full_name'
+        label: 'logingrupa.studybook::lang.field.transaction.student_full_name'
         span: left
         required: 1
         type: relation
         select: concat(name, ' ', surname)
         readOnly: true
     student@create:
-        label: 'logingrupa.studybook::lang.field.full_name'
+        label: 'logingrupa.studybook::lang.field.transaction.student_full_name'
         span: left
         required: 1
         type: relation
         select: concat(name, ' ', surname)
     slug@update:
-        label: 'lovata.toolbox::lang.field.id'
+        label: 'logingrupa.studybook::lang.field.transaction.slug'
         span: right
         required: 1
         placeholder: 'lovata.toolbox::lang.field.id'
         type: text
         readOnly: true
     reservation@update:
-        label: 'Reservation'
+        label: 'logingrupa.studybook::lang.field.transaction.reservation_name'
         type: relation
         span: left
         select: concat(start_at, ' - ' ,name, ' - ', full_name, ' - €', price / 100)
         readOnly: true
     reservation_id@create:
-        label: 'Reservation'
+        label: 'logingrupa.studybook::lang.field.transaction.reservation_name'
         type: dropdown
         span: left
         options: \Logingrupa\Studybook\Classes\Helper\Transaction\FormHelper::staticGetStudentReservationListOptions
         dependsOn: student
     credit@update:
-        label: credit
+        label: 'logingrupa.studybook::lang.field.transaction.credit'
         type: number
         span: right
         readOnly: true
     credit@create:
-        label: credit
+        label: 'logingrupa.studybook::lang.field.transaction.credit'
         type: number
         min: 0
         span: right
     transaction_at@update:
-        label: transaction_at
+        label: 'logingrupa.studybook::lang.field.transaction.transaction_at'
         type: datepicker
         mode: date
         span: auto
     transaction_at@create:
-        label: transaction_at
+        label: 'logingrupa.studybook::lang.field.transaction.transaction_at'
         type: datepicker
         mode: date
         span: auto
     note:
-        label: 'lovata.toolbox::lang.field.description'
+        label: 'logingrupa.studybook::lang.field.transaction.note'
         size: large
         span: right
         type: textarea
         tab: 'lovata.toolbox::lang.tab.description'
     type:
-        label: payment_type
+        label: 'logingrupa.studybook::lang.field.transaction.type'
         type: dropdown
         options:
             bank: Bank transfer

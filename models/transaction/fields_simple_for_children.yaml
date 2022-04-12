@@ -1,6 +1,6 @@
 fields:
     active:
-        label: Payment
+        label: 'logingrupa.studybook::lang.field.transaction.active'
         type: switch
         default: true
         options:
@@ -8,7 +8,7 @@ fields:
             - Yes
         span: left
     type:
-        label: payment_type
+        label: 'logingrupa.studybook::lang.field.transaction.type'
         type: dropdown
         options:
             bank: Bank transfer
@@ -17,30 +17,28 @@ fields:
             discount: Discount
         span: left
     slug@update:
-        label: 'lovata.toolbox::lang.field.id'
+        label: 'logingrupa.studybook::lang.field.transaction.slug'
         span: right
         required: 1
-        placeholder: 'lovata.toolbox::lang.field.id'
         type: text
         readOnly: true
     slug@relation:
-        label: 'lovata.toolbox::lang.field.id'
+        label: 'logingrupa.studybook::lang.field.transaction.slug'
         span: right
         required: 1
-        placeholder: 'lovata.toolbox::lang.field.id'
         type: text
         readOnly: true
     debit:
-        label: debit
+        label: 'logingrupa.studybook::lang.field.transaction.debit'
         type: number
         span: right
     transaction_at:
-        label: transaction_at
+        label: 'logingrupa.studybook::lang.field.transaction.transaction_at'
         type: datepicker
         mode: date
         span: auto
     note:
-        label: 'lovata.toolbox::lang.field.description'
+        label: 'logingrupa.studybook::lang.field.transaction.note'
         size: large
         span: right
         type: textarea
