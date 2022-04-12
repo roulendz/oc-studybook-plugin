@@ -4,14 +4,42 @@
 
 student:
     label: Student
-    form: ~/plugins/logingrupa/studybook/models/reservation/student_fields_simple.yaml
-    list: ~/plugins/rainlab/user/models/user/columns.yaml
+    form: ~/plugins/logingrupa/studybook/models/reservation/fields_simple_student_for_reservation.yaml
+    list: ~/plugins/logingrupa/studybook/models/reservation/columns_simple_student_for_reservation.yaml
 
     view:
         #        filter: config_availabledates_filter.yaml
         showSearch: false
-        toolbarButtons: link|create|unlink
+        toolbarButtons: link|update|create|unlink
         showCheckboxes: true
+    #    customMessages:
+    #        buttonCreate: 'logingrupa.studybook::lang.button.add'
+    #        buttonLink: 'logingrupa.studybook::lang.button.link'
+    #        buttonUnlink: 'logingrupa.studybook::lang.button.unlink'
+    #        titleAddForm: tests
+    #        titleCreateForm: 'logingrupa.studybook::lang.availabledate.titleCreateForm'
+    #        titleLinkForm: 'logingrupa.studybook::lang.availabledate.titleLinkForm'
+    #        confirmUnlink: 'logingrupa.studybook::lang.availabledate.confirmUnlink'
+    #        flashUnlink: 'logingrupa.studybook::lang.availabledate.flashUnlink'
+    manage:
+        context: relation
+        recordsPerPage: 10
+        showSearch: true
+        showCheckboxes: true
+        toolbarButtons: create|unlink|link
+transactions:
+    label: Transactions
+    form: ~/plugins/logingrupa/studybook/models/transaction/fields.yaml
+    list: ~/plugins/logingrupa/studybook/models/transaction/columns.yaml
+    readOnly: false
+
+    view:
+        label: test
+        #        filter: config_availabledates_filter.yaml
+        recordUrl: logingrupa/studybook/transactions/update/:id
+        showSearch: false
+        toolbarButtons: delete
+        showCheckboxes: false
     #    customMessages:
     #        buttonCreate: 'logingrupa.studybook::lang.button.add'
     #        buttonLink: 'logingrupa.studybook::lang.button.link'
