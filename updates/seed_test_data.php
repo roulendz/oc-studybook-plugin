@@ -90,6 +90,22 @@ class SeedTestData extends Seeder
         }//END
 
         $name = ['Gēla nagu modelēšanas kursi', 'Apvienotā manikīra un gēla programma', 'Jaunās paaudzes aparāta manikīrs'];
+        $courses = [
+            0 => ['name' => 'Nagu kopšanas speciālists - Standart', 'category_id' => 2, 'price' => '36500', 'old_price' => '40500', 'settings' => ['practical_lesson_count'=>16, 'lesson_count'=>18]],
+            1 => ['name' => 'Nagu kopšanas speciālists - Proffesional', 'category_id' => 2, 'price' => '47975', 'old_price' => '50500', 'settings' => ['practical_lesson_count'=>22, 'lesson_count'=>25]],
+            2 =>  ['name' => 'Gēla nagu modelēsana - Proffesiona', 'category_id' => 2, 'price' => '44650', 'old_price' => '47000', 'settings' => ['practical_lesson_count'=>19, 'lesson_count'=>20]],
+            3 =>  ['name' => 'Apvienotā programma (Manikīrs + Gēls)', 'category_id' => 2, 'price' => '61275', 'old_price' => '64500', 'settings' => ['practical_lesson_count'=>29, 'lesson_count'=>32]],
+            4 =>  ['name' => 'Bāzes aparāta manikīra kurss bez priekšzināšanām (3 dienas)', 'category_id' => 2, 'price' => '73625', 'old_price' => '77500', 'settings' => ['practical_lesson_count'=>35, 'lesson_count'=>39]],
+            5 =>  ['name' => 'Pedikīra speciālists', 'category_id' => 3, 'price' => '23750', 'old_price' => '25000', 'settings' => ['practical_lesson_count'=>6, 'lesson_count'=>7]],
+            6 =>  ['name' => 'Gēla nagu modelēsana - Standart', 'category_id' => 3, 'price' => '38950', 'old_price' => '41000', 'settings' => ['practical_lesson_count'=>13, 'lesson_count'=>14]],
+            7 =>  ['name' => 'Vaksācijas tehnoloģija', 'category_id' => 4, 'price' => '8500', 'old_price' => '9900', 'settings' => ['practical_lesson_count'=>3, 'lesson_count'=>4]],
+            8 =>  ['name' => 'Cukura pastas vaksācija (sugar wax)', 'category_id' => 4, 'price' => '8500', 'old_price' => '9900', 'settings' => ['practical_lesson_count'=>3, 'lesson_count'=>4]],
+            9 =>  ['name' => 'Klasiskā skropstu pieaudzēšana 1 dienas', 'category_id' => 5, 'price' => '8500', 'old_price' => '9900', 'settings' => ['practical_lesson_count'=>3, 'lesson_count'=>4]],
+            10 =>  ['name' => 'Klasiskā skropstu pieaudzēšana 2 dienas', 'category_id' => 5, 'price' => '9900', 'old_price' => '11000', 'settings' => ['practical_lesson_count'=>3, 'lesson_count'=>4]],
+            11 =>  ['name' => 'Apjoma skropstu pieaudzēšana (iegūts sertifikāta klasisikā skropstu pieaudzēšana)', 'category_id' => 5, 'price' => '9900', 'old_price' => '11000', 'settings' => ['practical_lesson_count'=>3, 'lesson_count'=>4]],
+            12 =>  ['name' => 'Dizaina kurss “Aqurelle”', 'category_id' => 6, 'price' => '5000', 'old_price' => '7000', 'settings' => ['practical_lesson_count'=>5, 'lesson_count'=>5]],
+            13 =>  ['name' => 'Dizaina kurss “Stamping” dizaina noslēpumi', 'category_id' => 6, 'price' => '5000', 'old_price' => '7000', 'settings' => ['practical_lesson_count'=>5, 'lesson_count'=>5]],
+        ];
         foreach ($name as $key => $value) {
             $availableDate = AvailableDate::inRandomOrder()->first();
             $course =  Course::create([
