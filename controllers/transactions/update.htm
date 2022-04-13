@@ -16,7 +16,7 @@
         $obReservation = $formModel->reservation;
         ?>
         <li>
-            <a href="<?= Backend::url('rainlab/user/users/update/'.$obReservation->id) ?>"><?= $obReservation->start_at . " " . $obReservation->name  ?></a>
+            <a href="<?= Backend::url('logingrupa/studybook/reservations/update/'.$obReservation->id) ?>"><?= $obReservation->start_at . " " . $obReservation->name  ?></a>
         </li>
         <?php } ?>
         <li><?= e($this->pageTitle) ?></li>
