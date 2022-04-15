@@ -105,24 +105,38 @@ class SeedTestData extends Seeder
             11 =>  ['name' => 'Apjoma skropstu pieaudzēšana (iegūts sertifikāta klasisikā skropstu pieaudzēšana)', 'category_id' => 5, 'price' => '9900', 'old_price' => '11000', 'settings' => ['practical_lesson_count'=>3, 'lesson_count'=>4]],
             12 =>  ['name' => 'Dizaina kurss “Aqurelle”', 'category_id' => 6, 'price' => '5000', 'old_price' => '7000', 'settings' => ['practical_lesson_count'=>5, 'lesson_count'=>5]],
             13 =>  ['name' => 'Dizaina kurss “Stamping” dizaina noslēpumi', 'category_id' => 6, 'price' => '5000', 'old_price' => '7000', 'settings' => ['practical_lesson_count'=>5, 'lesson_count'=>5]],
+            14 =>  ['name' => 'Dizaina kurss “Winter mix”', 'category_id' => 6, 'price' => '9000', 'old_price' => '10000', 'settings' => ['practical_lesson_count'=>5, 'lesson_count'=>5]],
+            15 =>  ['name' => 'Aerogrāfijas dizains uz nagiem ar AIRnails I līmenis (bez priekšzināšanām)', 'category_id' => 6, 'price' => '19000', 'old_price' => '22000', 'settings' => ['practical_lesson_count'=>5, 'lesson_count'=>5]],
+            16 =>  ['name' => 'Aerogrāfijas dizains uz nagiem ar AIRnails II līmenis (ar priekšzināšanām)', 'category_id' => 6, 'price' => '19000', 'old_price' => '22000', 'settings' => ['practical_lesson_count'=>5, 'lesson_count'=>5]],
+            17 =>  ['name' => 'Aparata manikīrs “kombis”  (iegūts sertifikāts nagu kopšanas speicālists)', 'category_id' => 7, 'price' => '19000', 'old_price' => '22000', 'settings' => ['practical_lesson_count'=>5, 'lesson_count'=>5]],
+            18 =>  ['name' => 'Aparāta pedikīrs(iegūts sertifikāts pedikīra speicālists)', 'category_id' => 7, 'price' => '19000', 'old_price' => '22000', 'settings' => ['practical_lesson_count'=>5, 'lesson_count'=>5]],
+            19 =>  ['name' => 'Gēla nagu pieaudzēšana ar duo gēl  (praktiski bez apvīlēšanas)', 'category_id' => 7, 'price' => '19000', 'old_price' => '22000', 'settings' => ['practical_lesson_count'=>5, 'lesson_count'=>5]],
+            20 =>  ['name' => 'Japānas manikīrs - apmācības', 'category_id' => 7, 'price' => '19000', 'old_price' => '22000', 'settings' => ['practical_lesson_count'=>5, 'lesson_count'=>5]],
+            21 =>  ['name' => 'BASIC KURSS PATSTĀVĪGAI APGŪŠANAI', 'category_id' => 9, 'price' => '19000', 'old_price' => '22000', 'settings' => ['practical_lesson_count'=>5, 'lesson_count'=>5]],
+            22 =>  ['name' => 'LEVEL UP KURSS AR PASNIEDZĒJU', 'category_id' => 9, 'price' => '19000', 'old_price' => '22000', 'settings' => ['practical_lesson_count'=>5, 'lesson_count'=>5]],
+            23 =>  ['name' => 'Drīzumā! Skaistumkopšanas pakalpojumu sniegšanai noteiktās higiēnas prasības', 'category_id' => 9, 'price' => '19000', 'old_price' => '22000', 'settings' => ['practical_lesson_count'=>5, 'lesson_count'=>5]],
+            24 =>  ['name' => 'Drīzumā! Manikīra meistara portfolio izveide, apstrāde', 'category_id' => 10, 'price' => '19000', 'old_price' => '22000', 'settings' => ['practical_lesson_count'=>5, 'lesson_count'=>5]],
+            25 =>  ['name' => 'Kā atjaunot un stiprināt vājus, bojātus, trauslus nagus', 'category_id' => 10, 'price' => '19000', 'old_price' => '22000', 'settings' => ['practical_lesson_count'=>5, 'lesson_count'=>5]],
+            26 =>  ['name' => 'Aerogrāfijas dizains uz nagiem ar AIRnails I līmenis (bez priekšzināšanām)', 'category_id' => 11, 'price' => '19000', 'old_price' => '22000', 'settings' => ['practical_lesson_count'=>5, 'lesson_count'=>5]],
         ];
-        foreach ($name as $key => $value) {
+        foreach ($courses as $key => $value) {
             $availableDate = AvailableDate::inRandomOrder()->first();
             $course =  Course::create([
                 'active' => 1,
-                'name' => $value,
-                'slug' => uniqid(str_slug($value, '-'),false),
+                'name' => $value['name'],
+                'category_id' => $value['category_id'],
+                'slug' => uniqid(str_slug($value['name'],'-'),false),
                 'code' => 1+423+$key*999,
                 'external_id' => 1+3412+$key*123999,
-                'preview_text' => $value,
-                'description' => 'Description ' . $value . $value . $value  ,
+                'preview_text' => $value['name'],
+                'description' => 'Description ' . $value['name'] . $value['name'] . $value['name'],
                 'view_count' => rand(0, 100),
-                'price' => rand(50000, 70000),
-                'old_price' => rand(70000, 80000),
+                'price' => $value['price'],
+                'old_price' => $value['old_price'],
                 'available_seats' => 10,
                 'duration_days' => 14,
                 'student_count' => rand(1, 7),
-                'settings' => ['practical_lesson_count'=>10, 'lesson_count'=>20],
+                'settings' => $value['settings'],
             ]);
             $course->availabledates()->attach($availableDate->id);
         }//END
