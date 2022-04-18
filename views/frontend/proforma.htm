@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+</head>
+<body>
+{##}
+{{ transaction }}
+{% set arTransaction = transaction[0] %}
+{% set order = {"id":53,"secret_key":"90e546a147f7a41d2414172323ac4807","order_number":"190708-0001","user_id":3,"status_id":3,"currency_id":1,"payment_method_id":1,"shipping_type_id":1,"shipping_tax_percent":"19.00","property":{"my_custom_field":"test123","email":"Nageldesign-jakob@web.de","name":"Stefanie","last_name":"Jakob","phone":"01794478925","shipping_address1":"Kolpingstrasse 22","shipping_address2":"NaN","shipping_city":"Herzebrock","shipping_postcode":"33442","shipping_country":"Deutschland","shipping_state":"Nrw","billing_country":"","billing_state":"","billing_city":"","billing_street":"","billing_house":"","billing_flat":"","billing_address1":"","billing_address2":"","billing_postcode":"","shipping_street":"","shipping_house":"","shipping_flat":""},"created_at":{"date":"2019-07-08 14:46:23.000000","timezone_type":3,"timezone":"UTC"},"updated_at":{"date":"2019-08-09 15:47:03.000000","timezone_type":3,"timezone":"UTC"},"manager_id":2,"order_position_id":[82,83,84],"order_promo_mechanism_id":[90,91],"shipping_price_value":"4.99","coupon_list":[]} %}
+{{ order.id }}aaa
+
+
+{# {{ dump(arTransaction.getData()) }} #}
+<div class="container">
+
+    <div class="row">
+        <div class="col-auto mr-auto">
+
+        </div>
+        <div class="col-auto">
+            {% if showEditButton == 1 %}
+            <a class="mb-20 float-ritht no-print lezada-button lezada-button--medium lezada-button--icon lezada-button--icon--right" href="/backend/lovata/ordersshopaholic/orders/update/{{ arTransaction.id }}">{{ 'Open order'|_ }}</a>
+            <a onclick="window.print()" class="mb-20 float-ritht no-print lezada-button lezada-button--medium lezada-button--icon lezada-button--icon--right" href="#">{{ 'Print Proforma'|_ }}</a>
+            {% else %}
+            <a onclick="window.print()" class="mb-20 float-ritht no-print lezada-button lezada-button--medium lezada-button--icon lezada-button--icon--right" href="#">{{ 'Print Proforma'|_ }}</a>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="card">
+
+        <div class="card-header">
+            {% if arTransaction.active %}
+            <strong class="text-primary">
+                {{ 'The proforma invoice has been paid'|_ }}
+            </strong>
+            {% else %}
+            <strong class="text-warning">
+                {{ 'Payment not yet received'|_ }} {{transaction.active}}
+            </strong>
+            {% endif %}
+            <span class="float-right"> <strong>{{ 'Order status'|_ }}:</strong> {{ arTransaction.status.name }}<br>{{ arTransaction.status.preview_text }}
+
+        </div>
+        <div class="card-body">
+            <div class="row mb-4">
+                <div class="col-sm-6">
+                    <div>
+                        {{ 'Phone number'|_ }} <a href="tel:0037120004588" class="text-primary">+371 2000 45 88</a>
+                    </div>
+                    <div><a href="mailto:info@manikirs.lv" class="text-primary">info@manikirs.lv</a></div>
+                    <div><a href="{{  url('/') }}" class="text-primary">{{  url('/') }}</a></div>
+                    <div class="pt-4"></div>
+                    <div></div>
+                    <div></div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div class="pb-40">
+                        <a href="{{ url('/') }}" class="float-right pb-40">
+                            <svg style="width: 210px; height: 50px;" class="icon icon-NAI_S-logo-black"><use xlink:href="/themes/naisstore/assets/svg/symbol-defs.svg#icon-NAI_S-logo-black"></use></svg>
+                        </a>
+                    </div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div class="col-lg-12 table-responsive">
+                    <table class="table table-borderless table-sm font-weight-normal">
+                        <tbody>
+                        <tr>
+                            <th class="font-weight-normal">{{ 'Proforma invoice No'|_ }}: <b>{{ "now"|date("Y") }}-000{{ arTransaction.id }}</b></th>
+                            <th class="" style="width:40px"></th>
+                            <th class="font-weight-normal">
+                                {% if arTransaction.active %}
+                                <strong class="text-primary">
+                                    {{ 'Payment received'|_ }}
+                                </strong>
+                                {% else %}
+                                {{ 'Pay by date'|_ }}: <b>{{ arTransaction.created_at|date_modify("+3 day")|date("d.M.Y H:m") }}
+                                {% endif %}
+                            </th>
+                        </tr>
+                        <tr>
+                            <td class="font-weight-normal">{{ 'Order date'|_ }}: {{ arTransaction.created_at|date("d.M.Y H:m") }}</td>
+                            <th class="" style="width:40px"></th>
+                            <td class="font-weight-normal">{{ 'Payment Method'|_ }}:
+                                {% if arTransaction.type == 'bank' %}
+                                <s>{{ arTransaction.type|title  }}</s><br><b>{{ 'Through direct Bank transfer'|_ }} </b>
+                                {% else %}
+                                {{ arTransaction.type|title  }}
+                                {% endif %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="font-weight-normal text-white">{{ 'Proforma invoice printed'|_ }}: {{ 'now'|date("d.M.Y H:m:s")}}</td>
+                            <th class="" style="width:40px"></th>
+                            <td class="font-weight-normal">{# {{ 'Payment Method'|_ }}: {{ arTransaction.type|title }} #}</td>
+
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+            <div class="row mb-4">
+                <div class="col-lg-12 table-responsive">
+                    <table class="table table-borderless table-sm font-weight-normal">
+                        <tbody>
+                        <tr>
+                            <th class="" style="background-color: #9ecf5d; border-top: #000000 1px solid;">{{ 'SCHOOL'|_ }}:</th>
+                            <th class="" style="width:40px"></th>
+                            <th class="" style="background-color: #9ecf5d; border-top: #000000 1px solid;">{{ 'CUSTOMER'|_ }}:</th>
+                        </tr>
+                        <tr>
+                            <td class="font-weight-normal">{{ 'Seller'|_}}: <b>{{  arTransaction.property.account_type == 'legal_person' ? this.theme.secondary_print_invoice_seller : this.theme.print_invoice_seller }}</b></td>
+                            <th class="" style="width:40px"></th>
+                            <td class="font-weight-normal">{{'Buyer'|_}}: <b>{{ arTransaction.reservation.student.name }} {{ arTransaction.reservation.student.surname }} </b> <a href="tel:{{ arTransaction.reservation.student.phone }}" class="text-primary">{{ arTransaction.reservation.student.phone }}</a>, {{ arTransaction.reservation.student.email }}</td>
+                        </tr>
+                        <tr>
+                            <th class="font-weight-normal">{{ 'Legal address'|_ }}: {{  arTransaction.property.account_type == 'legal_person' ? this.theme.secondary_print_invoice_legal_address : this.theme.print_invoice_legal_address }}</th>
+                            <th class="" style="width:40px"></th>
+<!--                            <td class="font-weight-normal">{{ 'Shipping type'|_ }}: {{ arTransaction.shipping_type.name }}</td>-->
+                        </tr>
+                        <tr>
+                            <th class="font-weight-normal">{{'Bank name'|_}}: {{  arTransaction.property.account_type == 'legal_person' ? this.theme.secondary_print_invoice_bank_swift : this.theme.print_invoice_bank_swift }}</th>
+                            <th class="" style="width:40px"></th>
+<!--                                <td class="font-weight-normal">{{ 'Shipping Address'|_ }}: {{ arTransaction.property.shipping_address2|replace({'undefined': ' ', 'NaN': ' ', '- BEZMAKSAS': ' '}) }}-->
+<!--                                </td>-->
+                        </tr>
+                        <tr>
+                            <th class="font-weight-normal">{{ 'Account:'|_ }} {{  arTransaction.property.account_type == 'legal_person' ? this.theme.secondary_print_invoice_bank_accont : this.theme.print_invoice_bank_accont }}, EUR</th>
+                            <th class="" style="width:40px"></th>
+                            <td class="font-weight-normal"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr >
+                        <th class="font-weight-bold pt-0 pb-0 bg-primary border-dark font-weight-normal align-middle text-center" style="width:50px; border: 1px dotted;">{{ 'No'|_ }}.</th>
+                        <th class="font-weight-bold pt-0 pb-0 bg-primary border-dark font-weight-normal align-middle text-center" style="width:250px; border: 1px dotted;">{{'Product'|_}}</th>
+                        <th class="font-weight-bold pt-0 pb-0 bg-primary border-dark font-weight-normal align-middle text-center" style="width:70px; border: 1px dotted;">{{'pcs'|_}}</th>
+
+                        <th class="font-weight-bold pt-0 pb-0 bg-primary border-dark font-weight-normal align-middle text-center" style="width:80px; border: 1px dotted;">{{ 'Price/pc., EUR'|_ }}</th>
+                        <th class="font-weight-bold pt-0 pb-0 bg-primary border-dark font-weight-normal align-middle text-center" style="width:80px; border: 1px dotted;">{{ 'Discount,%'|_ }}</th>
+                        <th class="font-weight-bold pt-0 pb-0 bg-primary border-dark font-weight-normal align-middle text-center" style="width:150px; border: 1px dotted;">{{ 'Price/pc. with discount, EUR'|_ }}</th>
+                        <th class="font-weight-bold pt-0 pb-0 bg-primary border-dark font-weight-normal align-middle text-center" style="width:100px; border: 1px dotted;">{{ 'Amount, EUR'|_ }}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+
+
+
+                    <tr>
+                        <td class="pt-5 pb-5 border-dark font-weight-normal text-center" style="border: 1px dotted;">1</td>
+                        <td class="pt-5 pb-5 border-dark font-weight-normal" style="border: 1px dotted;">{{ arTransaction.reservation.name }}</td>
+                        <td class="pt-5 pb-5 border-dark font-weight-normal text-right" style="border: 1px dotted;">1 {{ 'pcs'|_ }}</td>
+
+                        <td class="pt-5 pb-5 border-dark font-weight-normal text-center" style="border: 1px dotted;">{{ arTransaction.reservation.old_price / 100    }}</td>
+                        <td class="pt-5 pb-5 border-dark font-weight-normal text-center" style="border: 1px dotted;"> {{ (arTransaction.reservation.old_price - arTransaction.reservation.price) / 100 }}</td>
+                        asdas
+                        <td class="pt-5 pb-5 border-dark font-weight-normal text-center" style="border: 1px dotted;">{{ arTransaction.reservation.price / 100 }}</td>
+                        <td class="pt-5 pb-5 border-dark font-weight-normal text-right" style="border: 1px dotted;">{{ arTransaction.reservation.price / 100 }}</td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-sm-5">
+                    <table class="table table-clear">
+                        <tbody>
+
+                        <tr>
+                            <td class="left">
+                                <strong>asdasda</strong> asdasda
+                            </td>
+                            <td class="text-right">
+
+                                    <span class="text-right">
+                                        <span class="cart__total-position-price-currency">- asdasdad</span>
+                                        <span class="cart__total-position-price-without-tax-value">virs 45 EUR</span>
+                                    </span>
+                            </td>
+                        </tr>
+
+
+
+                        </tbody>
+                    </table>
+
+                </div>
+
+                <div class="col-lg-4 col-sm-5 ml-auto">
+                    <table class="table table-clear">
+                        <tbody>
+                        <tr>
+                            <td class="left">
+                                <strong>{{ 'Total'|_ }}</strong>
+                            </td>
+                            <td class="text-right">
+                                    <span class="cart__total-position-old-price text-right text-muted">
+                                        <s class="cart__total-position-old-price-currency {{ arTransaction.discount_position_total_price == 0 ? 'd-none' : ''}}">{{ arTransaction.currency_symbol }}</s>
+                                        <s class="cart__total-position-old-price-value {{ arTransaction.discount_position_total_price == 0 ? 'd-none' : ''}}">{{ arTransaction.old_position_total_price }}</s>
+                                    </span>
+                                <span class="text-right">
+                                        <span class="cart__total-position-price-currency">{{ arTransaction.currency_symbol }}</span>
+                                        <span class="cart__total-position-price-without-tax-value">{{arTransaction.position_total_price }}</span>
+                                    </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="left">
+                                <strong>{{ 'Shipping Fee'|_ }}</strong>
+                            </td>
+                            <td class="text-right">
+                                    <span class="cart__total-position-old-price text-right text-muted">
+                                        <s class="cart__total-position-old-price-currency {{ arTransaction.discount_shipping_price == 0 ? 'd-none' : ''}}">{{ arTransaction.currency_symbol }}</s>
+                                        <s class="cart__total-position-old-price-value {{ arTransaction.discount_shipping_price == 0 ? 'd-none' : ''}}">{{ arTransaction.old_shipping_price }}</s>
+                                    </span>
+                                <span class="cart__total-position-current-price text-right">
+                                        <span class="cart__total-position-price-currency">{{ arTransaction.currency_symbol }}</span>
+                                        <span class="cart__total-position-price-without-tax-value">{{ arTransaction.shipping_price }}</span>
+                                    </span>
+                            </td>
+                        </tr>
+                        {# <tr>
+                            <td class="left">
+                                <strong>Discount (20%)</strong>
+                            </td>
+                            <td class="text-right">$1,699,40</td>
+                        </tr>
+                        <tr>
+                            <td class="left">
+                                <strong>VAT (10%)</strong>
+                            </td>
+                            <td class="text-right">$679,76</td>
+                        </tr> #}
+                        <tr>
+                            <td class="left">
+                                <strong>{{ 'Grand total'|_ }}</strong>
+                            </td>
+                            <td class="text-right">
+                                <strong>
+                                    <span class="cart__total-price-old-price text-right text-muted">
+                                        <s class="cart__total-price-old-price-currency {% if arTransaction.discount_total_price == 0 %}d-none{% endif %}">{{ arTransaction.currency_symbol }}</s>
+                                        <s class="cart__total-old-price-value {% if arTransaction.discount_total_price == 0 %}d-none{% endif %}">{{ arTransaction.old_total_price }} </s>
+                                    </span>
+                                    <span class="cart__total-price-current-price text-right">
+                                        <span class="cart__total-price-price-currency">{{ arTransaction.currency_symbol }}</span>
+                                        <span class="cart__total-price-price-value">{{ arTransaction.total_price }}</span>
+                                    </span>
+                                </strong>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="alert border" role="alert">
+                        <b>{{ 'Notes'|_ }}:</b>
+                        {{ 'When making a payment through a bank, please specify Order No: :order_id in the payment purpose so that your order is processed in a timely manner.'|_({ 'order_id' :  arTransaction.order_number }) }}
+                        <hr>
+                        {{ '<b>This proforma invoice has been prepared electronically and is valid without  a signature</b> in accordance <a href="https://likumi.lv/ta/id/66460#p7.1" targe t="_blank">with the Law "On Accounting", part 7.1.</a>'|_ }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</body>
