@@ -14,8 +14,7 @@
 {##}
 {{ transaction }}
 {% set arTransaction = transaction[0] %}
-{% set order = {"id":53,"secret_key":"90e546a147f7a41d2414172323ac4807","order_number":"190708-0001","user_id":3,"status_id":3,"currency_id":1,"payment_method_id":1,"shipping_type_id":1,"shipping_tax_percent":"19.00","property":{"my_custom_field":"test123","email":"Nageldesign-jakob@web.de","name":"Stefanie","last_name":"Jakob","phone":"01794478925","shipping_address1":"Kolpingstrasse 22","shipping_address2":"NaN","shipping_city":"Herzebrock","shipping_postcode":"33442","shipping_country":"Deutschland","shipping_state":"Nrw","billing_country":"","billing_state":"","billing_city":"","billing_street":"","billing_house":"","billing_flat":"","billing_address1":"","billing_address2":"","billing_postcode":"","shipping_street":"","shipping_house":"","shipping_flat":""},"created_at":{"date":"2019-07-08 14:46:23.000000","timezone_type":3,"timezone":"UTC"},"updated_at":{"date":"2019-08-09 15:47:03.000000","timezone_type":3,"timezone":"UTC"},"manager_id":2,"order_position_id":[82,83,84],"order_promo_mechanism_id":[90,91],"shipping_price_value":"4.99","coupon_list":[]} %}
-{{ order.id }}aaa
+
 
 
 {# {{ dump(arTransaction.getData()) }} #}
@@ -186,21 +185,21 @@
                 <div class="col-lg-6 col-sm-5">
                     <table class="table table-clear">
                         <tbody>
-
+                        {% for arPayments in arTransaction.parent.children %}
                         <tr>
                             <td class="left">
-                                <strong>asdasda</strong> asdasda
+                                <strong>{{ "now"|date("Y") }}-000{{ arTransaction.id }}</strong> {{ arPayments.id }}
                             </td>
                             <td class="text-right">
 
                                     <span class="text-right">
-                                        <span class="cart__total-position-price-currency">- asdasdad</span>
-                                        <span class="cart__total-position-price-without-tax-value">virs 45 EUR</span>
+                                        <span class="cart__total-position-price-currency">+ </span>
+                                        <span class="cart__total-position-price-without-tax-value">€{{ arPayments.debit / 100 }}</span>
                                     </span>
                             </td>
                         </tr>
 
-
+                        {% endfor %}
 
                         </tbody>
                     </table>
@@ -216,26 +215,27 @@
                             </td>
                             <td class="text-right">
                                     <span class="cart__total-position-old-price text-right text-muted">
-                                        <s class="cart__total-position-old-price-currency {{ arTransaction.discount_position_total_price == 0 ? 'd-none' : ''}}">{{ arTransaction.currency_symbol }}</s>
-                                        <s class="cart__total-position-old-price-value {{ arTransaction.discount_position_total_price == 0 ? 'd-none' : ''}}">{{ arTransaction.old_position_total_price }}</s>
+                                        <s class="cart__total-position-old-price-currency">€</s>
+                                        <s class="cart__total-position-old-price-value">{{ arTransaction.reservation.old_price / 100    }}</s>
                                     </span>
                                 <span class="text-right">
-                                        <span class="cart__total-position-price-currency">{{ arTransaction.currency_symbol }}</span>
-                                        <span class="cart__total-position-price-without-tax-value">{{arTransaction.position_total_price }}</span>
+                                        <span class="cart__total-position-price-currency">€</span>
+                                        <span class="cart__total-position-price-without-tax-value">{{ arTransaction.parent.credit / 100 }}</span>
                                     </span>
                             </td>
                         </tr>
                         <tr>
                             <td class="left">
-                                <strong>{{ 'Shipping Fee'|_ }}</strong>
+                                <strong>{{ 'Total paid'|_ }}</strong>
                             </td>
+                          help  {{ arTransaction.parent.children|length }}
                             <td class="text-right">
                                     <span class="cart__total-position-old-price text-right text-muted">
-                                        <s class="cart__total-position-old-price-currency {{ arTransaction.discount_shipping_price == 0 ? 'd-none' : ''}}">{{ arTransaction.currency_symbol }}</s>
-                                        <s class="cart__total-position-old-price-value {{ arTransaction.discount_shipping_price == 0 ? 'd-none' : ''}}">{{ arTransaction.old_shipping_price }}</s>
+                                        <s class="cart__total-position-old-price-currency">€</s>
+                                        <s class="cart__total-position-old-price-value">{{ arTransaction.old_shipping_price }}</s>
                                     </span>
                                 <span class="cart__total-position-current-price text-right">
-                                        <span class="cart__total-position-price-currency">{{ arTransaction.currency_symbol }}</span>
+                                        <span class="cart__total-position-price-currency">€</span>
                                         <span class="cart__total-position-price-without-tax-value">{{ arTransaction.shipping_price }}</span>
                                     </span>
                             </td>
@@ -259,11 +259,11 @@
                             <td class="text-right">
                                 <strong>
                                     <span class="cart__total-price-old-price text-right text-muted">
-                                        <s class="cart__total-price-old-price-currency {% if arTransaction.discount_total_price == 0 %}d-none{% endif %}">{{ arTransaction.currency_symbol }}</s>
+                                        <s class="cart__total-price-old-price-currency">€</s>
                                         <s class="cart__total-old-price-value {% if arTransaction.discount_total_price == 0 %}d-none{% endif %}">{{ arTransaction.old_total_price }} </s>
                                     </span>
                                     <span class="cart__total-price-current-price text-right">
-                                        <span class="cart__total-price-price-currency">{{ arTransaction.currency_symbol }}</span>
+                                        <span class="cart__total-price-price-currency">€</span>
                                         <span class="cart__total-price-price-value">{{ arTransaction.total_price }}</span>
                                     </span>
                                 </strong>
