@@ -36,7 +36,7 @@ class SeedTestData extends Seeder
                 'surname' => $pieces[1],
                 'email' => str_slug($value, '.').'@gmail.com',
                 'is_activated' => 1,
-                'phone' => $faker->e164PhoneNumber,
+                'phone' => $faker->phoneNumber,
                 'password' => '123123123',
                 'password_confirmation' => '123123123',
             ));

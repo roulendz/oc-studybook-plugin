@@ -152,5 +152,6 @@
         'total_to_pay' => 'Total to be paid',
         'total_paid' => 'Total paid',
         'credit_debit_calculation' => 'Total left',
+        'open_invoice' => 'Open Invoice',
     ],
 ];

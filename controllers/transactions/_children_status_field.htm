@@ -1,4 +1,4 @@
-<div class="callout fade in callout-info no-icon" <?= $debit = $model->children()->where('active', true)->sum('debit') / 100 ?>  <?= $credit = $model->credit / 100 ?>>
+<div class="callout fade in callout-info no-icon"> <?= $debit = $model->children()->where('active', true)->sum('debit') / 100 ?>  <?= $credit = $model->credit / 100 ?>>
     <div class="header">
          <h3><?= e(trans('logingrupa.studybook::lang.transaction.financial_status')) ?></h3>
         <ul>
@@ -7,4 +7,8 @@
             <li><b><?= e(trans('logingrupa.studybook::lang.transaction.credit_debit_calculation')) ?>: €<?= $credit - $debit ?></b></li>
         </ul>
     </div>
+<p>
+    <button type="button" class="btn btn-success">Default button</button>
+    <button type="button" class="btn btn-default">Default button</button>
+</p>
 </div>
