@@ -23,7 +23,7 @@ use Logingrupa\Studybook\Classes\Event\AvailableDate\AvailableDateModelHandler;
 class Plugin extends PluginBase
 {
     /** @var array Plugin dependencies */
-    public $require = ['Lovata.Toolbox'];
+    public $require = ['Lovata.Toolbox', 'Lovata.GoodNews', 'Rahman.Faker','RainLab.User'];
 
     /**
      * Plugin boot method
