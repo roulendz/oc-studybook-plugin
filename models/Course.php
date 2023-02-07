@@ -172,8 +172,8 @@ class Course extends ExportModel
         if (empty(post())) {
             return;
         }
-        $this->price = $this->price * 100;
-        $this->old_price = $this->old_price * 100;
+        // $this->price = $this->price * 100;
+        // $this->old_price = $this->old_price * 100;
     }
 
     /**
@@ -220,11 +220,11 @@ class Course extends ExportModel
     /**
      * Format price with 2 decimals before making form
      */
-    public function filterFields($fields, $context = null){
-        if (is_null($this->price) || is_null($this->old_price)) {
-            return;
-        }
-        $fields->price->value = $fields->price->value / 100;
-        $fields->old_price->value = $fields->old_price->value / 100;
-    }
+    // public function filterFields($fields, $context = null){
+    //     if (is_null($this->price) || is_null($this->old_price)) {
+    //         return;
+    //     }
+    //     $fields->price->value = $fields->price->value / 100;
+    //     $fields->old_price->value = $fields->old_price->value / 100;
+    // }
 }

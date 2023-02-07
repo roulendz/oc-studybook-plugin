@@ -54,7 +54,7 @@ class Plugin extends PluginBase
     {
         if (is_numeric($value)) {
             if ($value > 0) {
-                return '€' . number_format($value / 100, 2, '.', ' ');
+                return '€' . number_format($value, 2, '.', ' ');
             }
             return 'BEZMAKSAS';
         }
@@ -67,7 +67,7 @@ class Plugin extends PluginBase
     {
         if (is_numeric($value)) {
             if ($value > 0) {
-                return '<s>'. '€' . number_format($value / 100, 2, '.', ' '). '<s>';
+                return '<s>'. '€' . number_format($value, 2, '.', ' '). '<s>';
             }
             return 'BEZMAKSAS';
         }
