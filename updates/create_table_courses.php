@@ -35,8 +35,8 @@ class CreateTableCourses extends Migration
             $obTable->text('preview_text')->nullable();
             $obTable->text('description')->nullable();
             $obTable->integer('view_count')->nullable()->default(0);
-            $obTable->integer('price')->nullable();
-            $obTable->integer('old_price')->nullable();
+            $obTable->decimal('price', 15, 2)->nullable();
+            $obTable->decimal('old_price', 15, 2)->nullable();
             $obTable->integer('available_seats')->nullable();
             $obTable->integer('duration_days')->nullable();
             $obTable->integer('student_count')->nullable();

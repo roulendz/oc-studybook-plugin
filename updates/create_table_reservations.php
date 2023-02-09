@@ -41,8 +41,8 @@ class CreateTableReservations extends Migration
             $obTable->string('email')->nullable();
             $obTable->string('model_status')->nullable();
             $obTable->string('slug')->unique();
-            $obTable->integer('price')->nullable();
-            $obTable->integer('old_price')->nullable();
+            $obTable->decimal('price', 15, 2)->nullable();
+            $obTable->decimal('old_price', 15, 2)->nullable();
             $obTable->string('code')->nullable();
             $obTable->string('external_id')->nullable();
             $obTable->text('preview_text')->nullable();

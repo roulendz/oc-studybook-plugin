@@ -30,8 +30,8 @@ class CreateTableTransactions extends Migration
             $obTable->integer('reservation_id')->nullable()->unsigned();
             $obTable->string('slug')->unique()->index();
             $obTable->integer('student_id')->nullable()->unsigned();
-            $obTable->integer('credit')->nullable();
-            $obTable->integer('debit')->nullable();
+            $obTable->decimal('credit', 15, 2)->nullable();
+            $obTable->decimal('debit', 15, 2)->nullable();
             $obTable->text('note')->nullable();
             $obTable->string('transaction_at')->nullable();
             $obTable->integer('parent_id')->nullable()->unsigned();
