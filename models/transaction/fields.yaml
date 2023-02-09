@@ -2,20 +2,20 @@ fields:
     student@update:
         label: 'logingrupa.studybook::lang.field.transaction.student_full_name'
         span: left
-        required: 1
+        required: true
         type: relation
         select: concat(name, ' ', surname)
         readOnly: true
     student@create:
         label: 'logingrupa.studybook::lang.field.transaction.student_full_name'
         span: left
-        required: 1
+        required: true
         type: relation
         select: concat(name, ' ', surname)
     slug@update:
         label: 'logingrupa.studybook::lang.field.transaction.slug'
         span: right
-        required: 1
+        required: true
         placeholder: 'lovata.toolbox::lang.field.id'
         type: text
         readOnly: true
@@ -70,8 +70,8 @@ fields:
         type: partial
         path: $/logingrupa/studybook/controllers/transactions/_children_status_field.htm
         span: left
-#        TODO:report issue when field is updated it does filterFields again on current value not value in database
-#        dependsOn: children
+        #TODO:report issue when field is updated it does filterFields again on current value not value in database
+        # dependsOn: children
 tabs:
     fields:
         children:

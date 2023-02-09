@@ -20,7 +20,7 @@ fields:
         dependsOn: course_id
     attendance:
         label: 'logingrupa.studybook::lang.field.attendance'
-        span: row
+        span: right
         spanClass: col-xs-2
         type: switch
         options:
@@ -29,7 +29,7 @@ fields:
         placeholder: 'logingrupa.studybook::lang.field.attendance'
     model_status:
         label: 'logingrupa.studybook::lang.field.model_status'
-        span: row
+        span: right
         spanClass: col-xs-2
         type: switch
         options:
@@ -37,7 +37,7 @@ fields:
             - Yes
     health:
         label: 'logingrupa.studybook::lang.field.health'
-        span: row
+        span: right
         spanClass: col-xs-2
         type: switch
         options:
@@ -70,7 +70,7 @@ tabs:
     fields:
         # Relation Controller
         _information_sent:
-            span: row
+            span: left
             spanClass: col-xs-3
             type: switch
             options:
@@ -79,7 +79,7 @@ tabs:
             label: 'logingrupa.studybook::lang.field.information'
             tab: 'logingrupa.studybook::lang.reservation.tab'
         _payment:
-            span: row
+            span: right
             spanClass: col-xs-3
             type: switch
             options:
@@ -88,6 +88,7 @@ tabs:
             label: 'logingrupa.studybook::lang.field.payment'
             tab: 'logingrupa.studybook::lang.reservation.tab'
         student:
+            required: true
             type: partial
             tab: 'logingrupa.studybook::lang.reservation.tab'
         transaction:
@@ -184,6 +185,6 @@ tabs:
             label: 'lovata.toolbox::lang.field.file'
             type: fileupload
             span: auto
-            required: 0
+            required: false
             mode: file
             tab: 'lovata.toolbox::lang.tab.description'

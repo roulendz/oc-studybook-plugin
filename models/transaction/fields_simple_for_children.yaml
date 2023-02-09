@@ -19,13 +19,13 @@ fields:
     slug@update:
         label: 'logingrupa.studybook::lang.field.transaction.slug'
         span: right
-        required: 1
+        required: true
         type: text
         readOnly: true
     slug@relation:
         label: 'logingrupa.studybook::lang.field.transaction.slug'
         span: right
-        required: 1
+        required: true
         type: text
         readOnly: true
     debit:

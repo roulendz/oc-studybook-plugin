@@ -9,7 +9,7 @@ list: ~/plugins/logingrupa/studybook/models/availabledate/columns.yaml
 modelClass: Logingrupa\Studybook\Models\AvailableDate
 
 # List Title
-title:
+title: List Title
 
 # Link URL for each record
 # recordUrl: logingrupa/studybook/availabledates/preview/:id

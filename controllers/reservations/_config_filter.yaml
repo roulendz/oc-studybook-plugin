@@ -13,6 +13,7 @@ scopes:
         conditions: start_at in (:filtered)
         options: listReservationDates
     course:
+        type: group
         label: 'logingrupa.studybook::lang.course.name'
         modelClass: Logingrupa\Studybook\Models\Course
         conditions: course_id in (:filtered)
