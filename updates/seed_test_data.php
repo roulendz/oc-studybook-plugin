@@ -91,8 +91,8 @@ class SeedTestData extends Seeder
 
         $name = ['Gēla nagu modelēšanas kursi', 'Apvienotā manikīra un gēla programma', 'Jaunās paaudzes aparāta manikīrs'];
         $courses = [
-            0 => ['name' => 'Nagu kopšanas speciālists - Standart', 'category_id' => 2, 'price' => '365.00', 'old_price' => '405.00', 'settings' => ['practical_lesson_count'=>16, 'lesson_count'=>18]],
-            1 => ['name' => 'Nagu kopšanas speciālists - Proffesional', 'category_id' => 2, 'price' => '479.75', 'old_price' => '505.00', 'settings' => ['practical_lesson_count'=>22, 'lesson_count'=>25]],
+            0 => ['name' => 'Nagu kopšanas speciālists - Standart', 'category_id' => 2, 'price' => '365.00', 'old_price' => null, 'settings' => ['practical_lesson_count'=>16, 'lesson_count'=>18]],
+            1 => ['name' => 'Nagu kopšanas speciālists - Proffesional', 'category_id' => 2, 'price' => '479.75', 'old_price' => null, 'settings' => ['practical_lesson_count'=>22, 'lesson_count'=>25]],
             2 =>  ['name' => 'Gēla nagu modelēsana - Proffesiona', 'category_id' => 2, 'price' => '446.50', 'old_price' => '470.00', 'settings' => ['practical_lesson_count'=>19, 'lesson_count'=>20]],
             3 =>  ['name' => 'Apvienotā programma (Manikīrs + Gēls)', 'category_id' => 2, 'price' => '612.75', 'old_price' => '645.00', 'settings' => ['practical_lesson_count'=>29, 'lesson_count'=>32]],
             4 =>  ['name' => 'Bāzes aparāta manikīra kurss bez priekšzināšanām (3 dienas)', 'category_id' => 2, 'price' => '736.25', 'old_price' => '775.00', 'settings' => ['practical_lesson_count'=>35, 'lesson_count'=>39]],
@@ -153,8 +153,8 @@ class SeedTestData extends Seeder
                 'preview_text' => $value,
                 'description' => 'Description ' . $value . $value . $value  ,
                 'view_count' => rand(0, 100),
-                'price' => rand(50000, 70000),
-                'old_price' => rand(70000, 80000),
+                'price' => rand(50, 70),
+                'old_price' => rand(70, 80),
                 'available_seats' => 10,
                 'duration_days' => 14,
                 'student_count' => rand(1, 7),
@@ -213,7 +213,7 @@ class SeedTestData extends Seeder
                 'slug' => uniqid(false),
                 'student_id' => $reserv->student_id,
                 'credit' => null,
-                'debit' => 5000,
+                'debit' => 50,
                 'note' => 'Priekšapmaksas rēķins',
                 'transaction_at' => Carbon::now()->add(2, 'day'),
                 'parent_id' => $transaction1->id,
