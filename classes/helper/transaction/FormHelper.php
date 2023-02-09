@@ -23,7 +23,7 @@ class FormHelper
             return [];
         }
         $obReservations = (new \Logingrupa\Studybook\Models\Reservation())->where('student_id', $model->student_id)->orderBy('start_at', 'desc')->get();
-//        return $obReservations;
+        //return $obReservations;
         $reservations = [];
         foreach ($obReservations as $reservation) {
             $reservations[$reservation->id] = $reservation->start_at . ' - ' . $reservation->name . ' - ' . $reservation->full_name . ' - €' . $reservation->price / 100;

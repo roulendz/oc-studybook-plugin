@@ -31,7 +31,7 @@ class FormHelper
         if (!$model->course_id) {
             return [];
         }
-        //        Get Selected Course Available Dates
+        // Get Selected Course Available Dates
         $course = (new \Logingrupa\Studybook\Models\Course)->find($model->course_id);
         return [$course->name];
     }
@@ -45,9 +45,9 @@ class FormHelper
         if (!$model->course_id) {
             return [];
         }
-        //        Get Selected Course Available Dates
+        // Get Selected Course Available Dates
         $availabledates = (new \Logingrupa\Studybook\Models\Course)->find($model->course_id)->availabledates();
-        //        Create Available Dare List Dropdown Options
+        // Create Available Dare List Dropdown Options
         return $availabledates->orderBy('datetime', 'DESC')->lists('datetime', 'datetime');
     }
 
