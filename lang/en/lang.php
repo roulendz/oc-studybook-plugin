@@ -78,7 +78,10 @@
         'transactions' => 'Student payment transactions',
     ],
     'comment' => [],
-    'message' => [],
+    'message' => [
+        'student_id_required'     => 'Relation between reservation and student is required, please create or link student to this reservation!',
+        'reservation_name_required'     => 'Please select course from list to make new reservation',
+    ],
     'button' => [
         'add' => 'Add new',
         'create' => 'Create new',
@@ -130,6 +133,7 @@
     'reservation' => [
         'name' => 'Reservation',
         'list_title' => 'Reservation list',
+        'tab' => 'Student',
         'tab' => 'Student',
     ],
     'availabledate' => [
