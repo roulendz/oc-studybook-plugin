@@ -23,7 +23,7 @@ fields:
         label: 'logingrupa.studybook::lang.field.transaction.reservation_name'
         type: relation
         span: left
-        select: concat(start_at, ' - ' ,name, ' - ', full_name, ' - €', price / 100)
+        select: concat(start_at, ' - ' ,name, ' - ', full_name, ' - €', price)
         readOnly: true
     reservation_id@create:
         label: 'logingrupa.studybook::lang.field.transaction.reservation_name'
