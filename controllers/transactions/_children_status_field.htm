@@ -1,4 +1,6 @@
-<div class="callout fade in callout-info no-icon"> <?= $debit = $model->children()->where('active', true)->sum('debit') / 100 ?>  <?= $credit = $model->credit / 100 ?>>
+<div class="callout fade in callout-info no-icon">
+    <?php $debit = $model->children()->where('active', true)->sum('debit')?>
+    <?php $credit = $model->credit ?>
     <div class="header">
          <h3><?= e(trans('logingrupa.studybook::lang.transaction.financial_status')) ?></h3>
         <ul>
