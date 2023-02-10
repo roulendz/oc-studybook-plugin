@@ -18,6 +18,23 @@ fields:
         type: dropdown
         options: \Logingrupa\Studybook\Classes\Helper\Reservation\FormHelper::staticGetAvailableDatesListOptions
         dependsOn: course_id
+    price:
+        span: left
+        spanClass: col-xs-3
+        type: partial
+        path: $/logingrupa/studybook/controllers/reservations/_pricePartial.htm
+        dependsOn: course_id
+        cssClass: form-control-plaintext
+        placeholder: 'logingrupa.studybook::lang.field.price'
+    old_price:
+        label: 'logingrupa.studybook::lang.field.old_price'
+        span: left
+        spanClass: col-xs-3
+        type: partial
+        path: $/logingrupa/studybook/controllers/reservations/_oldPricePartial.htm
+        dependsOn: course_id
+        cssClass: "form-control-plaintext number-field"
+        placeholder: 'logingrupa.studybook::lang.field.old_price'
     attendance:
         label: 'logingrupa.studybook::lang.field.attendance'
         span: right
@@ -44,20 +61,6 @@ fields:
             - No
             - Yes
         placeholder: 'logingrupa.studybook::lang.field.health'
-    price:
-        label: 'logingrupa.studybook::lang.field.price'
-        span: row
-        spanClass: col-xs-3
-        type: text
-        dependsOn: course_id
-        placeholder: 'logingrupa.studybook::lang.field.price'
-    old_price:
-        label: 'logingrupa.studybook::lang.field.old_price'
-        span: row
-        spanClass: col-xs-3
-        type: text
-        dependsOn: course_id
-        placeholder: 'logingrupa.studybook::lang.field.old_price'
 
 tabs:
     stretch: true

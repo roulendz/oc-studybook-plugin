@@ -1,0 +1,12 @@
+<?php if ($model->course): ?>
+    <div class="number-field">
+        <!-- Number -->
+        <s><input name="Reservation[old_price]" inputmode="numeric" readonly="readonly" autocomplete="off" type="text" value="<?= is_null($model->course->old_price) ? '0' : $model->course->old_price ?>" class="<?php echo $field->cssClass; ?>"></s>
+    </div>
+<?php else: ?>
+    <div class="number-field">
+        <!-- Number -->
+        <s><input name="Reservation[old_price]" inputmode="numeric" readonly="readonly" autocomplete="off" type="text" value="0" class="<?php echo $field->cssClass; ?>"></s>
+    </div>
+<?php endif ?>
+

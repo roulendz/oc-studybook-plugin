@@ -1,0 +1,12 @@
+<?php if ($model->course): ?>
+    <div class="number-field">
+        <?= e(trans('logingrupa.studybook::lang.field.price')) ?> <?= is_null($model->course->old_price) ? '' :  ?>
+        <input name="Reservation[price]" inputmode="numeric" readonly autocomplete="off" type="text" value="<?= $model->course->price ?>" class="<?php echo $field->cssClass; ?>">    
+    </div>
+<?php else: ?>
+    <div class="number-field">
+        <!-- Number -->
+        <input name="Reservation[price]" inputmode="numeric" readonly autocomplete="off" type="text" value="" class="form-control-plaintext <?php echo $field->cssClass; ?>">    
+    </div>
+<?php endif ?>
+
