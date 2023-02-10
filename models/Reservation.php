@@ -153,8 +153,8 @@ class Reservation extends ImportModel
 //      @TODO: Cannot unlink Student, throws error, insert check if field is available
         $this->full_name = $this->student->name . " " . $this->student->surname;
         $this->email = $this->student->email;
-        $this->price = $this->price * 100;
-        $this->old_price = $this->old_price * 100;
+        $this->price = $this->price;
+        $this->old_price = $this->old_price;
 
     }
 

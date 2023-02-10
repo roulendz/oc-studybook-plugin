@@ -138,8 +138,8 @@ class Transaction extends Model
             $this->slug = uniqid(false);
         }
 //      convert price back to cents and store back in database cents
-        $this->debit = isset($this->attributes['debit']) ? $this->attributes['debit'] * 100 : null;
-        $this->credit = isset($this->attributes['credit']) ? $this->attributes['credit'] * 100 : null;
+        $this->debit = isset($this->attributes['debit']) ? $this->attributes['debit'] : null;
+        $this->credit = isset($this->attributes['credit']) ? $this->attributes['credit'] : null;
 //      Fix date picker, to exclude time from saving time in database - save only date.
         $datetime = explode(' ', $this->transaction_at, 2);
         isset($datetime[0]) ? $this->transaction_at = $datetime[0] : $this->transaction_at = null;
@@ -157,11 +157,11 @@ class Transaction extends Model
     public function filterFields($fields, $context){
         if (isset($fields->credit)) {
 //        Filter credit field value to be currency
-            $fields->credit->value = $fields->credit->value / 100 ;
+            $fields->credit->value = $fields->credit->value;
         }
 //        Filter debit field value to be currency
         if (isset($fields->debit)) {
-            $fields->debit->value = $fields->debit->value / 100 ;
+            $fields->debit->value = $fields->debit->value;
         }
     }
     /**

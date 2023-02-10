@@ -26,9 +26,8 @@ class FormHelper
         //return $obReservations;
         $reservations = [];
         foreach ($obReservations as $reservation) {
-            $reservations[$reservation->id] = $reservation->start_at . ' - ' . $reservation->name . ' - ' . $reservation->full_name . ' - €' . $reservation->price / 100;
+            $reservations[$reservation->id] = $reservation->start_at . ' - ' . $reservation->name . ' - ' . $reservation->full_name . ' - €' . $reservation->price;
         }
-//        dd($reservations);
         return $reservations;
     }
 }
