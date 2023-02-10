@@ -11,6 +11,7 @@ use Kharanenka\Scope\CodeField;
 use Kharanenka\Scope\ExternalIDField;
 use Lovata\Toolbox\Traits\Helpers\TraitCached;
 use RainLab\User\Models\User;
+use Flash;
 
 /**
  * Class Reservation
@@ -58,13 +59,19 @@ class Reservation extends ImportModel
     ];
     /** @var array */
     public $attributeNames = [
-        'name' => 'lovata.toolbox::lang.field.name',
+        'course_id' => 'lovata.toolbox::lang.field.name',
         'slug' => 'lovata.toolbox::lang.field.slug',
     ];
     /** @var array */
     public $rules = [
-//        'name' => 'required',
+        'course_id' => 'required',
         'slug' => 'unique:logingrupa_studybook_reservations',
+        // 'record_id' => 'required',
+    ];
+
+    public $customMessages = [
+        'course_id.required' => 'logingrupa.studybook::lang.message.reservation_name_required',
+        'record_id.required' => 'logingrupa.studybook::lang.message.student_id_required',
     ];
     /** @var array */
     public $slugs = [
@@ -149,10 +156,21 @@ class Reservation extends ImportModel
             return;
         }
         $this->slug = uniqid(false);
+        if (is_null($this->course)) {
+            Flash::error('Not saved, please select course');
+            return;
+        } else {
         $this->name = $this->course->name;
+        }
 //      @TODO: Cannot unlink Student, throws error, insert check if field is available
+        if (is_null($this->student)) {
+            Flash::error('Not saved, please select student');
+            return;
+        } else {
+            # code...
         $this->full_name = $this->student->name . " " . $this->student->surname;
         $this->email = $this->student->email;
+        }
         $this->price = $this->price;
         $this->old_price = $this->old_price;
 
