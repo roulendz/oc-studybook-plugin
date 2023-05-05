@@ -20,8 +20,5 @@ v1.0.5:
     - 'Create transaction table.'
     - create_table_transactions.php
 v1.0.6:
-    - 'Add phone field to users table.'
-    - add_phone_field_to_users_table.php
-v1.0.7:
     - 'Seed test Data.'
     - seed_test_data.php

@@ -48,4 +48,22 @@ class Reservations extends Controller
 
         return $model;
     }
+
+    /**
+     * Retrieves the price of the reservation with the given reservation ID.
+     * If the reservation is not found, it returns a price of 0.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getReservationPrice()
+    {
+        $reservationId = request()->input('reservation_id');
+        $reservation = \Logingrupa\Studybook\Models\Reservation::find($reservationId);
+
+        if ($reservation) {
+            return response()->json(['price' => $reservation->price]);
+        } else {
+            return response()->json(['price' => 0]);
+        }
+    }
 }

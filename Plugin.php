@@ -89,8 +89,8 @@ class Plugin extends PluginBase
     {
 
         if(!$record->children()->count() == 0) {
-        $debit = $record->children()->whereActive(true)->sum('debit') / 100;
-        $credit = $record->credit / 100;
+        $debit = $record->children()->whereActive(true)->sum('debit');
+        $credit = $record->credit;
         return '<p class="positive" style="float:left;width:50%">+€'. $debit . '</p> <p class="negative" style="float:left;width:50%">-€'. ($credit - $debit) . '</p>';
         }
     }

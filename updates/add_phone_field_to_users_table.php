@@ -17,14 +17,14 @@ class AddUserPhoneField extends Migration
      */
     public function up()
     {
-        if (Schema::hasColumn(self::TABLE, 'phone')) {
-            return;
-        }
+        // if (Schema::hasColumn(self::TABLE, 'phone')) {
+        //     return;
+        // }
 
-        Schema::table(self::TABLE, function($table)
-        {
-            $table->string('phone', 100)->nullable();
-        });
+        // Schema::table(self::TABLE, function($table)
+        // {
+        //     $table->string('phone', 100)->nullable();
+        // });
     }
 
     /**

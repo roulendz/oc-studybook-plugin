@@ -66,4 +66,20 @@ class Transactions extends Controller
             return ['clickable' => false];
         }
     }
+
+    public function onChangeContent()
+    {
+        $reservation_id = post('Transaction')['reservation_id'];
+        $credit = 0;
+    
+        if ($reservation_id) {
+            $reservation = \Logingrupa\Studybook\Models\Reservation::find($reservation_id);
+            if ($reservation) {
+                $credit = $reservation->price;
+            }
+        }
+        return dd($this);
+        // return ['credit' => $credit];
+        // return ['#Form-field-Transaction-credit' => '<label for="Form-field-Transaction-credit" class="form-label">Credit</label><!-- Number --><input type="number" step="any" name="Transaction[credit]" id="Form-field-Transaction-credit" value='. $credit .' placeholder="" class="form-control" autocomplete="off" min="0" pattern="-?\d+(\.\d+)?" maxlength="255"></div>'];
+    }
 }

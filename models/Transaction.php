@@ -183,4 +183,9 @@ class Transaction extends Model
     public function scopeOnlyParents($obQuery) {
         return $obQuery->where('parent_id', null);
     }
+
+    public function myColorList($fieldName, $value, $formData)
+    {
+        return [2];
+    }
 }

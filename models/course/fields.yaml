@@ -129,3 +129,29 @@ tabs:
             required: 0
             mode: file
             tab: 'lovata.toolbox::lang.tab.files'
+secondaryTabs:
+    defaultTab: Images
+    fields:
+
+        mainimage:
+            label: Main Image
+            type: nestedform
+            form:
+                fields:
+                    image:
+                        type: mediafinder
+                        span: full
+                        mode: image
+                        prompt: Pick a nice image
+                        imageWidth: 140
+                        imageHeight: 140
+                    title:
+                        label: Title
+                        type: text
+                        span: full
+                    description:
+                        label: Description
+                        type: textarea
+                        size: small
+                        span: full
+

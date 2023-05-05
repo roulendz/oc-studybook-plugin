@@ -31,16 +31,19 @@ fields:
         span: left
         options: \Logingrupa\Studybook\Classes\Helper\Transaction\FormHelper::staticGetStudentReservationListOptions
         dependsOn: student
-    credit@update:
-        label: 'logingrupa.studybook::lang.field.transaction.credit'
-        type: number
-        span: right
-        readOnly: true
+        changeHandler: onChangeContent
     credit@create:
         label: 'logingrupa.studybook::lang.field.transaction.credit'
         type: number
         min: 0
         span: right
+        value: myColorList
+        dependsOn: reservation_id
+    credit@update:
+        label: 'logingrupa.studybook::lang.field.transaction.credit'
+        type: number
+        span: right
+        readOnly: true    
     transaction_at@update:
         label: 'logingrupa.studybook::lang.field.transaction.transaction_at'
         type: datepicker
@@ -61,10 +64,10 @@ fields:
         label: 'logingrupa.studybook::lang.field.transaction.type'
         type: dropdown
         options:
-            bank: Bank transfer
-            cache: Cache
-            gift: Gift card
-            discount: Discount
+            bank: ['Bank transfer', 'icon-home']
+            cache: ['Cache', 'icon-money']
+            gift: ['Gift card', 'icon-credit-card']
+            discount: ['Discount', 'icon-eur']
         span: left
     status:
         type: partial

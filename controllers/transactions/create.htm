@@ -49,3 +49,53 @@
         </a>
     </p>
 <?php endif ?>
+
+<script>
+  function updateCreditField() {
+    var formElement = document.querySelector('form[data-request="onSave"]');
+    var reservationDropdown = document.querySelector('.js-reservation-dropdown select');
+    var creditField = document.querySelector('.js-credit-field input');
+
+    console.log('Form Element:', formElement); // Debugging
+    console.log('Reservation Dropdown:', reservationDropdown); // Debugging
+    console.log('Credit Field:', creditField); // Debugging
+
+    if (formElement && reservationDropdown && creditField) {
+      formElement.addEventListener('change', function (event) {
+        if (event.target === reservationDropdown) {
+          var reservationId = event.target.value;
+          console.log('Selected Reservation ID:', reservationId); // Debugging
+
+          if (reservationId) {
+            fetch('/api/get-reservation-price', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+              },
+              body: JSON.stringify({ reservation_id: reservationId })
+            })
+              .then(function (response) {
+                if (!response.ok) {
+                  throw new Error('Network response was not ok');
+                }
+                return response.json();
+              })
+              .then(function (data) {
+                console.log('Received Data:', data); // Debugging
+                creditField.value = data.price;
+              })
+              .catch(function (error) {
+                console.error('Error fetching reservation price:', error); // Debugging
+              });
+          } else {
+            creditField.value = 0;
+          }
+        }
+      });
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', updateCreditField);
+</script>
+

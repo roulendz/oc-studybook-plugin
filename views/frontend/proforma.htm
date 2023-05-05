@@ -171,11 +171,11 @@
                         <td class="pt-5 pb-5 border-dark font-weight-normal" style="border: 1px dotted;">{{ arTransaction.reservation.name }}</td>
                         <td class="pt-5 pb-5 border-dark font-weight-normal text-right" style="border: 1px dotted;">1 {{ 'pcs'|_ }}</td>
 
-                        <td class="pt-5 pb-5 border-dark font-weight-normal text-center" style="border: 1px dotted;">{{ arTransaction.reservation.old_price / 100    }}</td>
-                        <td class="pt-5 pb-5 border-dark font-weight-normal text-center" style="border: 1px dotted;"> {{ (arTransaction.reservation.old_price - arTransaction.reservation.price) / 100 }}</td>
+                        <td class="pt-5 pb-5 border-dark font-weight-normal text-center" style="border: 1px dotted;">{{ arTransaction.reservation.old_price    }}</td>
+                        <td class="pt-5 pb-5 border-dark font-weight-normal text-center" style="border: 1px dotted;"> {{ (arTransaction.reservation.old_price - arTransaction.reservation.price) }}</td>
                         asdas
-                        <td class="pt-5 pb-5 border-dark font-weight-normal text-center" style="border: 1px dotted;">{{ arTransaction.reservation.price / 100 }}</td>
-                        <td class="pt-5 pb-5 border-dark font-weight-normal text-right" style="border: 1px dotted;">{{ arTransaction.reservation.price / 100 }}</td>
+                        <td class="pt-5 pb-5 border-dark font-weight-normal text-center" style="border: 1px dotted;">{{ arTransaction.reservation.price }}</td>
+                        <td class="pt-5 pb-5 border-dark font-weight-normal text-right" style="border: 1px dotted;">{{ arTransaction.reservation.price }}</td>
                     </tr>
 
                     </tbody>
@@ -194,7 +194,7 @@
 
                                     <span class="text-right">
                                         <span class="cart__total-position-price-currency">+ </span>
-                                        <span class="cart__total-position-price-without-tax-value">€{{ arPayments.debit / 100 }}</span>
+                                        <span class="cart__total-position-price-without-tax-value">€{{ arPayments.debit }}</span>
                                     </span>
                             </td>
                         </tr>
@@ -216,11 +216,11 @@
                             <td class="text-right">
                                     <span class="cart__total-position-old-price text-right text-muted">
                                         <s class="cart__total-position-old-price-currency">€</s>
-                                        <s class="cart__total-position-old-price-value">{{ arTransaction.reservation.old_price / 100    }}</s>
+                                        <s class="cart__total-position-old-price-value">{{ arTransaction.reservation.old_price    }}</s>
                                     </span>
                                 <span class="text-right">
                                         <span class="cart__total-position-price-currency">€</span>
-                                        <span class="cart__total-position-price-without-tax-value">{{ arTransaction.parent.credit / 100 }}</span>
+                                        <span class="cart__total-position-price-without-tax-value">{{ arTransaction.parent.credit }}</span>
                                     </span>
                             </td>
                         </tr>
