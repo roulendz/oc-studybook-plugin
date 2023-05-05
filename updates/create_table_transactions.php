@@ -25,6 +25,8 @@ class CreateTableTransactions extends Migration
         {
             $obTable->engine = 'InnoDB';
             $obTable->increments('id')->unsigned();
+            $obTable->increments('company_id')->unsigned()->nullable();
+            $obTable->foreign('company_id')->references('id')->on('logingrupa_studybook_categories');
             $obTable->boolean('active')->default(0);
             $obTable->string('type')->nullable();
             $obTable->integer('reservation_id')->nullable()->unsigned();
@@ -44,6 +46,7 @@ class CreateTableTransactions extends Migration
             $obTable->index('slug');
             $obTable->index('reservation_id');
             $obTable->index('student_id');
+            $obTable->index('company_id');
         });
     }
 
