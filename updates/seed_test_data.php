@@ -4,6 +4,7 @@ use Faker\Factory;
 use Faker\Provider\lv_LV\PhoneNumber;
 use Logingrupa\Studybook\Models\AvailableDate;
 use Logingrupa\Studybook\Models\Category;
+use Logingrupa\Studybook\Models\Company;
 use Logingrupa\Studybook\Models\Course;
 use Logingrupa\Studybook\Models\Reservation;
 use Logingrupa\Studybook\Models\Transaction;
@@ -26,6 +27,7 @@ class SeedTestData extends Seeder
         DB::table('logingrupa_studybook_additional_categories')->delete();
         DB::table('logingrupa_studybook_categories')->delete();
         DB::table('logingrupa_studybook_transactions')->delete();
+        DB::table('logingrupa_studybook_company')->delete();
         $name = ['Baiba Zariņa', 'Zane Zeltiņa', 'Ieva Razgalae', 'Vera Liole', 'Roberts Zeltiņš', 'Normunds Zeltiņš', 'Toms Muižnieks', 'Zigurds Mežš', 'Lauma Rudze', 'Aiga Zara', 'Artis Ābols', 'Gunārs Bumbiers', 'Raitis Raiders', 'Gunita Preile', 'Laila Briede'];
         $faker = Factory::create('lv_LV');
         $faker->addProvider(new PhoneNumber($faker));
@@ -40,6 +42,30 @@ class SeedTestData extends Seeder
                 'password' => '123123123',
                 'password_confirmation' => '123123123',
             ));
+        }//END
+
+        $companies = [
+            'Vīzija L' => [
+                'active' => true,
+                'description' => 'Vīzija L description',
+            ],
+            'Starptautiskā Manikīra studija' => [
+                'active' => true,
+                'description' => 'Starptautiskā Manikīra studija description',
+            ],
+            'Starptautiskā Skasituma skola' => [
+                'active' => true,
+                'description' => 'Starptautiskā Skasituma skola description',
+            ],
+            'Vaksācijas kursi' => ['parent_id' => 1],
+        ];
+        foreach ($companies as $key => $company) {
+            Company::create([
+                'active' => '1',
+                'name' => $key,
+                'slug' => uniqid(str_slug($key, '-'), false),
+                'description' => $company['description'],
+            ]);
         }//END
 
         $categories = [
@@ -196,6 +222,7 @@ class SeedTestData extends Seeder
             ]);
             $transaction1 = Transaction::create([
                 'active' => true,
+                'category_id' => array_random([1, 2, 3]),
                 'type' => array_random(['cache','bank']),
                 'reservation_id' => $reserv->id,
                 'slug' => uniqid(false),
@@ -208,6 +235,7 @@ class SeedTestData extends Seeder
             ]);
             $transaction2 = Transaction::create([
                 'active' => array_random([1, 0]),
+                'category_id' => array_random([1, 2, 3]),
                 'type' => array_random(['cache','bank']),
                 'reservation_id' => $reserv->id,
                 'slug' => uniqid(false),
@@ -220,6 +248,7 @@ class SeedTestData extends Seeder
             ]);
             $transaction3 = Transaction::create([
                 'active' => true,
+                'category_id' => array_random([1, 2, 3]),
                 'type' => array_random(['cache','bank']),
                 'reservation_id' => $reserv->id,
                 'slug' => uniqid(false),
@@ -232,6 +261,7 @@ class SeedTestData extends Seeder
             ]);
             $transaction4 = Transaction::create([
                 'active' => array_random([1, 0]),
+                'category_id' => array_random([1, 2, 3]),
                 'type' => array_random(['cache','bank']),
                 'reservation_id' => $reserv->id,
                 'slug' => uniqid(false),
