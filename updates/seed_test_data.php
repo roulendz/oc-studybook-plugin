@@ -27,7 +27,7 @@ class SeedTestData extends Seeder
         DB::table('logingrupa_studybook_additional_categories')->delete();
         DB::table('logingrupa_studybook_categories')->delete();
         DB::table('logingrupa_studybook_transactions')->delete();
-        DB::table('logingrupa_studybook_company')->delete();
+        DB::table('logingrupa_studybook_companies')->delete();
         $name = ['Baiba Zariņa', 'Zane Zeltiņa', 'Ieva Razgalae', 'Vera Liole', 'Roberts Zeltiņš', 'Normunds Zeltiņš', 'Toms Muižnieks', 'Zigurds Mežš', 'Lauma Rudze', 'Aiga Zara', 'Artis Ābols', 'Gunārs Bumbiers', 'Raitis Raiders', 'Gunita Preile', 'Laila Briede'];
         $faker = Factory::create('lv_LV');
         $faker->addProvider(new PhoneNumber($faker));
@@ -56,8 +56,7 @@ class SeedTestData extends Seeder
             'Starptautiskā Skasituma skola' => [
                 'active' => true,
                 'description' => 'Starptautiskā Skasituma skola description',
-            ],
-            'Vaksācijas kursi' => ['parent_id' => 1],
+            ]
         ];
         foreach ($companies as $key => $company) {
             Company::create([
@@ -222,7 +221,7 @@ class SeedTestData extends Seeder
             ]);
             $transaction1 = Transaction::create([
                 'active' => true,
-                'category_id' => array_random([1, 2, 3]),
+                'company_id' => array_random([1, 2, 3]),
                 'type' => array_random(['cache','bank']),
                 'reservation_id' => $reserv->id,
                 'slug' => uniqid(false),
@@ -235,7 +234,7 @@ class SeedTestData extends Seeder
             ]);
             $transaction2 = Transaction::create([
                 'active' => array_random([1, 0]),
-                'category_id' => array_random([1, 2, 3]),
+                'company_id' => array_random([1, 2, 3]),
                 'type' => array_random(['cache','bank']),
                 'reservation_id' => $reserv->id,
                 'slug' => uniqid(false),
@@ -248,7 +247,7 @@ class SeedTestData extends Seeder
             ]);
             $transaction3 = Transaction::create([
                 'active' => true,
-                'category_id' => array_random([1, 2, 3]),
+                'company_id' => array_random([1, 2, 3]),
                 'type' => array_random(['cache','bank']),
                 'reservation_id' => $reserv->id,
                 'slug' => uniqid(false),
@@ -261,7 +260,7 @@ class SeedTestData extends Seeder
             ]);
             $transaction4 = Transaction::create([
                 'active' => array_random([1, 0]),
-                'category_id' => array_random([1, 2, 3]),
+                'company_id' => array_random([1, 2, 3]),
                 'type' => array_random(['cache','bank']),
                 'reservation_id' => $reserv->id,
                 'slug' => uniqid(false),

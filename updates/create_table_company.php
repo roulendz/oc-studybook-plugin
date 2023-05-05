@@ -10,7 +10,7 @@ use October\Rain\Database\Updates\Migration;
  */
 class CreateTablecompany extends Migration
 {
-    const TABLE = 'logingrupa_studybook_company';
+    const TABLE = 'logingrupa_studybook_companies';
 
     /**
      * Apply migration

@@ -41,7 +41,7 @@ class Company extends Model
     use TraitCached;
 
     /** @var string */
-    public $table = 'logingrupa_studybook_company';
+    public $table = 'logingrupa_studybook_companies';
     /** @var array */
     public $implement = [
         '@RainLab.Translate.Behaviors.TranslatableModel',
@@ -60,7 +60,7 @@ class Company extends Model
     /** @var array */
     public $rules = [
         'name' => 'required',
-        'slug' => 'required|unique:logingrupa_studybook_company',
+        'slug' => 'required|unique:logingrupa_studybook_companies',
     ];
     /** @var array */
     public $slugs = [
