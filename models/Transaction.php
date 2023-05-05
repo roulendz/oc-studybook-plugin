@@ -69,6 +69,7 @@ class Transaction extends Model
     /** @var array */
     public $fillable = [
         'active',
+        'company_id',
         'parent_id',
         'type',
         'reservation_id',
@@ -83,6 +84,7 @@ class Transaction extends Model
     public $cached = [
         'id',
         'active',
+        'company_id',
         'parent_id',
         'type',
         'reservation_id',
@@ -113,6 +115,7 @@ class Transaction extends Model
     public $belongsTo = [
         'reservation' => Reservation::class,
         'student' => User::class,
+        'company' => Company::class,
     ];
     /** @var array */
     public $belongsToMany = [];
@@ -151,6 +154,7 @@ class Transaction extends Model
         if (!is_null($this->parent_id)) {
             $this->student_id = $this->parent->student_id;
             $this->reservation_id = $this->parent->reservation_id;
+            $this->company_id = $this->parent->company_id;
         }
     }
 
@@ -182,10 +186,5 @@ class Transaction extends Model
      */
     public function scopeOnlyParents($obQuery) {
         return $obQuery->where('parent_id', null);
-    }
-
-    public function myColorList($fieldName, $value, $formData)
-    {
-        return [2];
     }
 }
