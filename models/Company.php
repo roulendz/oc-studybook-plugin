@@ -104,7 +104,9 @@ class Company extends Model
     /** @var array */
     public $hasOne = [];
     /** @var array */
-    public $hasMany = [];
+    public $hasMany = [
+        'transactions' => Transaction::class
+    ];
     /** @var array */
     public $belongsTo = [];
     /** @var array */
