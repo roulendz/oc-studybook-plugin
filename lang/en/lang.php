@@ -70,6 +70,8 @@
         'categories' => 'Category list',
         'transactions' => 'Transaction list',
         'proformascontroller' => 'Transaction list',
+        'company' => 'Company list',
+        'companies' => 'Company list',
     ],
     'tab' => [
         'permissions' => 'Studybook',
@@ -79,8 +81,8 @@
     ],
     'comment' => [],
     'message' => [
-        'student_id_required'     => 'Relation between reservation and student is required, please create or link student to this reservation!',
-        'reservation_name_required'     => 'Please select course from list to make new reservation',
+        'student_id_required' => 'Relation between reservation and student is required, please create or link student to this reservation!',
+        'reservation_name_required' => 'Please select course from list to make new reservation',
     ],
     'button' => [
         'add' => 'Add new',
@@ -116,6 +118,12 @@
         'transaction_data_description' => 'Get transaction by ID',
         'transaction_list_name' => 'Transaction List',
         'transaction_list_description' => 'Get transaction list',
+        'company_page_name' => 'Company Page',
+        'company_page_description' => 'Get company page data',
+        'company_data_name' => 'Company Data',
+        'company_data_description' => 'Get company by ID',
+        'company_list_name' => 'Company List',
+        'company_list_description' => 'Get company list',
     ],
     'permission' => [
         'course' => 'Manage course',
@@ -123,6 +131,7 @@
         'availabledate' => 'Manage availabledate',
         'category' => 'Manage category',
         'transaction' => 'Manage transaction',
+        'company' => 'Manage company',
     ],
     'course' => [
         'name' => 'Course',
@@ -133,7 +142,6 @@
     'reservation' => [
         'name' => 'Reservation',
         'list_title' => 'Reservation list',
-        'tab' => 'Student',
         'tab' => 'Student',
     ],
     'availabledate' => [
@@ -157,5 +165,9 @@
         'total_paid' => 'Total paid',
         'credit_debit_calculation' => 'Total left',
         'open_invoice' => 'Open Invoice',
+    ],
+    'company' => [
+        'name' => 'company',
+        'list_title' => 'Company list',
     ],
 ];

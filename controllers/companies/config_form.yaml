@@ -1,0 +1,29 @@
+# Record name
+name: 'logingrupa.studybook::lang.company.name'
+
+# Model Form Field configuration
+form: $/logingrupa/studybook/models/company/fields.yaml
+
+# Model Class name
+modelClass: Logingrupa\Studybook\Models\Company
+
+# Default redirect location
+defaultRedirect: logingrupa/studybook/companies
+
+# Create page
+create:
+    title: 'backend::lang.form.create_title'
+    redirect: logingrupa/studybook/companies/update/:id
+    redirectClose: logingrupa/studybook/companies
+    flashSave: 'lovata.toolbox::lang.message.create_success'
+
+# Update page
+update:
+    title: 'backend::lang.form.update_title'
+    redirect: logingrupa/studybook/companies
+    redirectClose: logingrupa/studybook/companies
+    flashSave: 'lovata.toolbox::lang.message.update_success'
+    flashDelete: 'lovata.toolbox::lang.message.delete_success'
+
+# Preview page
+preview: {  }

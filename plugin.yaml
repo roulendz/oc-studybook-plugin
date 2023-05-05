@@ -41,7 +41,13 @@ navigation:
                 url: logingrupa/studybook/transactions
                 permissions:
                     - studybook-menu-transactions
-                icon: icon-paw
+                icon: icon-file-text-o
+            studybook-menu-company:
+                label: 'logingrupa.studybook::lang.menu.company'
+                url: logingrupa/studybook/companies
+                permissions:
+                    - studybook-menu-company
+                icon: icon-building
 permissions:
     studybook-menu-courses:
         label: 'logingrupa.studybook::lang.permission.course'
@@ -57,4 +63,7 @@ permissions:
         tab: 'logingrupa.studybook::lang.tab.permissions'
     studybook-menu-transactions:
         label: 'logingrupa.studybook::lang.permission.transaction'
+        tab: 'logingrupa.studybook::lang.tab.permissions'
+    studybook-menu-company:
+        label: 'logingrupa.studybook::lang.permission.company'
         tab: 'logingrupa.studybook::lang.tab.permissions'
