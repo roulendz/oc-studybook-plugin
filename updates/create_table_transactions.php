@@ -25,7 +25,7 @@ class CreateTableTransactions extends Migration
         {
             $obTable->engine = 'InnoDB';
             $obTable->increments('id')->unsigned();
-            $obTable->increments('company_id')->unsigned()->nullable();
+            $obTable->integer('company_id')->unsigned()->nullable();
             $obTable->foreign('company_id')->references('id')->on('logingrupa_studybook_categories');
             $obTable->boolean('active')->default(0);
             $obTable->string('type')->nullable();
