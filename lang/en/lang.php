@@ -58,6 +58,7 @@
           'balance' => 'Balance paid/unpaid',
           'note' => 'Note',
           'transaction_at' => 'Payment received',
+          'transaction_at_create' => 'First Payment created',
           'student_full_name' => 'Student full name',
           'payment_is_received' => 'Payment is received',
         ],
