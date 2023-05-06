@@ -66,20 +66,45 @@ class Transactions extends Controller
             return ['clickable' => false];
         }
     }
-
+    public function relationExtendManageWidget($widget, $field, $model)
+    {
+        // Make sure we are doing on correct relation
+        // Also make sure our context is create so we only copy name on create
+        if ($field === 'company' && property_exists($widget->config, 'context') && $widget->config->context === 'relation') {
+            dd($widget->config->model);
+            // This is attendee model
+            // This is main tournament model
+            $widget->config->model->company = 3;
+        }
+    }
+    // Does not work
     public function onChangeContent()
     {
+        // Get reservation ID from request
         $reservation_id = post('Transaction')['reservation_id'];
         $credit = 0;
-    
+        // Get reservation ID from request is pressent get reservation price
         if ($reservation_id) {
+            // Get the reservation price from the reservation table
             $reservation = \Logingrupa\Studybook\Models\Reservation::find($reservation_id);
             if ($reservation) {
                 $credit = $reservation->price;
             }
-        }
-        return dd($this);
-        // return ['credit' => $credit];
-        // return ['#Form-field-Transaction-credit' => '<label for="Form-field-Transaction-credit" class="form-label">Credit</label><!-- Number --><input type="number" step="any" name="Transaction[credit]" id="Form-field-Transaction-credit" value='. $credit .' placeholder="" class="form-control" autocomplete="off" min="0" pattern="-?\d+(\.\d+)?" maxlength="255"></div>'];
+        }       
+        // Get form
+        $form = $this->formGetWidget();
+
+        // Get the credit field
+        $creditField = $form->getField('credit');
+        // Update the model attribute with the credit value
+        // TODO: Missing lable after updating value
+        $creditField->value = $credit;
+        $creditFieldMarkup = $form->renderFieldElement($creditField, [
+            'useContainer' => true,
+            'useLabel' => true,
+            'useComment' => false,
+        ]);
+
+        return ['#Form-field-Transaction-credit-group' => $creditFieldMarkup];
     }
 }
