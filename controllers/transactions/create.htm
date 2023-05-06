@@ -8,41 +8,59 @@
         <li><?= e($this->pageTitle) ?></li>
     </ul>
 <?php Block::endPut() ?>
+
 <?php if (!$this->fatalError): ?>
-    <?= Form::open(['class' => 'layout']) ?>
-        <div class="layout-row">
-            <?= $this->formRender() ?>
-        </div>
-        <div class="form-buttons">
-            <div class="loading-indicator-container">
-                <button
-                    type="submit"
-                    data-request="onSave"
-                    data-hotkey="ctrl+s, cmd+s"
-                    data-load-indicator="<?= e(trans('backend::lang.form.saving')) ?>"
-                    class="btn btn-primary">
-                    <?= e(trans('backend::lang.form.create')) ?>
-                </button>
-                <button
-                    type="button"
-                    data-request="onSave"
-                    data-request-data="close:1"
-                    data-hotkey="ctrl+enter, cmd+enter"
-                    data-load-indicator="<?= e(trans('backend::lang.form.saving')) ?>"
-                    class="btn btn-default">
-                    <?= e(trans('backend::lang.form.create_and_close')) ?>
-                </button>
-                <span class="btn-text">
-                    <?= e(trans('backend::lang.form.or')) ?>
-                    <a href="<?= Backend::url('logingrupa/studybook/transactions') ?>">
-                        <?= e(trans('backend::lang.form.cancel')) ?>
-                    </a>
-                </span>
+
+    <!-- Primary content -->
+    <?php Block::put('form-contents') ?>
+            <div class="layout-row">
+                <?= $this->formRenderOutsideFields() ?>
+                <?= $this->formRenderPrimaryTabs() ?>
             </div>
-        </div>
-    <?= Form::close() ?>
+            <div class="form-buttons">
+              <div class="loading-indicator-container">
+                  <button
+                      type="submit"
+                      data-request="onSave"
+                      data-hotkey="ctrl+s, cmd+s"
+                      data-load-indicator="<?= e(trans('backend::lang.form.saving')) ?>"
+                      class="btn btn-primary">
+                      <?= e(trans('backend::lang.form.create')) ?>
+                  </button>
+                  <button
+                      type="button"
+                      data-request="onSave"
+                      data-request-data="close:1"
+                      data-hotkey="ctrl+enter, cmd+enter"
+                      data-load-indicator="<?= e(trans('backend::lang.form.saving')) ?>"
+                      class="btn btn-default">
+                      <?= e(trans('backend::lang.form.create_and_close')) ?>
+                  </button>
+                  <span class="btn-text">
+                      <?= e(trans('backend::lang.form.or')) ?>
+                      <a href="<?= Backend::url('logingrupa/studybook/transactions') ?>">
+                          <?= e(trans('backend::lang.form.cancel')) ?>
+                      </a>
+                  </span>
+              </div>
+          </div>
+        
+    <?php Block::endPut() ?>
+
+     <!-- Complimentary sidebar -->
+    <?php Block::put('form-sidebar ') ?>
+        <?= $this->formRenderSecondaryTabs() ?>
+    <?php Block::endPut() ?>
+
+    <!-- Layout execution -->
+    <?php Block::put('body') ?>
+        <?= Form::open(['class'=>'layout stretch']) ?>
+            <?= $this->makeLayout('form-with-sidebar') ?>
+        <?= Form::close() ?>
+    <?php Block::endPut() ?>
+
 <?php else: ?>
-    <p class="flash-message static error"><?= e($this->fatalError) ?></p>
+    <p class="static flash-message error"><?= e($this->fatalError) ?></p>
     <p>
         <a href="<?= Backend::url('logingrupa/studybook/transactions') ?>" class="btn btn-default">
             <?= e(trans('backend::lang.form.return_to_list')) ?>
@@ -50,52 +68,4 @@
     </p>
 <?php endif ?>
 
-<script>
-  function updateCreditField() {
-    var formElement = document.querySelector('form[data-request="onSave"]');
-    var reservationDropdown = document.querySelector('.js-reservation-dropdown select');
-    var creditField = document.querySelector('.js-credit-field input');
-
-    console.log('Form Element:', formElement); // Debugging
-    console.log('Reservation Dropdown:', reservationDropdown); // Debugging
-    console.log('Credit Field:', creditField); // Debugging
-
-    if (formElement && reservationDropdown && creditField) {
-      formElement.addEventListener('change', function (event) {
-        if (event.target === reservationDropdown) {
-          var reservationId = event.target.value;
-          console.log('Selected Reservation ID:', reservationId); // Debugging
-
-          if (reservationId) {
-            fetch('/api/get-reservation-price', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
-              },
-              body: JSON.stringify({ reservation_id: reservationId })
-            })
-              .then(function (response) {
-                if (!response.ok) {
-                  throw new Error('Network response was not ok');
-                }
-                return response.json();
-              })
-              .then(function (data) {
-                console.log('Received Data:', data); // Debugging
-                creditField.value = data.price;
-              })
-              .catch(function (error) {
-                console.error('Error fetching reservation price:', error); // Debugging
-              });
-          } else {
-            creditField.value = 0;
-          }
-        }
-      });
-    }
-  }
-
-  document.addEventListener('DOMContentLoaded', updateCreditField);
-</script>
 
