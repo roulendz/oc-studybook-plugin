@@ -136,21 +136,19 @@ class Transaction extends Model
         if (empty(post())) {
             return;
         }
-//      generate uuid for slug
+        //      generate uuid for slug
         if (!$this->slug) {
             $this->slug = uniqid(false);
         }
-//      convert price back to cents and store back in database cents
-        $this->debit = isset($this->attributes['debit']) ? $this->attributes['debit'] : null;
-        $this->credit = isset($this->attributes['credit']) ? $this->attributes['credit'] : null;
-//      Fix date picker, to exclude time from saving time in database - save only date.
+
+        //Fix date picker, to exclude time from saving time in database - save only date.
         $datetime = explode(' ', $this->transaction_at, 2);
         isset($datetime[0]) ? $this->transaction_at = $datetime[0] : $this->transaction_at = null;
-//      Always set active field to true for if parent_id ir null
+        //Always set active field to true for if parent_id is null
         if (is_null($this->parent_id)) {
             $this->active = true;
         }
-//      When creating transaction - children, if transaction parent_id is not null, get additional information field values from parent
+        //When creating transaction - children, if transaction parent_id is not null, get additional information field values from parent
         if (!is_null($this->parent_id)) {
             $this->student_id = $this->parent->student_id;
             $this->reservation_id = $this->parent->reservation_id;
@@ -158,16 +156,6 @@ class Transaction extends Model
         }
     }
 
-    public function filterFields($fields, $context){
-        if (isset($fields->credit)) {
-//        Filter credit field value to be currency
-            $fields->credit->value = $fields->credit->value;
-        }
-//        Filter debit field value to be currency
-        if (isset($fields->debit)) {
-            $fields->debit->value = $fields->debit->value;
-        }
-    }
     /**
      * Get by parent ID
      * @param Transaction $obQuery
