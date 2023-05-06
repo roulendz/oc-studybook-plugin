@@ -1,17 +1,30 @@
 fields:
-    student@update:
-        label: 'logingrupa.studybook::lang.field.transaction.student_full_name'
-        span: left
-        required: true
-        type: relation
-        select: concat(name, ' ', surname)
-        readOnly: true
     student@create:
         label: 'logingrupa.studybook::lang.field.transaction.student_full_name'
         span: left
         required: true
         type: relation
         select: concat(name, ' ', surname)
+    student@update:
+        label: 'logingrupa.studybook::lang.field.transaction.student_full_name'
+        span: left
+        required: true
+        type: relation
+        select: concat(name, ' ', surname)
+        disabled: true
+    company@create:
+        label: 'logingrupa.studybook::lang.field.transaction.company'
+        type: relation
+        select: concat(name, ' ', CASE WHEN active = 1 THEN 'Aktīva' ELSE 'Neaktīva' END)
+        span: right
+        tab: 'lovata.toolbox::lang.tab.description'
+    company@update:
+        label: 'logingrupa.studybook::lang.field.transaction.company'
+        type: relation
+        select: concat(name, ' ', CASE WHEN active = 1 THEN 'Aktīva' ELSE 'Neaktīva' END)
+        span: right
+        tab: 'lovata.toolbox::lang.tab.description'
+        disabled: true
     slug@update:
         label: 'logingrupa.studybook::lang.field.transaction.slug'
         span: right
@@ -19,12 +32,13 @@ fields:
         placeholder: 'lovata.toolbox::lang.field.id'
         type: text
         readOnly: true
+        disabled: true
     reservation@update:
         label: 'logingrupa.studybook::lang.field.transaction.reservation_name'
         type: relation
         span: left
         select: concat(start_at, ' - ' ,name, ' - ', full_name, ' - €', price)
-        readOnly: true
+        disabled: true
     reservation_id@create:
         label: 'logingrupa.studybook::lang.field.transaction.reservation_name'
         type: dropdown
@@ -37,30 +51,25 @@ fields:
         type: number
         min: 0
         span: right
-        value: myColorList
-        dependsOn: reservation_id
+        disabled: true
     credit@update:
         label: 'logingrupa.studybook::lang.field.transaction.credit'
         type: number
         span: right
-        readOnly: true    
+        readOnly: true
+        disabled: true     
     transaction_at@update:
         label: 'logingrupa.studybook::lang.field.transaction.transaction_at'
         type: datepicker
         mode: date
-        span: auto
-    transaction_at@create:
-        label: 'logingrupa.studybook::lang.field.transaction.transaction_at'
-        type: datepicker
-        mode: date
-        span: auto
+        span: left
     note:
         label: 'logingrupa.studybook::lang.field.transaction.note'
-        size: large
+        size: medium
         span: right
         type: textarea
         tab: 'lovata.toolbox::lang.tab.description'
-    type:
+    type@create:
         label: 'logingrupa.studybook::lang.field.transaction.type'
         type: dropdown
         options:
@@ -69,10 +78,7 @@ fields:
             gift: ['Gift card', 'icon-credit-card']
             discount: ['Discount', 'icon-eur']
         span: left
-    status:
-        type: partial
-        path: $/logingrupa/studybook/controllers/transactions/_children_status_field.htm
-        span: left
+    
         #TODO:report issue when field is updated it does filterFields again on current value not value in database
         # dependsOn: children
 tabs:
@@ -80,5 +86,12 @@ tabs:
         children:
             type: partial
             tab: 'logingrupa.studybook::lang.tab.payments'
+secondaryTabs:
+    defaultTab: 'logingrupa.studybook::lang.transaction.financial_status'
+    fields:
+        status@update:
+            type: partial
+            path: $/logingrupa/studybook/controllers/transactions/_children_status_field.htm
+            span: full
 
 
