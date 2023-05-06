@@ -51,18 +51,17 @@ fields:
         type: number
         min: 0
         span: right
-        disabled: true
     credit@update:
         label: 'logingrupa.studybook::lang.field.transaction.credit'
         type: number
         span: right
-        readOnly: true
         disabled: true     
     transaction_at@update:
-        label: 'logingrupa.studybook::lang.field.transaction.transaction_at'
+        label: 'logingrupa.studybook::lang.field.transaction.transaction_at_create'
         type: datepicker
         mode: date
         span: left
+        disabled: true     
     note:
         label: 'logingrupa.studybook::lang.field.transaction.note'
         size: medium
@@ -86,12 +85,18 @@ tabs:
         children:
             type: partial
             tab: 'logingrupa.studybook::lang.tab.payments'
+        
 secondaryTabs:
     defaultTab: 'logingrupa.studybook::lang.transaction.financial_status'
     fields:
-        status@update:
+        status:
             type: partial
             path: $/logingrupa/studybook/controllers/transactions/_children_status_field.htm
             span: full
+        _companyStatus:
+            type: partial
+            path: $/logingrupa/studybook/controllers/transactions/_children_company_status_field.htm
+            span: full
+        
 
 
