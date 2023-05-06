@@ -1,0 +1,77 @@
+
+    <?php // Alternatively, you can use whereHas to filter the companies that have transactions
+       $companies = \logingrupa\studybook\models\Company::with(['transactions' => function ($query) {
+            $query->selectRaw('company_id, sum(credit) as total_credit, sum(debit) as total_debit, MONTH(transaction_at) as month')
+                ->whereYear('transaction_at', 2023)
+                ->groupBy('company_id', 'month')
+                ->orderBy('month');
+        }])->get();
+    ?>
+    <div class="header">
+         <h6><?= e(trans('logingrupa.studybook::lang.transaction.financial_status')) ?></h6>
+        <!-- Loop through the companies and display their name and transactions -->          
+        <?php foreach ($companies as $company): ?>
+            <h6><?php echo $company->name; ?></h6>
+            <?php
+                // Initialize an empty array to store the sums
+                $sums = [];
+
+                // Initialize a counter variable
+                $i = 0;
+
+                // Initialize variables to store the partial sums of credit and debit
+                $sum_credit = 0;
+                $sum_debit = 0;
+
+                // Initialize a variable to store the quarter number
+                $quarter = 1;
+
+                // Loop through the transactions array
+                foreach ($company->transactions as $transaction) {
+                    // Add the credit and debit values to the partial sums
+                    $sum_credit += $transaction['total_credit'];
+                    $sum_debit += $transaction['total_debit'];
+
+                    // Increment the counter
+                    $i++;
+
+                    // If the counter is divisible by 3, store the partial sums in the sums array and reset them
+                    if ($i % 3 == 0) {
+                        $sums[] = ['sum_credit' => $sum_credit, 'sum_debit' => $sum_debit, 'quarter' => $quarter];
+                        $sum_credit = 0;
+                        $sum_debit = 0;
+
+                        // Increment the quarter number
+                        $quarter++;
+                    }
+                }
+
+                // If there are any remaining transactions, store them in the sums array
+                if ($i % 3 != 0) {
+                    $sums[] = ['sum_credit' => $sum_credit, 'sum_debit' => $sum_debit, 'quarter' => $quarter];
+                }
+                ?>
+
+                <!-- Print the sums array as a table -->
+                <table class="table striped bordered table-bordered data">
+                    <thead class="thead-light">
+                        <tr>
+                            <td><b>Q</b></td>
+                            <td><b>Max to isshue  </b></td>
+                            <td><b>Sum issued</b></td>
+                            <td><b>Sum paid</b></td>
+                        </tr>
+                    </thead>
+                    <?php foreach ($sums as $key => $sum): ?>
+                        <tr>
+                        <?php $maxLeft = 2000 - $sum['sum_credit'] ?>
+                            <td class='<?= e($maxLeft < 0 ? "text-danger" : "text-success") ?>'><?= e($key + 1) ?></td>
+                            <td class='<?= e($maxLeft < 0 ? "oc-icon-circle text-danger" : "oc-icon-circle text-success") ?>'>€<?= e($maxLeft) ?></td>
+                            <td class='<?= e($maxLeft < 0 ? "text-danger" : "text-success") ?>'>€<?= e($sum['sum_credit']) ?></td>
+                            <td class='<?= e($maxLeft < 0 ? "text-danger" : "text-success") ?>'>€<?= e($sum['sum_debit']) ?></td>
+                        </tr>
+                    <?php endforeach ?>
+                </table>
+        <?php endforeach; ?>
+    </div>
+
