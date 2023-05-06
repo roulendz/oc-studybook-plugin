@@ -2,20 +2,20 @@ fields:
     active:
         label: 'lovata.toolbox::lang.field.active'
         span: full
-        default: 0
+        default: false
         type: switch
     name:
         label: 'lovata.toolbox::lang.field.name'
         span: row
         spanClass: col-xs-6 col-md-6
-        required: 1
+        required: true
         type: text
         placeholder: 'lovata.toolbox::lang.field.name'
     slug:
         label: 'lovata.toolbox::lang.field.slug'
         span: row
         spanClass: col-xs-6 col-md-6
-        required: 1
+        required: true
         placeholder: 'lovata.toolbox::lang.field.slug'
         preset:
             field: name
@@ -102,26 +102,7 @@ tabs:
             span: full
             type: richeditor
             tab: 'lovata.toolbox::lang.tab.description'
-        preview_image:
-                label: 'lovata.toolbox::lang.field.preview_image'
-                mode: image
-                useCaption: true
-                thumbOptions:
-                    mode: crop
-                    extension: auto
-                span: left
-                type: fileupload
-                tab: 'lovata.toolbox::lang.tab.images'
-        images:
-            label: 'lovata.toolbox::lang.field.images'
-            mode: image
-            useCaption: true
-            thumbOptions:
-                mode: crop
-                extension: auto
-            span: left
-            type: fileupload
-            tab: 'lovata.toolbox::lang.tab.images'
+        
         file:
             label: 'lovata.toolbox::lang.field.file'
             type: fileupload
@@ -132,26 +113,24 @@ tabs:
 secondaryTabs:
     defaultTab: Images
     fields:
-
-        mainimage:
-            label: Main Image
-            type: nestedform
-            form:
-                fields:
-                    image:
-                        type: mediafinder
-                        span: full
-                        mode: image
-                        prompt: Pick a nice image
-                        imageWidth: 140
-                        imageHeight: 140
-                    title:
-                        label: Title
-                        type: text
-                        span: full
-                    description:
-                        label: Description
-                        type: textarea
-                        size: small
-                        span: full
+        images:
+            label: 'lovata.toolbox::lang.field.images'
+            mode: image
+            useCaption: true
+            thumbOptions:
+                mode: crop
+                extension: auto
+            span: left
+            type: fileupload
+            tab: 'lovata.toolbox::lang.tab.images'
+        preview_image:
+                label: 'lovata.toolbox::lang.field.preview_image'
+                mode: image
+                useCaption: true
+                thumbOptions:
+                    mode: crop
+                    extension: auto
+                span: left
+                type: fileupload
+                tab: 'lovata.toolbox::lang.tab.images'
 
