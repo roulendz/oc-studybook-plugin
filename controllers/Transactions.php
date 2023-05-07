@@ -77,8 +77,8 @@ class Transactions extends Controller
             $widget->config->model->company = 3;
         }
     }
-    // Does not work
-    public function onChangeContent()
+    // When selecting Reservation update credit value based on reservation price
+    public function onChangeReservationUpdateCreditContent()
     {
         // Get reservation ID from request
         $reservation_id = post('Transaction')['reservation_id'];
