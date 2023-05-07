@@ -20,6 +20,13 @@ columns:
         select: name
         searchable: true
         sortable: true
+    company_id:
+        label: 'logingrupa.studybook::lang.field.transaction.company_name'
+        type: text
+        relation: company
+        select: name
+        searchable: true
+        sortable: true
     type:
         label: 'logingrupa.studybook::lang.field.transaction.type'
         type: text
