@@ -45,7 +45,7 @@ fields:
         span: left
         options: \Logingrupa\Studybook\Classes\Helper\Transaction\FormHelper::staticGetStudentReservationListOptions
         dependsOn: student
-        changeHandler: onChangeContent
+        changeHandler: onChangeReservationUpdateCreditContent
     credit@create:
         label: 'logingrupa.studybook::lang.field.transaction.credit'
         type: number
@@ -77,6 +77,11 @@ fields:
             gift: ['Gift card', 'icon-credit-card']
             discount: ['Discount', 'icon-eur']
         span: left
+    status@update:
+            type: partial
+            path: $/logingrupa/studybook/controllers/transactions/_children_status_field.htm
+            span: left
+            changeHandler: onChangeContent
     
         #TODO:report issue when field is updated it does filterFields again on current value not value in database
         # dependsOn: children
@@ -89,10 +94,7 @@ tabs:
 secondaryTabs:
     defaultTab: 'logingrupa.studybook::lang.transaction.financial_status'
     fields:
-        status:
-            type: partial
-            path: $/logingrupa/studybook/controllers/transactions/_children_status_field.htm
-            span: full
+        
         _companyStatus:
             type: partial
             path: $/logingrupa/studybook/controllers/transactions/_children_company_status_field.htm
