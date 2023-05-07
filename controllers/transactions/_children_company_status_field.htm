@@ -8,7 +8,6 @@
         }])->get();
     ?>
     <div class="header">
-         <h6><?= e(trans('logingrupa.studybook::lang.transaction.financial_status')) ?></h6>
         <!-- Loop through the companies and display their name and transactions -->          
         <?php foreach ($companies as $company): ?>
             <h6><?php echo $company->name; ?></h6>
@@ -57,7 +56,7 @@
                     <thead class="thead-light">
                         <tr>
                             <td><b>Q</b></td>
-                            <td><b>Max to isshue  </b></td>
+                            <td><b>Max to isshue</b></td>
                             <td><b>Sum issued</b></td>
                             <td><b>Sum paid</b></td>
                         </tr>
@@ -73,5 +72,4 @@
                     <?php endforeach ?>
                 </table>
         <?php endforeach; ?>
-    </div>
 
