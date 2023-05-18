@@ -107,4 +107,30 @@ class Transactions extends Controller
 
         return ['#Form-field-Transaction-credit-group' => $creditFieldMarkup];
     }
+
+    public function onChangeContent()
+    {
+       
+        // $form = $this->formGetWidget();
+
+        // // Get the credit field
+        // $creditField = $form->getField('status');
+        // // Update the model attribute with the credit value
+        // // TODO: Missing lable after updating value
+        // // $creditField->value = $credit;
+        // $creditFieldMarkup = $form->renderFieldElement($creditField, [
+        //     'useContainer' => true,
+        //     'useLabel' => true,
+        //     'useComment' => false,
+        // ]);
+            $partial = new \Cms\Classes\Controller;
+        return [
+            // Update the #otherDiv element with _other_partial.htm contents
+            '#Form-secondaryTabs > div.tab-content.layout-row' => $partial->renderPartial('controllers/transactions/_children_status_field.htm'),
+
+            // Update the #anotherDiv element with _another_partial.htm contents
+            // '#anotherDiv' => $this->renderPartial('_another_partial.htm')
+         ];
+        // return ['#Form-field-Transaction-status-group' => $creditFieldMarkup];
+    }
 }
