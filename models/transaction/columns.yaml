@@ -7,65 +7,65 @@ columns:
         width: 100px
         invisible: true
     student_id:
-        label: 'logingrupa.studybook::lang.field.transaction.student_full_name'
+        label: 'logingrupa.studybook::lang.transaction.student_full_name'
         type: text
         relation: student
         select: concat(name, ' ', surname)
         searchable: true
         sortable: true
     reservation_id:
-        label: 'logingrupa.studybook::lang.field.transaction.reservation_name'
+        label: 'logingrupa.studybook::lang.transaction.reservation_name'
         type: text
         relation: reservation
         select: name
         searchable: true
         sortable: true
     company_id:
-        label: 'logingrupa.studybook::lang.field.transaction.company_name'
+        label: 'logingrupa.studybook::lang.transaction.company_name'
         type: text
         relation: company
         select: name
         searchable: true
         sortable: true
     type:
-        label: 'logingrupa.studybook::lang.field.transaction.type'
+        label: 'logingrupa.studybook::lang.transaction.type'
         type: text
         sort: false
         serchable: false
         invisible: false
     slug:
-        label: 'logingrupa.studybook::lang.field.transaction.slug'
+        label: 'logingrupa.studybook::lang.transaction.slug'
         type: text
         sort: false
         serchable: false
         invisible: true
     credit:
-        label: 'logingrupa.studybook::lang.field.transaction.credit'
+        label: 'logingrupa.studybook::lang.transaction.credit'
         type: price
         sort: false
         serchable: false
         invisible: false
     debit:
-        label: 'logingrupa.studybook::lang.field.transaction.debit'
+        label: 'logingrupa.studybook::lang.transaction.debit'
         type: price
         sort: false
         serchable: false
         invisible: false
     balance:
-        label: 'logingrupa.studybook::lang.field.transaction.balance'
+        label: 'logingrupa.studybook::lang.transaction.balance'
         type: debit_credit_balance
         sort: true
         serchable: false
         invisible: false
         width: 170px
     note:
-        label: 'logingrupa.studybook::lang.field.transaction.note'
+        label: 'logingrupa.studybook::lang.transaction.note'
         type: text
         sort: false
         invisible: false
         serchable: true
     transaction_at:
-        label: 'logingrupa.studybook::lang.field.transaction.transaction_at'
+        label: 'logingrupa.studybook::lang.transaction.transaction_at'
         type: text
         sort: true
         serchable: true
