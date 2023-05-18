@@ -1,32 +1,32 @@
 fields:
     student@create:
-        label: 'logingrupa.studybook::lang.field.transaction.student_full_name'
+        label: 'logingrupa.studybook::lang.transaction.student_full_name'
         span: left
         required: true
         type: relation
         select: concat(name, ' ', surname)
     student@update:
-        label: 'logingrupa.studybook::lang.field.transaction.student_full_name'
+        label: 'logingrupa.studybook::lang.transaction.student_full_name'
         span: left
         required: true
         type: relation
         select: concat(name, ' ', surname)
         disabled: true
     company@create:
-        label: 'logingrupa.studybook::lang.field.transaction.company'
+        label: 'logingrupa.studybook::lang.transaction.company'
         type: relation
         select: concat(name, ' ', CASE WHEN active = 1 THEN 'Aktīva' ELSE 'Neaktīva' END)
         span: right
         tab: 'lovata.toolbox::lang.tab.description'
     company@update:
-        label: 'logingrupa.studybook::lang.field.transaction.company'
+        label: 'logingrupa.studybook::lang.transaction.company'
         type: relation
         select: concat(name, ' ', CASE WHEN active = 1 THEN 'Aktīva' ELSE 'Neaktīva' END)
         span: right
         tab: 'lovata.toolbox::lang.tab.description'
         disabled: true
     slug@update:
-        label: 'logingrupa.studybook::lang.field.transaction.slug'
+        label: 'logingrupa.studybook::lang.transaction.slug'
         span: right
         required: true
         placeholder: 'lovata.toolbox::lang.field.id'
@@ -34,43 +34,43 @@ fields:
         readOnly: true
         disabled: true
     reservation@update:
-        label: 'logingrupa.studybook::lang.field.transaction.reservation_name'
+        label: 'logingrupa.studybook::lang.transaction.reservation_name'
         type: relation
         span: left
         select: concat(start_at, ' - ' ,name, ' - ', full_name, ' - €', price)
         disabled: true
     reservation_id@create:
-        label: 'logingrupa.studybook::lang.field.transaction.reservation_name'
+        label: 'logingrupa.studybook::lang.transaction.reservation_name'
         type: dropdown
         span: left
         options: \Logingrupa\Studybook\Classes\Helper\Transaction\FormHelper::staticGetStudentReservationListOptions
         dependsOn: student
         changeHandler: onChangeReservationUpdateCreditContent
     credit@create:
-        label: 'logingrupa.studybook::lang.field.transaction.credit'
+        label: 'logingrupa.studybook::lang.transaction.credit'
         type: number
         min: 0
         span: right
     credit@update:
-        label: 'logingrupa.studybook::lang.field.transaction.credit'
+        label: 'logingrupa.studybook::lang.transaction.credit'
         type: number
         span: right
         disabled: true     
     transaction_at@update:
-        label: 'logingrupa.studybook::lang.field.transaction.transaction_at_create'
+        label: 'logingrupa.studybook::lang.transaction.transaction_at_create'
         type: datepicker
         mode: date
         span: left
         disabled: true     
     note:
-        label: 'logingrupa.studybook::lang.field.transaction.note'
+        label: 'logingrupa.studybook::lang.transaction.note'
         size: medium
         span: right
         type: textarea
         tab: 'lovata.toolbox::lang.tab.description'        
         changeHandler: onChangeContent
     type@create:
-        label: 'logingrupa.studybook::lang.field.transaction.type'
+        label: 'logingrupa.studybook::lang.transaction.type'
         type: dropdown
         options:
             bank: ['Bank transfer', 'icon-home']
