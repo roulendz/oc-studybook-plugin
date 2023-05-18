@@ -67,7 +67,8 @@ fields:
         size: medium
         span: right
         type: textarea
-        tab: 'lovata.toolbox::lang.tab.description'
+        tab: 'lovata.toolbox::lang.tab.description'        
+        changeHandler: onChangeContent
     type@create:
         label: 'logingrupa.studybook::lang.field.transaction.type'
         type: dropdown
@@ -81,24 +82,24 @@ fields:
             type: partial
             path: $/logingrupa/studybook/controllers/transactions/_children_status_field.htm
             span: left
-            changeHandler: onChangeContent
     
         #TODO:report issue when field is updated it does filterFields again on current value not value in database
         # dependsOn: children
 tabs:
     fields:
-        children:
+        children@update:
             type: partial
             tab: 'logingrupa.studybook::lang.tab.payments'
-        
+        _companyStatus@create:
+            type: partial
+            path: $/logingrupa/studybook/controllers/transactions/_children_company_status_field.htm
+            span: full      
 secondaryTabs:
-    defaultTab: 'logingrupa.studybook::lang.transaction.financial_status'
-    fields:
-        
-        _companyStatus:
+    fields:    
+        _companyStatus@update:
+            tab: 'logingrupa.studybook::lang.tab.payments'
             type: partial
             path: $/logingrupa/studybook/controllers/transactions/_children_company_status_field.htm
             span: full
-        
 
 
