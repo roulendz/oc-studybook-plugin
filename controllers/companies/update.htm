@@ -8,10 +8,27 @@
         <li><?= e($this->pageTitle) ?></li>
     </ul>
 <?php Block::endPut() ?>
+
+<?php if(!empty($formModel)) {
+        $company_id = $formModel->id;
+    } else {
+        $company_id = null;
+    }
+?>
+
 <?php if (!$this->fatalError): ?>
     <?= Form::open(['class' => 'layout']) ?>
         <div class="layout-row">
-            <?= $this->formRender() ?>
+            <?= $partial = $this->makePartial('$/logingrupa/studybook/controllers/transactions/_children_company_status_field.htm', [
+                'span' => 'full',
+                'tab' => 'placement',
+                'name' => 'example',
+                'company_id' => $company_id,
+            ]); ?>
+
+            <?= $this->formRender([]) ?>
+
+
         </div>
         <div class="form-buttons">
             <div class="loading-indicator-container">
@@ -50,7 +67,7 @@
         </div>
     <?= Form::close() ?>
 <?php else: ?>
-    <p class="flash-message static error"><?= e($this->fatalError) ?></p>
+    <p class="static flash-message error"><?= e($this->fatalError) ?></p>
     <p>
         <a href="<?= Backend::url('logingrupa/studybook/companies') ?>" class="btn btn-default">
             <?= e(trans('backend::lang.form.return_to_list')) ?>
