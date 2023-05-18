@@ -1,9 +1,15 @@
 scopes:
-#    student:
-#        label: Student
-#        modelClass: Rainlab\User\Models\User
-#        conditions: student_id in (:filtered)
-#        nameFrom: name
+    company:
+      label: Company
+      modelClass: Logingrupa\Studybook\Models\Company
+      conditions: company_id in (:value)
+      nameFrom: name
+    # student_id:
+    #    label: Student
+    #    modelClass: Rainlab\User\Models\User
+    #    conditions: student_id in (:filtered)
+    #    nameFrom: name
+
 #    transaction_at:
 #        label: 'lovata.toolbox::lang.field.created_at'
 #        type: date
